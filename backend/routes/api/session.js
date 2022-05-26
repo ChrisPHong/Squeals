@@ -3,8 +3,23 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
+// Check and handleValidationErrors will be used to validate the body of a requrest
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
+
+const validateLogin = [
+    check('credential')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a valid email or username.'),
+    check('password')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a password.'),
+    handleValidationErrors
+];
+
 
 router.get(
     '/',
@@ -19,9 +34,10 @@ router.get(
     }
 );
 
-
+//log in
 router.post(
     '/',
+    validateLogin,
     asyncHandler(async (req, res, next) => {
         const { credential, password } = req.body;
 
@@ -51,5 +67,6 @@ router.delete(
         return res.json({ message: 'success' });
     }
 );
+
 
 module.exports = router;
