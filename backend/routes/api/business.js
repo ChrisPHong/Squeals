@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Business } = require('../../db/models');
+const { Business, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -41,7 +41,7 @@ const validateSignup = [
 
 // Sign up
 router.get('/', asyncHandler(async (req, res) => {
-    const business = await Business.findAll({ order: [['name', 'ASC']] })
+    const business = await Business.findAll({ order: [['id', 'ASC']] })
 
     return res.json({ business })
 })
@@ -53,13 +53,10 @@ router.post(
     validateSignup, requireAuth,
     asyncHandler(async (req, res) => {
         const { title, description, address, city, state, zipCode, phoneNumber, image } = req.body;
-        const business = await Business.signup({ title, description, address, city, state, zipCode, phoneNumber, image });
+        const business = await Business.create({ title, description, address, city, state, zipCode, phoneNumber, image });
 
-        await setTokenCookie(res, business);
 
-        return res.json({
-            business,
-        });
+        return res.json({ business });
     }),
 );
 
