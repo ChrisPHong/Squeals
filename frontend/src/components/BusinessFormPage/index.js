@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './business.css';
+import './BusinessFormPage.css';
+import { createBusiness } from '../../store/business';
 
 
-function BusinessPage() {
+function BusinessPageForm() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -15,7 +16,7 @@ function BusinessPage() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
-
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const error = [];
@@ -33,15 +34,18 @@ function BusinessPage() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const payload = {
-            title,
-            description,
-            address,
-            city,
-            state,
-            zipCode,
-            phoneNumber,
-            image
+        if (errors.length === 0) {
+            const payload = {
+                title,
+                description,
+                address,
+                city,
+                state,
+                zipCode,
+                phoneNumber,
+                image
+            }
+            dispatch(createBusiness(payload))
         }
 
     }
@@ -109,7 +113,7 @@ function BusinessPage() {
             <label>Image</label>
             <input type='text'
                 required
-                placeholder='https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80'
+                placeholder='Image url'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
             />
@@ -121,4 +125,4 @@ function BusinessPage() {
     )
 }
 
-export default BusinessPage;
+export default BusinessPageForm;

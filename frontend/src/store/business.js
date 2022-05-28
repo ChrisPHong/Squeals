@@ -28,7 +28,9 @@ export const loadBusinesses = () => async (dispatch) => {
 export const createBusiness = (business) => async (dispatch) =>{
     const response = await fetch ('/api/businesses', {
         method: 'POST',
-        headers: {"ContentType": 'application/json'},
+        headers: {"ContentType": 'application/json',
+        // "XSRF-TOKEN": `QboNvVfzygWyjZyxo4ZZMk4e`
+    },
         body: JSON.stringify(business)
     })
     if(response.ok){
@@ -41,7 +43,7 @@ export const createBusiness = (business) => async (dispatch) =>{
 const initialState = {};
 
 const businessReducer = (state = initialState, action) => {
-    console.log(action);
+
     switch (action.type) {
         case LOAD_BUSINESSES:
             const newBusiness = {};
@@ -52,11 +54,23 @@ const businessReducer = (state = initialState, action) => {
                 ...state,
                 ...newBusiness
             }
-        case ADD_BUSINESS:
-            const newState = {};
+            case ADD_BUSINESS:
+
+                if(!state[action.businesses.business.id]){
+                    const newState = {...state,
+                [action.businesses.business.id]: action.businesses.business
+                };
+
+                const businessesList = newState.business
+
+
+                console.log(businessesList);
+
+            }
             const arr = action.businesses.business.forEach(business => {
+                console.log(arr);
                 newBusiness[business.id] = business
-                //Need to figure out why this works
+
             });
 
 

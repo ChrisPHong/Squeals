@@ -1,6 +1,5 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { Business, User } = require('../../db/models');
 const { check } = require('express-validator');
@@ -39,8 +38,11 @@ const validateSignup = [
     handleValidationErrors
 ];
 
-// Sign up
+// Get all the businesses
 router.get('/', asyncHandler(async (req, res) => {
+    const { token } = req.cookies;
+    console.log(token);
+
     const business = await Business.findAll({ order: [['id', 'ASC']] })
 
     return res.json({ business })
