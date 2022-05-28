@@ -1,0 +1,65 @@
+const express = require('express');
+const asyncHandler = require('express-async-handler');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { Business, User } = require('../../db/models');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+
+const router = express.Router();
+
+const validateSignup = [
+    check('title')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a valid title.'),
+    check('description')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 10 })
+        .withMessage('Please provide a description with at least 10 characters.'),
+    check('address')
+        .isLength({ min: 5 })
+        .withMessage('Address must be more than 5 characters'),
+    check('city')
+        .exists({ checkFalsy: true })
+        .withMessage('Please Provide a valid City'),
+    check('state')
+        .exists({ checkFalsy: true })
+        .withMessage('Please Provide a valid state'),
+    check('zipCode')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 5 })
+        .withMessage('A zip code must be at least 5 characters.'),
+    check('phoneNumber')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 10 })
+        .withMessage('A Phone number requires 10 minimum digits'),
+    check('image')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a picture of your business'),
+    handleValidationErrors
+];
+
+// Get all the businesses
+router.get('/', asyncHandler(async (req, res) => {
+    const { token } = req.cookies;
+    console.log(token);
+
+    const business = await Business.findAll({ order: [['id', 'ASC']] })
+
+    return res.json({ business })
+})
+
+)
+
+router.post(
+    '/',
+    validateSignup, requireAuth,
+    asyncHandler(async (req, res) => {
+        const { title, description, address, city, state, zipCode, phoneNumber, image } = req.body;
+        const business = await Business.create({ title, description, address, city, state, zipCode, phoneNumber, image });
+
+
+        return res.json({ business });
+    }),
+);
+
+module.exports = router;
