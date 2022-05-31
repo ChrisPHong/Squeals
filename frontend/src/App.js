@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/index";
 import BusinessPage from "./components/BusinessPage";
 import BusinessPageForm from './components/BusinessFormPage'
+import BusinessPageEditForm from "./components/BusinessFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +30,10 @@ function App() {
           <Route path='/businesses'>
             <BusinessPageForm />
           </Route>
-          <Route path={["/", "/businesses/:businessId"]}>
+          <Route path='/bussinesses/:businessId'>
+            <BusinessPageEditForm />
+          </Route>
+          <Route path={["/"]}>
             <BusinessPage />
           </Route>
         </Switch>

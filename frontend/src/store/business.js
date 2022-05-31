@@ -1,6 +1,8 @@
 export const LOAD_BUSINESSES = 'businesses';
 export const ADD_BUSINESS = 'business/add';
+export const EDIT_BUSINESS = 'business/edit';
 
+const {csrfFetch} = require('../store/csrf')
 
 const load = (businesses) => ({
     type: LOAD_BUSINESSES,
@@ -11,6 +13,11 @@ const create = (business) =>({
     type: ADD_BUSINESS,
     business
 
+})
+
+const edit = (business) =>({
+    type: EDIT_BUSINESS,
+    business
 })
 
 
@@ -26,11 +33,9 @@ export const loadBusinesses = () => async (dispatch) => {
 }
 
 export const createBusiness = (business) => async (dispatch) =>{
-    const response = await fetch ('/api/businesses', {
+    const response = await csrfFetch ('/api/businesses', {
         method: 'POST',
-        headers: {"ContentType": 'application/json',
-        // "XSRF-TOKEN": `QboNvVfzygWyjZyxo4ZZMk4e`
-    },
+        headers: {"Content-Type": 'application/json'},
         body: JSON.stringify(business)
     })
     if(response.ok){
@@ -40,6 +45,20 @@ export const createBusiness = (business) => async (dispatch) =>{
     }
 }
 
+export const editBusiness = (businessId, business) => async(dispatch) =>{
+    const response = await csrfFetch(`/api/businesses/${businessId}`, {
+        method: 'PUT',
+        headers: {"Content-Type": 'application/json'},
+        body: JSON.stringify(business)
+    })
+
+    if(response.ok){
+        const business = await response.json();
+        dispatch(edit(business));
+        return business;
+    }
+
+}
 const initialState = {};
 
 const businessReducer = (state = initialState, action) => {
@@ -55,26 +74,23 @@ const businessReducer = (state = initialState, action) => {
                 ...newBusiness
             }
             case ADD_BUSINESS:
+                console.log(action);
+                // if(!state[action.businesses.business.id]){
+                //     const newState = {...state,
+                // [action.businesses.business.id]: action.businesses.business
+                // };
+                // return newState;
+            // }
+            //     const businessesList = newState.business.map((id) => newState[id]);
+            //     businessesList.push(action.businesses.business);
+            //     return businessesList
 
-                if(!state[action.businesses.business.id]){
-                    const newState = {...state,
-                [action.businesses.business.id]: action.businesses.business
-                };
+            // const arr = action.businesses.business.forEach(business => {
 
-                const businessesList = newState.business
+            //     newBusiness[business.id] = business
 
-
-                console.log(businessesList);
-
-            }
-            const arr = action.businesses.business.forEach(business => {
-                console.log(arr);
-                newBusiness[business.id] = business
-
-            });
-
-
-            console.log(action);
+            // });
+            case EDIT_BUSINESS:
         default:
             return state;
     }
