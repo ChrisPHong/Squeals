@@ -7,7 +7,7 @@ import { createBusiness } from '../../store/business';
 import {useHistory} from 'react-router-dom';
 
 
-function BusinessPageEditForm() {
+function BusinessPageForm() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -57,6 +57,7 @@ function BusinessPageEditForm() {
                 image
             }
             dispatch(createBusiness(payload))
+            // :TODO YOU NEED TO CHANGE THIS METHOD!! ^^^ from createBusiness to edit business
             history.push('/');
         }
 
@@ -137,4 +138,4 @@ function BusinessPageEditForm() {
     )
 }
 
-export default BusinessPageEditForm;
+export default BusinessPageForm;

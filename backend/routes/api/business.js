@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { Business, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -40,8 +40,6 @@ const validateSignup = [
 
 // Get all the businesses
 router.get('/', asyncHandler(async (req, res) => {
-    const { token } = req.cookies;
-    console.log(token);
 
     const business = await Business.findAll({ order: [['id', 'ASC']] })
 
@@ -54,12 +52,33 @@ router.post(
     '/',
     validateSignup, requireAuth,
     asyncHandler(async (req, res) => {
-        const { title, description, address, city, state, zipCode, phoneNumber, image } = req.body;
-        const business = await Business.create({ title, description, address, city, state, zipCode, phoneNumber, image });
+        const { userId, title, description, address, city, state, zipCode, phoneNumber, image } = req.body;
+        const business = await Business.create({ userId, title, description, address, city, state, zipCode, phoneNumber, image });
 
-
-        return res.json({ business });
+        return res.json(business);
     }),
 );
+
+router.put(
+    '/:businessId',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const business = await Business.findByPk(req.params.id);
+        console.log('GETTING THE PUT ROUTE', business);
+        business.title = req.body.title;
+        business.description = req.body.description;
+        business.address = req.body.address;
+        business.city = req.body.city;
+        business.state = req.body.state;
+        business.zipCode = req.body.zipCode;
+        business.phoneNumber = req.body.phoneNumber;
+        business.image = req.body.image;
+
+        await business.save();
+
+        return res.json(business);
+
+    })
+)
 
 module.exports = router;
