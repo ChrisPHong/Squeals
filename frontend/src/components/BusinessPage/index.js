@@ -28,19 +28,21 @@ function BusinessPage() {
                 {businesses.map(business => {
                     return (
                         <div key={`div${business.id}`} className={`div${business.id}`}>
+                            <div className='EntireBusinessDiv'>
 
-                                <img key={`image${business.id}`} src={business.image}
-                                />
-                            <h2>Restaurant Name</h2>
+                            <img key={`image${business.id}`} src={business.image}
+                            />
+                            <h2 className='businessName'>Business Name</h2>
                             <ul className='businessTitle' key={`title${business.id}`}>{business.title}</ul>
                             <h2>Description</h2>
                             <li key={`description${business.id}`}>{business.description}</li>
+                                </div>
                             <div className='editDiv'>
                                 {(business.userId === userId) ?
                                     <Link to={`/businesses/${business.id}`}>
                                         <button className='editButton'
 
-                                        >Edit</button>
+>Edit</button>
                                     </Link>
                                     : null}
                             </div>

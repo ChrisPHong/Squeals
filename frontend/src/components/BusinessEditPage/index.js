@@ -12,14 +12,12 @@ function BusinessPageEditForm() {
     const actualId = Object.values(businessId)[0]
     const business = useSelector(state => state.business[actualId])
     const dispatch = useDispatch();
-    console.log(business, '!!!!!!!!!!!!!!!!!!!!!!!!!BUSINESS!!!!!!!!!!!!!!!')
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
         dispatch(getOneBusiness(Object.values(businessId)[0]))
 
     }, [dispatch, businessId]);
-    // console.log('<-------------this is state----------->', business);
 
     const [title, setTitle] = useState(business.title);
     const [description, setDescription] = useState(business.description);
