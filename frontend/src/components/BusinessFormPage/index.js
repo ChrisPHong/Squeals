@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './BusinessFormPage.css';
 import { createBusiness } from '../../store/business';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
-function BusinessPageEditForm() {
+function BusinessPageForm() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -65,7 +65,8 @@ function BusinessPageEditForm() {
         <form onSubmit={onSubmit}>
             <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
                 return <li key={error}>{error}</li>
-            }) : null}</ul>
+            }) : null}
+            </ul>
             <label>Title</label>
             <input type='text'
                 required
@@ -137,4 +138,4 @@ function BusinessPageEditForm() {
     )
 }
 
-export default BusinessPageEditForm;
+export default BusinessPageForm;

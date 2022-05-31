@@ -59,12 +59,20 @@ router.post(
     }),
 );
 
+router.get('/:businessId', asyncHandler(async (req, res) => {
+
+    const business = await Business.findByPk(parseInt(req.params.businessId, 10))
+
+    return res.json({ business })
+})
+
+)
+
 router.put(
     '/:businessId',
     requireAuth,
     asyncHandler(async (req, res) => {
-        const business = await Business.findByPk(req.params.id);
-        console.log('GETTING THE PUT ROUTE', business);
+        const business = await Business.findByPk(parseInt(req.params.businessId, 10));
         business.title = req.body.title;
         business.description = req.body.description;
         business.address = req.body.address;

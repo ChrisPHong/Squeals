@@ -2,29 +2,36 @@ import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './BusinessFormPage.css';
-import { createBusiness } from '../../store/business';
-import {useHistory} from 'react-router-dom';
+import './BusinessEditPage.css';
+import { createBusiness, editBusiness } from '../../store/business';
+import {useHistory, useParams} from 'react-router-dom';
+import { getOneBusiness } from '../../store/business' //We might just need only one
 
-
-function BusinessPageForm() {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [zipCode, setZipCode] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [image, setImage] = useState('');
-    const [errors, setErrors] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
-
+function BusinessPageEditForm() {
+    const businessId = useParams();
+    const actualId = Object.values(businessId)[0]
+    const business = useSelector(state => state.business[actualId])
     const dispatch = useDispatch();
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    }, [dispatch]);
+        dispatch(getOneBusiness(Object.values(businessId)[0]))
+
+    }, [dispatch, businessId]);
+
+    const [title, setTitle] = useState(business.title);
+    const [description, setDescription] = useState(business.description);
+    const [address, setAddress] = useState(business.address);
+    const [city, setCity] = useState(business.city);
+    const [state, setState] = useState(business.state);
+    const [zipCode, setZipCode] = useState(business.zipCode);
+    const [phoneNumber, setPhoneNumber] = useState(business.phoneNumber);
+    const [image, setImage] = useState(business.image);
+    const [errors, setErrors] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const history = useHistory();
+
 
     let userId = useSelector((state) => state.session.user.id)
 
@@ -56,17 +63,18 @@ function BusinessPageForm() {
                 phoneNumber,
                 image
             }
-            dispatch(createBusiness(payload))
-            // :TODO YOU NEED TO CHANGE THIS METHOD!! ^^^ from createBusiness to edit business
+            dispatch(editBusiness(actualId, payload))
             history.push('/');
         }
 
     }
     return (
         <form onSubmit={onSubmit}>
-            <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
+            <ul className='errors array'>
+                {(errors.length > 0)? errors.map(error => {
                 return <li key={error}>{error}</li>
-            }) : null}</ul>
+            }) : null}
+            </ul>
             <label>Title</label>
             <input type='text'
                 required
@@ -138,4 +146,4 @@ function BusinessPageForm() {
     )
 }
 
-export default BusinessPageForm;
+export default BusinessPageEditForm;

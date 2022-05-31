@@ -7,7 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/index";
 import BusinessPage from "./components/BusinessPage";
 import BusinessPageForm from './components/BusinessFormPage'
-import BusinessPageEditForm from "./components/BusinessFormPage";
+import BusinessPageEditForm from "./components/BusinessEditPage/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,13 +27,13 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/businesses'>
-            <BusinessPageForm />
-          </Route>
-          <Route path='/bussinesses/:businessId'>
+          <Route path='/businesses/:businessId'>
             <BusinessPageEditForm />
           </Route>
-          <Route path={["/"]}>
+          <Route exact path='/businesses'>
+            <BusinessPageForm />
+          </Route>
+          <Route path="/">
             <BusinessPage />
           </Route>
         </Switch>

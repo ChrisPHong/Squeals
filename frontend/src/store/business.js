@@ -1,7 +1,7 @@
 export const LOAD_BUSINESSES = 'businesses';
 export const ADD_BUSINESS = 'business/add';
 export const EDIT_BUSINESS = 'business/edit';
-
+export const ONE_BUSINESS = 'business/one'
 const {csrfFetch} = require('../store/csrf')
 
 const load = (businesses) => ({
@@ -20,6 +20,10 @@ const edit = (business) =>({
     business
 })
 
+const getOne = (business) =>({
+    type:ONE_BUSINESS,
+    business
+})
 
 export const loadBusinesses = () => async (dispatch) => {
     const response = await fetch('/api/businesses', {
@@ -29,6 +33,17 @@ export const loadBusinesses = () => async (dispatch) => {
     if (response.ok) {
         const businesses = await response.json();
         dispatch(load(businesses));
+    }
+}
+
+export const getOneBusiness = (id) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${id}`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const business = await response.json();
+        dispatch(getOne(business));
     }
 }
 
@@ -72,6 +87,12 @@ const businessReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...newBusiness
+            }
+        case ONE_BUSINESS:
+
+            return {
+                ...state,
+                [action.business.business.id]: action.business.business
             }
             case ADD_BUSINESS:
                 console.log(action);
