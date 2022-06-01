@@ -4,7 +4,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './business.css';
-import { loadBusinesses } from '../../store/business'
+import { loadBusinesses, deleteBusiness } from '../../store/business'
 
 function BusinessPage() {
     const dispatch = useDispatch();
@@ -18,6 +18,7 @@ function BusinessPage() {
     let userId = useSelector((state) => state.session.user.id)
     useEffect(() => {
         dispatch(loadBusinesses());
+
     }, [dispatch])
 
     return (
@@ -30,26 +31,30 @@ function BusinessPage() {
                         <div key={`div${business.id}`} className={`div${business.id}`}>
                             <div className='EntireBusinessDiv'>
 
-                            <img key={`image${business.id}`} src={business.image}
-                            />
-                            <h2 className='businessName'>Business Name</h2>
-                            <ul className='businessTitle' key={`title${business.id}`}>{business.title}</ul>
-                            <h2>Description</h2>
-                            <li key={`description${business.id}`}>{business.description}</li>
-                                </div>
+                                <img key={`image${business.id}`} src={business.image}
+                                />
+                                <h2 className='businessName'>Business Name</h2>
+                                <ul className='businessTitle' key={`title${business.id}`}>{business.title}</ul>
+                                <h2>Description</h2>
+                                <li key={`description${business.id}`}>{business.description}</li>
+                            </div>
                             <div className='editDiv'>
                                 {(business.userId === userId) ?
                                     <Link to={`/businesses/${business.id}`}>
                                         <button className='editButton'
 
->Edit</button>
+                                        >Edit</button>
                                     </Link>
                                     : null}
                             </div>
 
                             <div className='deleteDiv'>
                                 {(business.userId === userId) ?
-                                    <button className='deleteButton'>Delete</button>
+                                    <button className='deleteButton'
+                                        onClick={() => {
+                                            dispatch(deleteBusiness(business.id))
+                                        }}
+                                    >Delete</button>
                                     : null}
                             </div>
 

@@ -89,4 +89,13 @@ router.put(
     })
 )
 
+router.delete('/:businessId', asyncHandler(async (req, res) => {
+
+    const business = await Business.findByPk(parseInt(req.params.businessId, 10))
+    await business.destroy();
+    return res.json("succesfully deleted post");
+
+})
+
+)
 module.exports = router;
