@@ -123,30 +123,14 @@ const businessReducer = (state = initialState, action) => {
                 [action.business.business.id]: action.business.business
             }
         case ADD_BUSINESS:
-            console.log(action); //check to see how to get id from the business. YOu might want to use the same code from earlier V
-            // return {
-            //     ...state,
-            //     [action.business.business.id]: action.business.business
-            // }
-            if (!state[action.businesses.business.id]) {
+            if (!state[action.business.id]) {
                 const newState = {
                     ...state,
-                    [action.businesses.business.id]: action.businesses.business
+                    [action.business.id]: action.business
                 };
                 return newState;
             }
-        //     const businessesList = newState.business.map((id) => newState[id]);
-        //     businessesList.push(action.businesses.business);
-        //     return businessesList
-
-        // const arr = action.businesses.business.forEach(business => {
-
-        //     newBusiness[business.id] = business
-
-        // });
         case EDIT_BUSINESS:
-            //add an edit state here
-            console.log('<<<<<<<< HITTING EDITING CASE >>>>>>>>', action.business);
             return {
                 ...state,
                 [action.business.id]: action.business
