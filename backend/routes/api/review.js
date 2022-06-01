@@ -24,7 +24,7 @@ router.get('/', asyncHandler(async(req, res)=>{
     const businessId = parseInt(req.params.id)
     console.log(' <<<<<<<<<<<<<<<<<<<< BUSINESS ID >>>>>>>>>>>>>>>>', businessId)
     const reviews = await Review.findAll({
-
+        where:{businessId},
         order: [['rating', 'ASC']]}
         )
     return res.json({reviews});
@@ -45,30 +45,34 @@ router.post(
 
 
 
-// router.put(
-//     '/:reviewId',
-//     requireAuth,
-//     asyncHandler(async (req, res) => {
-//         const review = await Review.findByPk(parseInt(req.params.reviewId, 10));
-//         review.rating = req.body.rating;
-//         review.answer = req.body.answer;
+router.put(
+    '/:reviewId',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const review = await Review.findByPk(parseInt(req.params.reviewId, 10));
+        review.rating = req.body.rating;
+        review.answer = req.body.answer;
 
-//         await review.save();
+        await review.save();
 
-//         return res.json(review);
+        return res.json(review);
 
-//     })
-// )
+    })
+)
 
-// router.delete('/:reviewId', asyncHandler(async (req, res) => {
-
-//     const review = await Review.findByPk(parseInt(req.params.reviewId, 10))
-//     await review.destroy();
-//     return res.json("succesfully deleted post");
-
+// router.delete('/:reviewId', (req, res)=>{
+//     res.send('hello this is the delete');
 // })
 
-// )
+router.delete('/:reviewId', asyncHandler(async (req, res) => {
+
+    const review = await Review.findByPk(parseInt(req.params.reviewId, 10))
+    await review.destroy();
+    return res.json("succesfully deleted post");
+
+})
+
+)
 
 
 module.exports = router;

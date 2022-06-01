@@ -15,6 +15,7 @@ function BusinessPage() {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
+    
     let userId = useSelector((state) => state.session.user.id)
 
     useEffect(() => {
@@ -31,9 +32,10 @@ function BusinessPage() {
                     return (
                         <div key={`div${business.id}`} className={`div${business.id}`}>
                             <div className='EntireBusinessDiv'>
-
+                                <Link to={`/businesses/${business.id}`}>
                                 <img key={`image${business.id}`} src={business.image}
                                 />
+                                </Link>
                                 <h2 className='businessName'>Business Name</h2>
                                 <ul className='businessTitle' key={`title${business.id}`}>{business.title}</ul>
                                 <h2>Description</h2>

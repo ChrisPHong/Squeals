@@ -2,19 +2,29 @@ import React, { useState, useEffect } from 'react';
 import './ReviewsPage.css';
 import { useSelector, useDispatch } from 'react-redux'
 import * as sessionActions from '../../store/session'
+import { deleteReview, loadReviews } from '../../store/review';
+import {Link} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 
 
 
 function ReviewsPage() {
     const dispatch = useDispatch();
+    const businessid = useParams();
+    const businessId = businessid.businessId
     const reviews = useSelector((state) => Object.values(state.review));
     const user = useSelector((state) => Object.values(state.session.user));
     const userName = user[1]
+    const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(loadReviews)
+    }, [dispatch])
 
     return (
         <div>
@@ -22,10 +32,32 @@ function ReviewsPage() {
             <div>
                 {reviews.length > 0 ? reviews.map(review => {
                     return (
-                        <div>
-                            <h2>Review by {userName}</h2>
-                            <div>{review.answer}</div>
-                            <div>{review.rating}</div>
+                        <div key={`outerDiv${review.id}`}>
+                            <h2 key={`h2${review.id}`}>Review by {userName}</h2>
+                            <label key={`label${review.id}`}>Review:</label>
+                            <div key={`answer${review.id}`}>{review.answer}</div>
+                            <div key={`rating${review.id}`}>Rating: {review.rating}</div>
+
+
+                            <div className='editDiv'>
+                                {(review.userId === userId) ?
+                                    <Link to={`businesses/${businessId}/reviews/${review.id}`}>
+                                        <button className='editButton'
+
+                                        >Edit</button>
+                                    </Link>
+                                    : null}
+                            </div>
+
+                            <div className='deleteDiv'>
+                                {(review.userId === userId) ?
+                                    <button className='deleteButton'
+                                        onClick={() => {
+                                            dispatch(deleteReview(businessId, review.id))
+                                        }}
+                                    >Delete</button>
+                                    : null}
+                            </div>
                         </div>
                     )
                 }) : <div>
@@ -34,7 +66,6 @@ function ReviewsPage() {
                 </div>}
 
             </div>
-            <h2>___________________</h2>
         </div>
     )
 }

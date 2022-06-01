@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ReviewFormPage.css';
+import './ReviewEditFormPage.css';
 import { useSelector, useDispatch } from 'react-redux'
 import * as sessionActions from '../../store/session'
 import { addReview } from '../../store/review'
@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
 
-function ReviewForm() {
+function EditFormPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const businessid = useParams();
@@ -47,6 +47,7 @@ function ReviewForm() {
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+        dispatch()
     }, [dispatch]);
 
     return (
@@ -82,4 +83,4 @@ function ReviewForm() {
 }
 
 
-export default ReviewForm;
+export default EditFormPage;
