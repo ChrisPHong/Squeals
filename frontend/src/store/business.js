@@ -123,11 +123,11 @@ const businessReducer = (state = initialState, action) => {
                 [action.business.business.id]: action.business.business
             }
         case ADD_BUSINESS:
-
-            return {
-                ...state,
-                [action.business.business.id]: action.business.business
-            }
+            console.log(action); //check to see how to get id from the business. YOu might want to use the same code from earlier V
+            // return {
+            //     ...state,
+            //     [action.business.business.id]: action.business.business
+            // }
         // if(!state[action.businesses.business.id]){
         //     const newState = {...state,
         // [action.businesses.business.id]: action.businesses.business
