@@ -61,6 +61,7 @@ function BusinessPageForm() {
         }
 
     }
+
     return (
         <form onSubmit={onSubmit}>
             <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
