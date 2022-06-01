@@ -15,7 +15,8 @@ function BusinessPage() {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
-    // let userId = useSelector((state) => state.session.user.id)
+    let userId = useSelector((state) => state.session.user.id)
+
     useEffect(() => {
         dispatch(loadBusinesses());
 

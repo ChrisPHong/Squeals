@@ -89,7 +89,7 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
     })
     if (response.ok) {
         const data = await response.json();
-          dispatch(removeBusiness(businessId));
+        dispatch(removeBusiness(businessId));
 
         return data
         // console.log('<<<<<<<<<< WE HIT DELETE ROUTE >>>>>>>>>>', response)
@@ -128,12 +128,13 @@ const businessReducer = (state = initialState, action) => {
             //     ...state,
             //     [action.business.business.id]: action.business.business
             // }
-        // if(!state[action.businesses.business.id]){
-        //     const newState = {...state,
-        // [action.businesses.business.id]: action.businesses.business
-        // };
-        // return newState;
-        // }
+            if (!state[action.businesses.business.id]) {
+                const newState = {
+                    ...state,
+                    [action.businesses.business.id]: action.businesses.business
+                };
+                return newState;
+            }
         //     const businessesList = newState.business.map((id) => newState[id]);
         //     businessesList.push(action.businesses.business);
         //     return businessesList
@@ -144,6 +145,14 @@ const businessReducer = (state = initialState, action) => {
 
         // });
         case EDIT_BUSINESS:
+            //add an edit state here
+            console.log('<<<<<<<< HITTING EDITING CASE >>>>>>>>', action.business);
+            return {
+                ...state,
+                [action.business.id]: action.business
+            }
+
+
         default:
             return state;
     }
