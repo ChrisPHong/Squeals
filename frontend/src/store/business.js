@@ -2,26 +2,33 @@ export const LOAD_BUSINESSES = 'businesses';
 export const ADD_BUSINESS = 'business/add';
 export const EDIT_BUSINESS = 'business/edit';
 export const ONE_BUSINESS = 'business/one'
-const {csrfFetch} = require('../store/csrf')
+export const DELETE_BUSINESS = 'business/delete'
+
+const { csrfFetch } = require('../store/csrf')
 
 const load = (businesses) => ({
     type: LOAD_BUSINESSES,
     businesses
 })
 
-const create = (business) =>({
+const create = (business) => ({
     type: ADD_BUSINESS,
     business
 
 })
 
-const edit = (business) =>({
+const edit = (business) => ({
     type: EDIT_BUSINESS,
     business
 })
 
-const getOne = (business) =>({
-    type:ONE_BUSINESS,
+const removeBusiness = (business) => ({
+    type: DELETE_BUSINESS,
+    business
+})
+
+const getOne = (business) => ({
+    type: ONE_BUSINESS,
     business
 })
 
@@ -47,32 +54,46 @@ export const getOneBusiness = (id) => async (dispatch) => {
     }
 }
 
-export const createBusiness = (business) => async (dispatch) =>{
-    const response = await csrfFetch ('/api/businesses', {
+export const createBusiness = (business) => async (dispatch) => {
+    const response = await csrfFetch('/api/businesses', {
         method: 'POST',
-        headers: {"Content-Type": 'application/json'},
+        headers: { "Content-Type": 'application/json' },
         body: JSON.stringify(business)
     })
-    if(response.ok){
+    if (response.ok) {
         const business = await response.json();
         dispatch(create(business));
         return business;
     }
 }
 
-export const editBusiness = (businessId, business) => async(dispatch) =>{
+export const editBusiness = (businessId, business) => async (dispatch) => {
     const response = await csrfFetch(`/api/businesses/${businessId}`, {
         method: 'PUT',
-        headers: {"Content-Type": 'application/json'},
+        headers: { "Content-Type": 'application/json' },
         body: JSON.stringify(business)
     })
 
-    if(response.ok){
+    if (response.ok) {
         const business = await response.json();
         dispatch(edit(business));
         return business;
     }
 
+}
+
+export const deleteBusiness = (businessId) => async (dispatch) => {
+
+    const response = await csrfFetch(`api/businesses/${businessId}`, {
+        method: 'DELETE',
+    })
+    if (response.ok) {
+        const data = await response.json();
+          dispatch(removeBusiness(businessId));
+
+        return data
+        // console.log('<<<<<<<<<< WE HIT DELETE ROUTE >>>>>>>>>>', response)
+    }
 }
 const initialState = {};
 
@@ -88,30 +109,41 @@ const businessReducer = (state = initialState, action) => {
                 ...state,
                 ...newBusiness
             }
+
+        case DELETE_BUSINESS:
+            const newState = { ...state }
+            delete newState[action.business]
+
+            return newState;
+
         case ONE_BUSINESS:
 
             return {
                 ...state,
                 [action.business.business.id]: action.business.business
             }
-            case ADD_BUSINESS:
-                console.log(action);
-                // if(!state[action.businesses.business.id]){
-                //     const newState = {...state,
-                // [action.businesses.business.id]: action.businesses.business
-                // };
-                // return newState;
-            // }
-            //     const businessesList = newState.business.map((id) => newState[id]);
-            //     businessesList.push(action.businesses.business);
-            //     return businessesList
+        case ADD_BUSINESS:
 
-            // const arr = action.businesses.business.forEach(business => {
+            return {
+                ...state,
+                [action.business.business.id]: action.business.business
+            }
+        // if(!state[action.businesses.business.id]){
+        //     const newState = {...state,
+        // [action.businesses.business.id]: action.businesses.business
+        // };
+        // return newState;
+        // }
+        //     const businessesList = newState.business.map((id) => newState[id]);
+        //     businessesList.push(action.businesses.business);
+        //     return businessesList
 
-            //     newBusiness[business.id] = business
+        // const arr = action.businesses.business.forEach(business => {
 
-            // });
-            case EDIT_BUSINESS:
+        //     newBusiness[business.id] = business
+
+        // });
+        case EDIT_BUSINESS:
         default:
             return state;
     }

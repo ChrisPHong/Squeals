@@ -89,4 +89,12 @@ router.put(
     })
 )
 
+router.delete('/:businessId', asyncHandler(async (req, res) => {
+
+    const business = await Business.findByPk(parseInt(req.params.businessId, 10))
+    console.log('<<<<<<<<<<<< WE HITTING BACKEND >>>>>>>>>>>>', business);
+    return res.json({ business })
+})
+
+)
 module.exports = router;

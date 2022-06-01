@@ -4,20 +4,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './BusinessEditPage.css';
 import { createBusiness, editBusiness } from '../../store/business';
-import {useHistory, useParams} from 'react-router-dom';
-import { getOneBusiness } from '../../store/business' //We might just need only one
+import { useHistory, useParams } from 'react-router-dom';
+import { getOneBusiness, deleteBusiness } from '../../store/business' //We might just need only one
 
 function BusinessPageEditForm() {
     const businessId = useParams();
     const actualId = Object.values(businessId)[0]
     const business = useSelector(state => state.business[actualId])
     const dispatch = useDispatch();
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
         dispatch(getOneBusiness(Object.values(businessId)[0]))
 
     }, [dispatch, businessId]);
+
+
 
     const [title, setTitle] = useState(business.title);
     const [description, setDescription] = useState(business.description);
@@ -28,7 +31,6 @@ function BusinessPageEditForm() {
     const [phoneNumber, setPhoneNumber] = useState(business.phoneNumber);
     const [image, setImage] = useState(business.image);
     const [errors, setErrors] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
 
     const history = useHistory();
 
@@ -71,9 +73,9 @@ function BusinessPageEditForm() {
     return (
         <form onSubmit={onSubmit}>
             <ul className='errors array'>
-                {(errors.length > 0)? errors.map(error => {
-                return <li key={error}>{error}</li>
-            }) : null}
+                {(errors.length > 0) ? errors.map(error => {
+                    return <li key={error}>{error}</li>
+                }) : null}
             </ul>
             <label>Title</label>
             <input type='text'
