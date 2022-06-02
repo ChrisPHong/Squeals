@@ -15,7 +15,7 @@ function BusinessPage() {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
-    
+
     let userId = useSelector((state) => state.session.user.id)
 
     useEffect(() => {
@@ -30,17 +30,17 @@ function BusinessPage() {
 
                 {businesses.map(business => {
                     return (
-                        <div key={`div${business.id}`} className={`div${business.id}`}>
-                            <div className='EntireBusinessDiv'>
+                        <div key={`div${business.id}`} className={`divbusinessCard`}>
+
                                 <Link to={`/businesses/${business.id}`}>
-                                <img key={`image${business.id}`} src={business.image}
+                                <img className='imageDiv' key={`image${business.id}`} src={business.image}
                                 />
                                 </Link>
-                                <h2 className='businessName'>Business Name</h2>
-                                <ul className='businessTitle' key={`title${business.id}`}>{business.title}</ul>
-                                <h2>Description</h2>
-                                <li key={`description${business.id}`}>{business.description}</li>
-                            </div>
+                                <div className='businessName'>
+                                <h2 className='businessTitle' key={`title${business.id}`}>{business.title}</h2>
+                                </div>
+                                <p className='description' key={`description${business.id}`}>{business.description}</p>
+                                <p className='address' key={`address${business.address}`}>{business.address}</p>
                             <div className='editDiv'>
                                 {(business.userId === userId) ?
                                     <Link to={`/businesses/${business.id}`}>
