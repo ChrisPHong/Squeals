@@ -60,10 +60,14 @@ router.post(
 );
 
 router.get('/:businessId', asyncHandler(async (req, res) => {
+    const businessId = parseInt(req.params.businessId, 10)
+    const business = await Business.findByPk(businessId)
+    const reviews = await Review.findAll({
+        where:{businessId: businessId},
+        order: [['rating', 'ASC']]}
+        )
 
-    const business = await Business.findByPk(parseInt(req.params.businessId, 10))
-
-    return res.json({ business })
+    return res.json({reviews, business});
 })
 
 )
@@ -98,4 +102,6 @@ router.delete('/:businessId', asyncHandler(async (req, res) => {
 })
 
 )
+
+
 module.exports = router;

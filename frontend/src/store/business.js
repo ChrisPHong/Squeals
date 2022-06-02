@@ -44,6 +44,7 @@ export const loadBusinesses = () => async (dispatch) => {
 }
 
 export const getOneBusiness = (id) => async (dispatch) => {
+    console.log('<<<<<<<<<<<< GET ONE BUSINESS ID', id);
     const response = await fetch(`/api/businesses/${id}`, {
         method: 'GET'
     });
@@ -92,7 +93,7 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
         dispatch(removeBusiness(businessId));
 
         return data
-        // console.log('<<<<<<<<<< WE HIT DELETE ROUTE >>>>>>>>>>', response)
+
     }
 }
 const initialState = {};
@@ -105,6 +106,7 @@ const businessReducer = (state = initialState, action) => {
             action.businesses.business.forEach(business => {
                 newBusiness[business.id] = business
             });
+            console.log('<<<<<<<<< LOADING NEW BUSINESS >>>>>>>>>>>', newBusiness)
             return {
                 ...state,
                 ...newBusiness
@@ -117,10 +119,18 @@ const businessReducer = (state = initialState, action) => {
             return newState;
 
         case ONE_BUSINESS:
-
+            //this is for getting the reviews as well
+            const reviewStateAndBusiness = {};
+            action.business.reviews.forEach(review =>{
+                reviewStateAndBusiness[review.id] = review
+            });
+            console.log('<<<<<<<<<<<<< REVIEWS >>>>>>>>>>>>', reviewStateAndBusiness);
             return {
                 ...state,
-                [action.business.business.id]: action.business.business
+                ...reviewStateAndBusiness,
+                [action.business.business.id]: action.business.business,
+                [action.business.reviews.id]: action.business.reviews
+
             }
         case ADD_BUSINESS:
             if (!state[action.business.id]) {

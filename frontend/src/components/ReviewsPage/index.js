@@ -3,9 +3,9 @@ import './ReviewsPage.css';
 import { useSelector, useDispatch } from 'react-redux'
 import * as sessionActions from '../../store/session'
 import { deleteReview, loadReviews } from '../../store/review';
-import {Link} from 'react-router-dom'
-import {useParams} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { getOneBusiness } from '../../store/business'
 
 
 function ReviewsPage() {
@@ -13,6 +13,7 @@ function ReviewsPage() {
     const businessid = useParams();
     const businessId = businessid.businessId
     const reviews = useSelector((state) => Object.values(state.review));
+    const newReviews = reviews.filter(review => review.businessId === businessId)
     const user = useSelector((state) => Object.values(state.session.user));
     const userName = user[1]
     const userId = user[0]
@@ -23,7 +24,7 @@ function ReviewsPage() {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(loadReviews)
+        dispatch(loadReviews(businessId))
     }, [dispatch])
 
     return (
@@ -41,7 +42,7 @@ function ReviewsPage() {
 
                             <div className='editDiv'>
                                 {(review.userId === userId) ?
-                                    <Link to={`businesses/${businessId}/reviews/${review.id}`}>
+                                    <Link to={`/businesses/${businessId}/reviews/${review.id}`}>
                                         <button className='editButton'
 
                                         >Edit</button>

@@ -4,7 +4,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './business.css';
-import { loadBusinesses, deleteBusiness } from '../../store/business'
+import { loadBusinesses, deleteBusiness, getOneBusiness } from '../../store/business'
 
 function BusinessPage() {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function BusinessPage() {
 
     useEffect(() => {
         dispatch(loadBusinesses());
-
+        
     }, [dispatch])
 
     return (
@@ -33,7 +33,9 @@ function BusinessPage() {
                         <div key={`div${business.id}`} className={`divbusinessCard`}>
 
                                 <Link to={`/businesses/${business.id}`}>
-                                <img className='imageDiv' key={`image${business.id}`} src={business.image}
+                                <img className='imageDiv' onClick={() =>{
+                                    console.log('<<<<<<< HERE IN THE GETTING ONE BUSINESS')
+                                    dispatch(getOneBusiness(business.id))}} key={`image${business.id}`} src={business.image}
                                 />
                                 </Link>
                                 <div className='businessName'>

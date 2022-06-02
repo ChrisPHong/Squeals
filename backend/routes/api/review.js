@@ -22,7 +22,6 @@ const validateSignup = [
 
 router.get('/', asyncHandler(async(req, res)=>{
     const businessId = parseInt(req.params.id)
-    console.log(' <<<<<<<<<<<<<<<<<<<< BUSINESS ID >>>>>>>>>>>>>>>>', businessId)
     const reviews = await Review.findAll({
         where:{businessId},
         order: [['rating', 'ASC']]}
@@ -59,10 +58,6 @@ router.put(
 
     })
 )
-
-// router.delete('/:reviewId', (req, res)=>{
-//     res.send('hello this is the delete');
-// })
 
 router.delete('/:reviewId', asyncHandler(async (req, res) => {
 
