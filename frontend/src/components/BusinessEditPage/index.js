@@ -72,6 +72,7 @@ function BusinessPageEditForm() {
     }
     return (
         <form onSubmit={onSubmit}>
+            <h2>Editing Business Form</h2>
             <ul className='errors array'>
                 {(errors.length > 0) ? errors.map(error => {
                     return <li key={error}>{error}</li>

@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Review.associate = function(models) {
     // associations can be defined here
-    Review.belongsTo(models.User, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
-    Review.belongsTo(models.Business, {foreignKey: 'businessId', onDelete: 'CASCADE', hooks: true})
+    Review.belongsTo(models.User, {foreignKey: 'userId', hooks: true})
+    Review.belongsTo(models.Business, {foreignKey: 'businessId', hooks: true})
   };
   return Review;
 };
