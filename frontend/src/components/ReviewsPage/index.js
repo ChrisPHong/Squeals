@@ -14,11 +14,9 @@ function ReviewsPage() {
     const businessId = businessid.businessId
     const reviews = useSelector((state) => Object.values(state.review));
     const newReviews = reviews.filter(review => review.businessId == businessId)
-    console.log(newReviews, '< THIS IS FOR NEW REVIEWS')
-    console.log(reviews, '< THIS IS FOR REVIEWS')
     const user = useSelector((state) => Object.values(state.session.user));
     const userName = user[1]
-    console.log('<<<<<<<<<<< USER NAME >>>>>>>>>>>>', userName)
+
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
 

@@ -70,7 +70,7 @@ export const editReview = (reviewId, review) => async (dispatch) => {
 }
 
 export const deleteReview = (businessId, reviewId) => async (dispatch) => {
-    console.log(reviewId);
+
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "DELETE",
     })
@@ -93,7 +93,7 @@ const reviewsReducer = (state = initialState, action) => {
         action.reviews.reviews.forEach(review => {
             newState[review.id] = review
         })
-        console.log( 'in the load reviews reducer',newState)
+
 
         return { ...state, ...newState }
 
@@ -108,6 +108,7 @@ const reviewsReducer = (state = initialState, action) => {
             }
 
         case EDIT_REVIEW:
+            console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action)
             return {
                 ...state,
                 [action.review.id]: action.review

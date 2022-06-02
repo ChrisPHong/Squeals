@@ -20,7 +20,7 @@ function BusinessPage() {
 
     useEffect(() => {
         dispatch(loadBusinesses());
-        
+
     }, [dispatch])
 
     return (
@@ -34,7 +34,6 @@ function BusinessPage() {
 
                                 <Link to={`/businesses/${business.id}`}>
                                 <img className='imageDiv' onClick={() =>{
-                                    console.log('<<<<<<< HERE IN THE GETTING ONE BUSINESS')
                                     dispatch(getOneBusiness(business.id))}} key={`image${business.id}`} src={business.image}
                                 />
                                 </Link>
