@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import './business.css';
 import { loadBusinesses, deleteBusiness, getOneBusiness } from '../../store/business'
 
@@ -10,13 +10,20 @@ function BusinessPage() {
     const dispatch = useDispatch();
     const businesses = useSelector((state) => Object.values(state.business));
     const [isLoaded, setIsLoaded] = useState(false);
-
+    const history = useHistory();
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
 
-    let userId = useSelector((state) => state.session.user.id)
+    useSelector((state) => console.log(state))
+    let userId = useSelector((state) => state.session)
+    console.log(userId?.user)
+    // if(userId?.user){
+
+    //     userId = useSelector((state) => state.session.user.id)
+    // }
+
 
     useEffect(() => {
         dispatch(loadBusinesses());
@@ -43,7 +50,7 @@ function BusinessPage() {
                                 <p className='description' key={`description${business.id}`}>{business.description}</p>
                                 <p className='address' key={`address${business.address}`}>{business.address}</p>
                             <div className='editDiv'>
-                                {(business.userId === userId) ?
+                                {(business.userId === userId.user.id) ?
                                     <Link to={`/businesses/${business.id}`}>
                                         <button className='editButton'
 
@@ -53,7 +60,7 @@ function BusinessPage() {
                             </div>
 
                             <div className='deleteDiv'>
-                                {(business.userId === userId) ?
+                                {(business.userId === userId.user.id) ?
                                     <button className='deleteButton'
                                         onClick={() => {
                                             dispatch(deleteBusiness(business.id))
