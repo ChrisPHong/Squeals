@@ -93,6 +93,7 @@ const reviewsReducer = (state = initialState, action) => {
         action.reviews.reviews.forEach(review => {
             newState[review.id] = review
         })
+        console.log( 'in the load reviews reducer',newState)
 
         return { ...state, ...newState }
 

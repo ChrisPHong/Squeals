@@ -106,7 +106,6 @@ const businessReducer = (state = initialState, action) => {
             action.businesses.business.forEach(business => {
                 newBusiness[business.id] = business
             });
-            console.log('<<<<<<<<< LOADING NEW BUSINESS >>>>>>>>>>>', newBusiness)
             return {
                 ...state,
                 ...newBusiness
@@ -120,16 +119,15 @@ const businessReducer = (state = initialState, action) => {
 
         case ONE_BUSINESS:
             //this is for getting the reviews as well
-            const reviewStateAndBusiness = {};
-            action.business.reviews.forEach(review =>{
-                reviewStateAndBusiness[review.id] = review
-            });
-            console.log('<<<<<<<<<<<<< REVIEWS >>>>>>>>>>>>', reviewStateAndBusiness);
+            // const reviewStateAndBusiness = {};
+            // action.business.reviews.forEach(review =>{
+            //     reviewStateAndBusiness[review.id] = review
+            // });
+
             return {
-                ...state,
-                ...reviewStateAndBusiness,
+                // ...reviewStateAndBusiness,
                 [action.business.business.id]: action.business.business,
-                [action.business.reviews.id]: action.business.reviews
+                // [action.business.reviews.id]: action.business.reviews
 
             }
         case ADD_BUSINESS:
