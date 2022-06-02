@@ -92,7 +92,7 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
         dispatch(removeBusiness(businessId));
 
         return data
-        // console.log('<<<<<<<<<< WE HIT DELETE ROUTE >>>>>>>>>>', response)
+
     }
 }
 const initialState = {};
@@ -117,10 +117,17 @@ const businessReducer = (state = initialState, action) => {
             return newState;
 
         case ONE_BUSINESS:
+            //this is for getting the reviews as well
+            // const reviewStateAndBusiness = {};
+            // action.business.reviews.forEach(review =>{
+            //     reviewStateAndBusiness[review.id] = review
+            // });
 
             return {
-                ...state,
-                [action.business.business.id]: action.business.business
+                // ...reviewStateAndBusiness,
+                [action.business.business.id]: action.business.business,
+                // [action.business.reviews.id]: action.business.reviews
+
             }
         case ADD_BUSINESS:
             if (!state[action.business.id]) {

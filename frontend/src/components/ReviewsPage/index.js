@@ -3,9 +3,9 @@ import './ReviewsPage.css';
 import { useSelector, useDispatch } from 'react-redux'
 import * as sessionActions from '../../store/session'
 import { deleteReview, loadReviews } from '../../store/review';
-import {Link} from 'react-router-dom'
-import {useParams} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { getOneBusiness } from '../../store/business'
 
 
 function ReviewsPage() {
@@ -13,8 +13,10 @@ function ReviewsPage() {
     const businessid = useParams();
     const businessId = businessid.businessId
     const reviews = useSelector((state) => Object.values(state.review));
+    const newReviews = reviews.filter(review => review.businessId == businessId)
     const user = useSelector((state) => Object.values(state.session.user));
     const userName = user[1]
+
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -23,17 +25,17 @@ function ReviewsPage() {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(loadReviews)
+        dispatch(loadReviews(businessId))
     }, [dispatch])
 
     return (
         <div>
             <h1>Reviews</h1>
             <div>
-                {reviews.length > 0 ? reviews.map(review => {
+                {newReviews.length > 0 ? newReviews.map(review => {
                     return (
                         <div key={`outerDiv${review.id}`}>
-                            <h2 key={`h2${review.id}`}>Review by {userName}</h2>
+                            <h2 key={`h2${review.id}`}>Review</h2>
                             <label key={`label${review.id}`}>Review:</label>
                             <div key={`answer${review.id}`}>{review.answer}</div>
                             <div key={`rating${review.id}`}>Rating: {review.rating}</div>
@@ -41,7 +43,7 @@ function ReviewsPage() {
 
                             <div className='editDiv'>
                                 {(review.userId === userId) ?
-                                    <Link to={`businesses/${businessId}/reviews/${review.id}`}>
+                                    <Link to={`/reviews/${review.id}`}>
                                         <button className='editButton'
 
                                         >Edit</button>

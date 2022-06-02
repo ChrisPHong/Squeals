@@ -21,16 +21,21 @@ const validateSignup = [
 ];
 
 router.get('/', asyncHandler(async(req, res)=>{
+
     const businessId = parseInt(req.params.id)
-    console.log(' <<<<<<<<<<<<<<<<<<<< BUSINESS ID >>>>>>>>>>>>>>>>', businessId)
     const reviews = await Review.findAll({
         where:{businessId},
         order: [['rating', 'ASC']]}
         )
-    return res.json({reviews});
+        return res.json({reviews});
 
+    }))
+
+    router.get('/:reviewId', asyncHandler(async(req, res)=>{
+        const reviewId = parseInt(req.params.reviewId, 10)
+        const review = await Review.findByPk(reviewId)
+    return res.json({review});
 }))
-
 
 router.post(
     '/',
@@ -49,9 +54,11 @@ router.put(
     '/:reviewId',
     requireAuth,
     asyncHandler(async (req, res) => {
+
         const review = await Review.findByPk(parseInt(req.params.reviewId, 10));
-        review.rating = req.body.rating;
+        console.log('<<<<<<<<<<<<<<<<<<<< REVIEW >>>>>>>>>>>>>>', review);
         review.answer = req.body.answer;
+        review.rating = req.body.rating;
 
         await review.save();
 
@@ -59,10 +66,6 @@ router.put(
 
     })
 )
-
-// router.delete('/:reviewId', (req, res)=>{
-//     res.send('hello this is the delete');
-// })
 
 router.delete('/:reviewId', asyncHandler(async (req, res) => {
 
