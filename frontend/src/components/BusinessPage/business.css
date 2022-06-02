@@ -1,3 +1,42 @@
 li{
     color:black;
 }
+
+h1{
+    margin-top:50px;
+}
+.divbusinessCard{
+/* display: flex; */
+justify-content: center;
+border-top: 2px black solid;
+margin: 30px;
+}
+
+.imageDiv{
+    max-width: 500px;
+    max-height: 500px;
+    margin: 50px;
+    display: inline;
+    justify-content: flex-start;
+}
+
+
+.businessTitle{
+    margin: 10px 10px;
+    font-weight: 50px solid black;
+}
+
+.businessName{
+    display:inline-block;
+
+}
+
+.description{
+    margin: 10px 10px;
+    font-size: 20px;
+}
+
+.address{
+    margin: 10px 10px;
+    font-size: 20px;
+}

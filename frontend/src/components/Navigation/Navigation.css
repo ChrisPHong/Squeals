@@ -1,3 +1,28 @@
 a{
-    color: black;
+    color: white;
+    transition-duration: 1.3s;
+}
+
+a:hover{
+    font-size: 20px;
+}
+
+.navbarDiv{
+    position: fixed;
+    top:0;
+    left: 0;
+    right:0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: red;
+    padding: 10px 40px;
+
+
+    /* margin: 100px; */
+}
+
+.homeLink{
+    background-color: red;
 }
