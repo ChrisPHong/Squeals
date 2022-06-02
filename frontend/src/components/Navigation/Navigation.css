@@ -1,4 +1,4 @@
-a{
+/* a{
     color: white;
     transition-duration: 1.3s;
 }
@@ -17,12 +17,12 @@ a:hover{
     justify-content: space-around;
     align-items: center;
     background-color: red;
-    padding: 10px 40px;
+    padding: 10px 40px; */
 
 
     /* margin: 100px; */
-}
+/* }
 
 .homeLink{
     background-color: red;
-}
+} */

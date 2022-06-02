@@ -43,7 +43,7 @@ function ReviewsPage() {
 
                             <div className='editDiv'>
                                 {(review.userId === userId) ?
-                                    <Link to={`/businesses/${businessId}/reviews/${review.id}`}>
+                                    <Link to={`/reviews/${review.id}`}>
                                         <button className='editButton'
 
                                         >Edit</button>

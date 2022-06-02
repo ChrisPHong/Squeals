@@ -17,7 +17,7 @@ function BusinessPageEditForm() {
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
         dispatch(getOneBusiness(Object.values(businessId)[0]))
-
+        
     }, [dispatch, businessId]);
 
 

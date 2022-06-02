@@ -1,8 +1,8 @@
 export const LOAD_REVIEWS = 'reviews';
 export const ADD_REVIEW = 'review/ADD';
 export const EDIT_REVIEW = 'review/EDIT';
-export const DELETE_REVIEW = 'review/delete'
-
+export const DELETE_REVIEW = 'review/delete';
+export const ONE_REVIEW = 'review/ONE';
 
 const { csrfFetch } = require('../store/csrf')
 //actions
@@ -26,6 +26,10 @@ const delReview = (review) => ({
     review
 })
 
+const getOneReview = (review) =>({
+    type: ONE_REVIEW,
+    review
+})
 //Thunks
 
 export const loadReviews = (businessId) => async (dispatch) => {
@@ -80,6 +84,17 @@ export const deleteReview = (businessId, reviewId) => async (dispatch) => {
         return data;
     }
 }
+
+export const oneReview = (id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${id}`, {
+        method: 'GET'
+    })
+
+    if(response.ok){
+        const review = await response.json();
+        dispatch(getOneReview(review));
+    }
+}
 const initialState = {}
 
 const reviewsReducer = (state = initialState, action) => {
@@ -108,7 +123,7 @@ const reviewsReducer = (state = initialState, action) => {
             }
 
         case EDIT_REVIEW:
-            console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action)
+            // console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action)
             return {
                 ...state,
                 [action.review.id]: action.review
@@ -118,6 +133,11 @@ const reviewsReducer = (state = initialState, action) => {
             delete delState[action.review]
 
             return delState;
+        case ONE_REVIEW:
+            console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action.review.review)
+            return{
+                [action.review.review.id]: action.review.review
+            }
 
         default:
             return state

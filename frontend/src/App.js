@@ -30,10 +30,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path='/businesses/:businessId'>
-          <Route exact path='/businesses/:businessId/reviews/:reviewId'>
+          <Route exact path='/reviews/:reviewId'>
             <ReviewEditFormPage />
           </Route>
+          <Route exact path='/businesses/:businessId'>
             <ReviewsPage />
             <ReviewForm />
             <BusinessPageEditForm />
