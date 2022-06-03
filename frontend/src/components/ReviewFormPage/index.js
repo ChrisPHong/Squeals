@@ -39,8 +39,8 @@ function ReviewForm() {
     }
     useEffect(() => {
         const error = [];
-        if (answer.length < 1) error.push('Please Put a valid Answer')
-        if (answer < 1 || answer > 5) error.push('Ratings are from 1 - 5')
+        if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
+        if (rating < 1 || rating > 5) error.push('Please give a rating within the range from 1 - 5')
         if (rating.length < 1) error.push('Please Put a valid Rating')
 
         setErrors(error);
@@ -54,6 +54,7 @@ function ReviewForm() {
         <div>
             <div>
                 <form onSubmit={handleSubmit}>
+                    {errors.length > 0 ? <h3 className='validationErrorsReviews'>Validation Errors</h3> : null}
                     <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
                         return <li key={error}>{error}</li>
                     }) : null}
@@ -76,6 +77,7 @@ function ReviewForm() {
                             setAnswer(e.target.value);
                         }}></input>
                     <button
+                        disabled={errors.length > 0 ? true : false}
                         type='submit'
                     >Post Review</button>
                 </form>

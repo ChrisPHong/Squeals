@@ -4,3 +4,16 @@ button{
     color: white;
     background-color: red;
 }
+
+
+.signUpFormDiv{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.withinFormDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
