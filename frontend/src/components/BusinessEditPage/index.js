@@ -34,8 +34,6 @@ function BusinessPageEditForm() {
 
     const history = useHistory();
 
-    console.log(business, '<<<<<<<<<<<<<<<< BUSINESS >>>>>>>>>>>>')
-
     let userId = useSelector((state) => state.session.user.id)
 
     useEffect(() => {

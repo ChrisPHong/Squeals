@@ -12,14 +12,16 @@ function EditFormPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    useEffect(() => {
+        dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+        dispatch(oneReview(reviewId))
+    }, [dispatch]);
 
     const reviewid = useParams();
     const reviewId = reviewid.reviewId
     const reviews = useSelector((state) => Object.values(state.review));
     const review = reviews.filter(review => review.id == reviewId);
-    const businessId = review.businessId
-
-
+    const businessId = review[0].businessId
 
     const user = useSelector((state) => Object.values(state.session.user));
     const userId = user[0]
@@ -39,15 +41,11 @@ function EditFormPage() {
                 answer
             }
             await dispatch(editReview(reviewId, payload));
-            await history.push(`/businesses`)
+            await history.push(`/businesses/${businessId}`)
 
         }
     }
 
-    useEffect(() => {
-        dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-        dispatch(oneReview(reviewId))
-    }, [dispatch]);
 
     useEffect(() => {
         const error = [];
