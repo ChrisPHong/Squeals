@@ -40,6 +40,7 @@ function ReviewForm() {
     useEffect(() => {
         const error = [];
         if (answer.length < 1) error.push('Please Put a valid Answer')
+        if (answer < 1 || answer > 5) error.push('Ratings are from 1 - 5')
         if (rating.length < 1) error.push('Please Put a valid Rating')
 
         setErrors(error);
@@ -62,6 +63,7 @@ function ReviewForm() {
                         placeholder='values 1 - 5'
                         value={rating}
                         onChange={(e) => {
+                            console.log(rating)
                             setRating(e.target.value);
                         }}
                     ></input>
@@ -69,6 +71,7 @@ function ReviewForm() {
                     <input
                         placeholder='Explain Your Experience'
                         value={answer}
+
                         onChange={(e) => {
                             setAnswer(e.target.value);
                         }}></input>

@@ -46,10 +46,13 @@ max-width: fit-content;
     margin: 50px;
     display: inline;
     justify-content: flex-start;
-
+    transition-duration: 1.3s;
  /* object-fit: contain; */
 }
 
+.imageDiv:hover{
+    box-shadow: 3px 3px rgb(0, 0, 0, .3);
+}
 
 .businessTitle{
     margin: 10px 10px;

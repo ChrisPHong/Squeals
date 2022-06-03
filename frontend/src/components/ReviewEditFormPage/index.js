@@ -38,8 +38,8 @@ function EditFormPage() {
                 rating,
                 answer
             }
-            dispatch(editReview(reviewId, payload));
-            history.push(`/`)
+            await dispatch(editReview(reviewId, payload));
+            await history.push(`/businesses`)
 
         }
     }

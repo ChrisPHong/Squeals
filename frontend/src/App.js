@@ -10,7 +10,8 @@ import BusinessPageForm from './components/BusinessFormPage';
 import BusinessPageEditForm from "./components/BusinessEditPage/index";
 import ReviewsPage from "./components/ReviewsPage";
 import ReviewForm from "./components/ReviewFormPage";
-import ReviewEditFormPage from './components/ReviewEditFormPage'
+import ReviewEditFormPage from './components/ReviewEditFormPage';
+import SplashPage from './components/SplashPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path='/'>
+            <SplashPage />
+          </Route>
           <Route exact path='/reviews/:reviewId'>
             <ReviewEditFormPage />
           </Route>
@@ -38,10 +42,10 @@ function App() {
             <ReviewForm />
             <BusinessPageEditForm />
           </Route>
-          <Route exact path='/businesses'>
+          <Route exact path='/form'>
             <BusinessPageForm />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/businesses">
             <BusinessPage />
           </Route>
         </Switch>

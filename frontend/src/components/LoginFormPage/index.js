@@ -14,7 +14,7 @@ function LoginFormPage() {
 
 
   if (sessionUser) return (
-    <Redirect to="/" />
+    <Redirect to="/businesses" />
   );
 
   const handleSubmit = (e) => {

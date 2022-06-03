@@ -17,7 +17,7 @@ function BusinessPageEditForm() {
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
         dispatch(getOneBusiness(Object.values(businessId)[0]))
-        
+
     }, [dispatch, businessId]);
 
 
@@ -34,6 +34,7 @@ function BusinessPageEditForm() {
 
     const history = useHistory();
 
+    console.log(business, '<<<<<<<<<<<<<<<< BUSINESS >>>>>>>>>>>>')
 
     let userId = useSelector((state) => state.session.user.id)
 
@@ -66,86 +67,90 @@ function BusinessPageEditForm() {
                 image
             }
             dispatch(editBusiness(actualId, payload))
-            history.push('/');
+            history.push('/businesses');
         }
 
     }
     return (
-        <form onSubmit={onSubmit}>
-            <h2>Editing Business Form</h2>
-            <ul className='errors array'>
-                {(errors.length > 0) ? errors.map(error => {
-                    return <li key={error}>{error}</li>
-                }) : null}
-            </ul>
-            <label>Title</label>
-            <input type='text'
-                required
-                placeholder='Business Title'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
+        <>
+            {userId === business.userId ?
+            <form onSubmit={onSubmit}>
+                <h2>Editing Business Form</h2>
+                <ul className='errors array'>
+                    {(errors.length > 0) ? errors.map(error => {
+                        return <li key={error}>{error}</li>
+                    }) : null}
+                </ul>
+                <label>Title</label>
+                <input type='text'
+                    required
+                    placeholder='Business Title'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    />
 
-            <label>Description</label>
-            <input type='text'
-                required
-                placeholder='Description'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            />
+                <label>Description</label>
+                <input type='text'
+                    required
+                    placeholder='Description'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
 
-            <label>Address</label>
-            <input type='text'
-                required
-                placeholder='12345 Squeals St.'
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-            />
+                <label>Address</label>
+                <input type='text'
+                    required
+                    placeholder='12345 Squeals St.'
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    />
 
-            <label>City</label>
-            <input type='text'
-                required
-                placeholder='City'
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-            />
+                <label>City</label>
+                <input type='text'
+                    required
+                    placeholder='City'
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    />
 
-            <label>State</label>
-            <input type='text'
-                required
-                placeholder='State'
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-            />
+                <label>State</label>
+                <input type='text'
+                    required
+                    placeholder='State'
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    />
 
-            <label>Zip</label>
-            <input type='text'
-                required
-                placeholder='Zip code'
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
-            />
+                <label>Zip</label>
+                <input type='text'
+                    required
+                    placeholder='Zip code'
+                    value={zipCode}
+                    onChange={(e) => setZipCode(e.target.value)}
+                    />
 
-            <label>Phone Number</label>
-            <input type='text'
-                required
-                placeholder='Phone Number'
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+                <label>Phone Number</label>
+                <input type='text'
+                    required
+                    placeholder='Phone Number'
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
 
-            <label>Image</label>
-            <input type='text'
-                required
-                placeholder='Image url'
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-            />
-            <button
-                type='submit'
-                disabled={errors.length > 0 ? true : false}
-            >Submit</button>
-        </form>
+                <label>Image</label>
+                <input type='text'
+                    required
+                    placeholder='Image url'
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
+                    />
+                <button
+                    type='submit'
+                    disabled={errors.length > 0 ? true : false}
+                    >Submit</button>
+            </form>
+                    : null}
+        </>
     )
 }
 
