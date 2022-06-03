@@ -38,14 +38,15 @@ function BusinessPageEditForm() {
 
     useEffect(() => {
         const error = [];
-        if (title.length < 1) error.push('You must put a title')
-        if (description.length < 1) error.push('You must put a description')
-        if (address.length < 1) error.push('You must put an address')
-        if (state.length < 1) error.push('You must put a state')
-        if (city.length < 1) error.push('You must put a city')
-        if (zipCode.length < 1) error.push('You must put a zipcode')
-        if (phoneNumber.length < 1) error.push('You must put a phone number')
-        if (image.length < 1) error.push('You must put an image URL')
+        if (title.length < 1) error.push('You must put a title with at least 1 character')
+        if (description.length < 10) error.push('You must put at least 10 characters description')
+        if (address.length < 5) error.push('You must put at 5 characters for a valid address')
+        if (state.length < 1) error.push('You must put a state with at least 1 character')
+        if (city.length < 1) error.push('You must put a city with at least 1 character')
+        if (zipCode.length < 5 || zipCode.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
+        if (phoneNumber.length < 10) error.push('You must put 10 numbers for a valid phone number')
+        if (!image.includes('https://') || !image.includes('.com')) error.push('You must put a valid image URL. i.e. "https://website.com/photoId"')
+
 
         setErrors(error);
     }, [title, description, address, state, city, zipCode, phoneNumber, image])
