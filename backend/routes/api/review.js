@@ -20,28 +20,29 @@ const validateSignup = [
     handleValidationErrors
 ];
 
-router.get('/', asyncHandler(async(req, res)=>{
+router.get('/', asyncHandler(async (req, res) => {
 
     const businessId = parseInt(req.params.id)
     const reviews = await Review.findAll({
-        where:{businessId},
-        order: [['rating', 'ASC']]}
-        )
-        return res.json({reviews});
+        where: { businessId },
+        order: [['rating', 'ASC']]
+    }
+    )
+    return res.json({ reviews });
 
-    }))
+}))
 
-    router.get('/:reviewId', asyncHandler(async(req, res)=>{
-        const reviewId = parseInt(req.params.reviewId, 10)
-        const review = await Review.findByPk(reviewId)
-    return res.json({review});
+router.get('/:reviewId', asyncHandler(async (req, res) => {
+    const reviewId = parseInt(req.params.reviewId, 10)
+    const review = await Review.findByPk(reviewId)
+    return res.json({ review });
 }))
 
 router.post(
     '/',
     validateSignup, requireAuth,
     asyncHandler(async (req, res) => {
-        const { userId, businessId, rating, answer} = req.body;
+        const { userId, businessId, rating, answer } = req.body;
         const review = await Review.create({ userId, businessId, rating, answer });
 
         return res.json(review);
@@ -56,7 +57,6 @@ router.put(
     asyncHandler(async (req, res) => {
 
         const review = await Review.findByPk(parseInt(req.params.reviewId, 10));
-        console.log('<<<<<<<<<<<<<<<<<<<< REVIEW >>>>>>>>>>>>>>', review);
         review.answer = req.body.answer;
         review.rating = req.body.rating;
 

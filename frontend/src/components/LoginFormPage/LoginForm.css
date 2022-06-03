@@ -4,3 +4,7 @@ button{
     color: white;
     background-color: red;
 }
+
+.loginFormDiv{
+    margin-top: 200px;
+}
