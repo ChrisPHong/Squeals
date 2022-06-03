@@ -57,7 +57,7 @@ function BusinessPageForm() {
                 image
             }
             dispatch(createBusiness(payload))
-            history.push('/');
+            history.push('/businesses');
         }
 
     }

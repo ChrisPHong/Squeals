@@ -26,3 +26,7 @@ a:hover{
 .homeLink{
     background-color: rgb(216, 29, 29);
 }
+
+.demoButton{
+    margin-top: 20px;
+}
