@@ -1,7 +1,7 @@
 # Squeals
 
 ## Feature List:
-In Squeals, there are two features that you can interact with: Businesses and Reviews! As a logged in User, you can create your own business, read other businesses, update your business, and delete your business. You can also create reviews, edit your reviews, delete your reviews, and read any review for that specified business.
+In Squeals, there are two [features](https://github.com/ChrisPHong/Squeals/wiki/Feature-List) that you can interact with: Businesses and Reviews! As a logged in User, you can create your own business, read other businesses, update your business, and delete your business. You can also create reviews, edit your reviews, delete your reviews, and read any review for that specified business.
 
 
 
@@ -28,12 +28,9 @@ In order to navigate through Squeals, frontEnd Routes were needed to distinguish
 
 
 ## API Routes
-Here are the API routes that were used in order to access the database. 
-[API Routes](https://github.com/ChrisPHong/Squeals/wiki/API-Routes)
+Here are the [API Routes](https://github.com/ChrisPHong/Squeals/wiki/API-Routes) that were used in order to access the database.
 
 
-## Future Features
-## Technical Implementation Details
-
-
-## Additional Project Resources
+## Redux Store Tree Document
+The image displayed below is a diagram of the redux store tree for a specific business with its reviews. Redux was used in order to update the information displayed and send information back to the database in order to update, delete, create and read data. 
+![image](https://user-images.githubusercontent.com/98856057/171960136-46f15d9b-5f11-4491-8c81-cf79f034d4bc.png)
