@@ -33,40 +33,48 @@ function BusinessPage() {
     return (
         <div>
             <h1>Businesses</h1>
-            <div>
+            <div className='allBusinessDiv'>
 
                 {businesses.map(business => {
                     return (
                         <div key={`div${business.id}`} className={`divbusinessCard`}>
-
+                            <div className='contentDiv'>
                                 <Link to={`/businesses/${business.id}`}>
-                                <img className='imageDiv' onClick={() =>{
-                                    dispatch(getOneBusiness(business.id))}} key={`image${business.id}`} src={business.image}
-                                />
+                                    <img className='imageDiv' onClick={() => {
+                                        dispatch(getOneBusiness(business.id))
+                                    }} key={`image${business.id}`} src={business.image}
+                                    />
                                 </Link>
-                                <div className='businessName'>
-                                <h2 className='businessTitle' key={`title${business.id}`}>{business.title}</h2>
+                                <div className='informationDiv'>
+                                    <div className='businessName'>
+                                        <h2 className='businessTitle' key={`title${business.id}`}>{business.title}</h2>
+                                    </div>
+                                    <div className='pDiv'>
+                                        <p className='description' key={`description${business.id}`}>{business.description}</p>
+                                    </div>
+                                    <div>
+                                        <p className='address' key={`address${business.address}`}>{business.address}</p>
+                                    </div>
                                 </div>
-                                <p className='description' key={`description${business.id}`}>{business.description}</p>
-                                <p className='address' key={`address${business.address}`}>{business.address}</p>
-                            <div className='editDiv'>
-                                {(business.userId === userId.user.id) ?
-                                    <Link to={`/businesses/${business.id}`}>
-                                        <button className='editButton'
+                                <div className='editDiv'>
+                                    {(business.userId === userId.user.id) ?
+                                        <Link to={`/businesses/${business.id}`}>
+                                            <button className='editButton ownerButton'
 
-                                        >Edit</button>
-                                    </Link>
-                                    : null}
-                            </div>
+                                            >Edit</button>
+                                        </Link>
+                                        : null}
+                                </div>
 
-                            <div className='deleteDiv'>
-                                {(business.userId === userId.user.id) ?
-                                    <button className='deleteButton'
-                                        onClick={() => {
-                                            dispatch(deleteBusiness(business.id))
-                                        }}
-                                    >Delete</button>
-                                    : null}
+                                <div className='deleteDiv'>
+                                    {(business.userId === userId.user.id) ?
+                                        <button className='deleteButton ownerButton'
+                                            onClick={() => {
+                                                dispatch(deleteBusiness(business.id))
+                                            }}
+                                        >Delete</button>
+                                        : null}
+                                </div>
                             </div>
 
                         </div>

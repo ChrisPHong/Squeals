@@ -63,75 +63,107 @@ function BusinessPageForm() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className="businessForm" onSubmit={onSubmit}>
+           {errors.length > 0 ?  <h2>Validation Errors</h2> : null}
             <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
-                return <li key={error}>{error}</li>
+                return (
+                <>
+                <li key={error}>{error}</li>
+                </>
+                )
             }) : null}
             </ul>
-            <label>Title</label>
-            <input type='text'
-                required
-                placeholder='Business Title'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
+            <div className='titleInput'>
+                {/* <label className='labelInput'>Title</label> */}
+                <input type='text'
+                    required
+                    className='inputBox'
+                    placeholder='Business Title'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+            </div>
+            <div className='formDiv'>
 
-            <label>Description</label>
-            <input type='text'
-                required
-                placeholder='Description'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            />
+                {/* <label className='labelInput'>Description</label> */}
+                <input type='text'
+                    required
+                    className='inputBox'
+                    placeholder='Description'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
 
-            <label>Address</label>
-            <input type='text'
-                required
-                placeholder='12345 Squeals St.'
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-            />
+            </div>
+            <div className='formDiv'>
 
-            <label>City</label>
-            <input type='text'
-                required
-                placeholder='City'
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-            />
+                {/* <label className='labelInput'>Address</label> */}
+                <input type='text'
+                    required
+                    className='inputBox'
+                    placeholder='12345 Squeals St.'
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                />
+            </div>
+            <div className='formDiv'>
 
-            <label>State</label>
-            <input type='text'
-                required
-                placeholder='State'
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-            />
+                {/* <label className='labelInput'>City</label> */}
+                <input type='text'
+                    className='inputBox'
+                    required
+                    placeholder='City'
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+            </div>
+            <div className='formDiv'>
 
-            <label>Zip</label>
-            <input type='text'
-                required
-                placeholder='Zip code'
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
-            />
+                {/* <label className='labelInput'>State</label> */}
+                <input type='text'
+                    required
+                    className='inputBox'
+                    placeholder='State'
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                />
+            </div>
+            <div className='formDiv'>
 
-            <label>Phone Number</label>
-            <input type='text'
-                required
-                placeholder='Phone Number'
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+                {/* <label className='labelInput'>Zip</label> */}
+                <input type='text'
+                    required
+                    className='inputBox'
+                    placeholder='Zip code'
+                    value={zipCode}
+                    onChange={(e) => setZipCode(e.target.value)}
+                />
 
-            <label>Image</label>
-            <input type='text'
-                required
-                placeholder='Image url'
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-            />
+            </div>
+            <div className='formDiv'>
+
+                {/* <label className='labelInput'>Phone Number</label> */}
+                <input type='text'
+                    required
+                    className='inputBox'
+                    placeholder='Phone Number'
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+            </div>
+            <div className='formDiv'>
+
+                {/* <label className='labelInput'>Image</label> */}
+                <input type='text'
+                    required
+                    className='inputBox'
+                    placeholder='Image url'
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
+                />
+            </div>
             <button
+                className='submitButton'
                 type='submit'
                 disabled={errors.length > 0 ? true : false}
             >Submit</button>
