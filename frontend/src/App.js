@@ -12,6 +12,7 @@ import ReviewsPage from "./components/ReviewsPage";
 import ReviewForm from "./components/ReviewFormPage";
 import ReviewEditFormPage from './components/ReviewEditFormPage';
 import SplashPage from './components/SplashPage';
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route exact path="/businesses">
             <BusinessPage />
+          </Route>
+          <Route>
+            <PageNotFound />
           </Route>
         </Switch>
       )}
