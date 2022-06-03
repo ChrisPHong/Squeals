@@ -59,6 +59,7 @@ export const addReview = (review) => async (dispatch) => {
 }
 
 export const editReview = (reviewId, review) => async (dispatch) => {
+    console.log('<<<<<<<<<<<<<<< IN THE EDIT THUNK >>>>>>>>>>>>', review);
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
@@ -123,7 +124,7 @@ const reviewsReducer = (state = initialState, action) => {
             }
 
         case EDIT_REVIEW:
-            // console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action)
+            console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action)
             return {
                 ...state,
                 [action.review.id]: action.review
@@ -134,7 +135,6 @@ const reviewsReducer = (state = initialState, action) => {
 
             return delState;
         case ONE_REVIEW:
-            console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action.review.review)
             return{
                 [action.review.review.id]: action.review.review
             }

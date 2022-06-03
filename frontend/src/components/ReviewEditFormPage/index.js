@@ -60,9 +60,8 @@ function EditFormPage() {
 
 
     return (
-        // <h1>HELLO</h1>
-        <div>
-        <div>
+
+        <div className='editFormDiv'>
             <form onSubmit={handleSubmit}>
                 <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
                     return <li key={error}>{error}</li>
@@ -89,7 +88,7 @@ function EditFormPage() {
                 >Post Review</button>
             </form>
         </div>
-        </div>
+
     )
 }
 
