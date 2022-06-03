@@ -29,27 +29,6 @@ const reviews = useSelector((state) => Object.values(state.review));
                             <label key={`label${review.id}`}>Review:</label>
                             <div key={`answer${review.id}`}>{review.answer}</div>
                             <div key={`rating${review.id}`}>Rating: {review.rating}</div>
-
-
-                            <div className='editDiv'>
-                                {(review.userId === userId) ?
-                                    <Link to={`/reviews/${review.id}`}>
-                                        <button className='editButton'
-
-                                        >Edit</button>
-                                    </Link>
-                                    : null}
-                            </div>
-
-                            <div className='deleteDiv'>
-                                {(review.userId === userId) ?
-                                    <button className='deleteButton'
-                                        onClick={() => {
-                                            dispatch(deleteReview(businessId, review.id))
-                                        }}
-                                    >Delete</button>
-                                    : null}
-                            </div>
                         </div>
                     )
                 }) : <div>
