@@ -1,12 +1,12 @@
 # Squeals
 
 ## Feature List:
-In Squeals, there are two features that you can interact with! As a logged in User, you can create your own business, read other businesses, update your business, and delete your business. You can also post reviews, edit your review, delete your reviews, and read any review for that specified business.
+In Squeals, there are two features that you can interact with: Businesses and Reviews! As a logged in User, you can create your own business, read other businesses, update your business, and delete your business. You can also create reviews, edit your reviews, delete your reviews, and read any review for that specified business.
 
 
 
 ## React Components
-React was used as the frontend in creating Squeals. Here are a list of the componenets that were used in order to create Squeals!
+React was used as the frontend in creating Squeals. Here is a list of the components that were used in order to create Squeals!
 - BusinessEditPage
 - BusinessFormPage
 - BusinessPage
@@ -23,10 +23,11 @@ React was used as the frontend in creating Squeals. Here are a list of the compo
 In order to create the backend, I used Sequelize in order to create the models, migrations, and seeders. Here is a link to the [database schema](https://github.com/ChrisPHong/Squeals/wiki/Database-Schema) used for Squeals.
 
 
-## Features
+## FrontEnd Routes
+In order to navigate through Squeals, frontEnd Routes were needed to distinguish between which routes were used by certain components. These are the [FrontEnd Routes](https://github.com/ChrisPHong/Squeals/wiki/FrontEnd-Routes) that were used for [Squeals](https://squeals.herokuapp.com/).
 
 
-## Backend
+## API Routes
 
 
 ## Future Features
