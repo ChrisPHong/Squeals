@@ -28,6 +28,8 @@ In order to navigate through Squeals, frontEnd Routes were needed to distinguish
 
 
 ## API Routes
+Here are the API routes that were used in order to access the database. 
+[API Routes](https://github.com/ChrisPHong/Squeals/wiki/API-Routes)
 
 
 ## Future Features
