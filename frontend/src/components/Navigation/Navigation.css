@@ -30,3 +30,31 @@ a:hover{
 .demoButton{
     margin-top: 20px;
 }
+
+.LogInButton{
+    border:white solid 2px;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+
+}
+
+.LogInButton:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: rgba(68, 68, 68, 0.212) solid 2px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.342);
+}
+
+.SignUpButton{
+    border:white solid 2px;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+
+}
+
+.SignUpButton:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}

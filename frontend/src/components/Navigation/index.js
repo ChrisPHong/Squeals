@@ -27,11 +27,9 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
       <div className='navbarDiv'>
-        <NavLink to="/login">Log In</NavLink>
-      </div>
-      <div>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </div>
+        <NavLink className='LogInButton' to="/login">Log In</NavLink>
+        <NavLink className='SignUpButton' to="/signup">Sign Up</NavLink>
+
       <button
       className='demoButton'
       onClick={async () => {
@@ -40,6 +38,7 @@ function Navigation({ isLoaded }) {
       }}>Demo User</button>
         <a href='https://github.com/ChrisPHong/Squeals'>GitHub</a>
         <a href='https://www.linkedin.com/in/christopherpyohong/'>LinkedIn</a>
+      </div>
       </>
     );
   }
