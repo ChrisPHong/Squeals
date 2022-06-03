@@ -6,31 +6,78 @@ h1{
     margin-top:50px;
 }
 .divbusinessCard{
-/* display: flex; */
+display: flex;
 justify-content: center;
-border-top: 2px black solid;
+align-items: center;
 margin: 30px;
+border-left: 2px rgb(0, 0, 0, .2) solid;
+border-right: 2px rgb(0, 0, 0, .2) solid;
+border-radius: 10px 10px solid rgb(102, 102, 102, .5);
+background-color: rgb(128, 128, 128, .2);
+transition-duration: 1s;
+max-width: fit-content;
+
+}
+
+.contentDiv{
+    display:flex;
+
+}
+.divbusinessCard:hover{
+    /* border: 1px solid rgb(0, 0, 0, .5); */
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .7);
+}
+
+.ownerButton{
+    margin: 10px;
+    padding: 10px 20px;
+    transition-duration: 1s;
+    border: 0px solid black;
+}
+
+.ownerButton:hover{
+    border: solid 2px rgb(0, 0, 0, .3);
+    padding: 10px 25px;
 }
 
 .imageDiv{
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 200px;
+    max-height: 200px;
     margin: 50px;
     display: inline;
     justify-content: flex-start;
+
+ /* object-fit: contain; */
 }
 
 
 .businessTitle{
     margin: 10px 10px;
     font-weight: 50px solid black;
+    border-bottom: solid 2px black;
+    /* padding-top: 10px; */
+    margin-top: 40px;
 }
 
 .businessName{
     display:inline-block;
 
 }
+p{
 
+    padding: 20px;
+    align-items: center;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.informationDiv{
+    border-left: solid rgb(92, 91, 91, .4) 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .description{
     margin: 10px 10px;
     font-size: 20px;
@@ -39,4 +86,11 @@ margin: 30px;
 .address{
     margin: 10px 10px;
     font-size: 20px;
+}
+
+.allBusinessDiv{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
 }

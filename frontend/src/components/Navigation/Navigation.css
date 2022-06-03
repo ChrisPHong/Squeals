@@ -1,4 +1,4 @@
-/* a{
+a{
     color: white;
     transition-duration: 1.3s;
 }
@@ -16,13 +16,13 @@ a:hover{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: red;
-    padding: 10px 40px; */
+    background-color: rgb(216, 29, 29);
+    padding: 10px 40px;
 
 
     /* margin: 100px; */
-/* }
+ }
 
 .homeLink{
-    background-color: red;
-} */
+    background-color: rgb(216, 29, 29);
+}
