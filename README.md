@@ -1,5 +1,64 @@
 # Squeals
 
+## Live Link:
+Hello! [Squeals](https://squeals.herokuapp.com/) is a place where you explore businesses around you and even upload your own business to share that you're in the neighborhood! Follow this [link](https://squeals.herokuapp.com/) to check it out
+
+## Squeals Summary
+Squeals allows signed in users to create their own business and post reviews for the businesses. Users are able to explore through each of the businesses and see all of the details for each business including: title, address, phone number, and a short description about their business.
+
+## Future Features
+Due to a time constraint of completing Squeals within a week, I hope to include these features in the near future:
+- Search/filters
+- AWS Upload
+- Google Maps
+- Mark Reviews funny, cool, useful etc
+- Profile
+- Friends
+
+## Technical Implementation Details
+When creating Squeals, there were a lot of thoughts and brain storming involved in how to make a functional website that allows the user to create a business with also having reviews under it. One of the technical struggles that I had was trying to display the list of reviews for a specific business. I believe there's a cleaner way of accessing the state without having to list out all of the reviews and then have to loop through them all again in order to showcase the matching reviews.
+
+```
+const reviews = useSelector((state) => Object.values(state.review));
+    const newReviews = reviews.filter(review => review.businessId == businessId)
+    
+    {newReviews.length > 0 ? newReviews.map(review => {
+                    return (
+                        <div key={`outerDiv${review.id}`}>
+                            <h2 key={`h2${review.id}`}>Review</h2>
+                            <label key={`label${review.id}`}>Review:</label>
+                            <div key={`answer${review.id}`}>{review.answer}</div>
+                            <div key={`rating${review.id}`}>Rating: {review.rating}</div>
+
+
+                            <div className='editDiv'>
+                                {(review.userId === userId) ?
+                                    <Link to={`/reviews/${review.id}`}>
+                                        <button className='editButton'
+
+                                        >Edit</button>
+                                    </Link>
+                                    : null}
+                            </div>
+
+                            <div className='deleteDiv'>
+                                {(review.userId === userId) ?
+                                    <button className='deleteButton'
+                                        onClick={() => {
+                                            dispatch(deleteReview(businessId, review.id))
+                                        }}
+                                    >Delete</button>
+                                    : null}
+                            </div>
+                        </div>
+                    )
+                }) : <div>
+                    <h3>This Business Has No Reviews</h3>
+                    <h4>Be the First to Review!</h4>
+                </div>}
+    
+```
+
 ## Feature List:
 In Squeals, there are two [features](https://github.com/ChrisPHong/Squeals/wiki/Feature-List) that you can interact with: Businesses and Reviews! As a logged in User, you can create your own business, read other businesses, update your business, and delete your business. You can also create reviews, edit your reviews, delete your reviews, and read any review for that specified business.
 
