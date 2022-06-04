@@ -61,7 +61,10 @@ function EditFormPage() {
     return (
 
         <div className='editFormDiv'>
-            <form onSubmit={handleSubmit}>
+            <form
+            className='editForm'
+            onSubmit={handleSubmit}>
+                {errors.length > 0 ? <h3>Validation Errors</h3> : <h3>Post Your Review</h3>}
                 <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
                     return <li key={error}>{error}</li>
                 }) : null}

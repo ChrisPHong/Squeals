@@ -17,7 +17,10 @@ function Navigation({ isLoaded }) {
       <div className='navbarDiv'>
         <NavLink exact to="/businesses">Home</NavLink>
         <ProfileButton user={sessionUser} />
-        <NavLink to="/form">Upload Your Business</NavLink>
+        <button onClick={() => {
+          history.push('/form')
+        }}
+        to="/form">Create Your Business</button>
         <a href='https://github.com/ChrisPHong/Squeals'>GitHub</a>
         <a href='https://www.linkedin.com/in/christopherpyohong/'>LinkedIn</a>
 

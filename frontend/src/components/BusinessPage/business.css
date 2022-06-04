@@ -1,60 +1,78 @@
-li{
-    color:black;
+li {
+    color: black;
 }
 
-h1{
-    margin-top:50px;
+h1 {
+    margin-top: 50px;
 }
-.divbusinessCard{
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 30px;
-border-left: 2px rgb(0, 0, 0, .2) solid;
-border-right: 2px rgb(0, 0, 0, .2) solid;
-border-radius: 10px 10px solid rgb(102, 102, 102, .5);
-background-color: rgb(128, 128, 128, .2);
-transition-duration: 1s;
-max-width: fit-content;
+
+.divbusinessCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    border-left: 2px rgb(0, 0, 0, .2) solid;
+    border-right: 2px rgb(0, 0, 0, .2) solid;
+    border-radius: 10px 10px solid rgb(102, 102, 102, .5);
+    background-color: rgb(128, 128, 128, .2);
+    transition-duration: 1s;
+    max-width: fit-content;
 
 }
 
-.contentDiv{
-    display:flex;
+.entireDiv{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+.contentDiv {
+    display: flex;
+    justify-content: center;
+
 
 }
-.divbusinessCard:hover{
+
+.editDiv{
+    max-width: fit-content;
+    display: flex;
+}
+.deleteDiv{
+    max-width: fit-content;
+
+}
+
+.divbusinessCard:hover {
     /* border: 1px solid rgb(0, 0, 0, .5); */
     box-shadow: 2px 2px 2px rgba(0, 0, 0, .7);
 }
 
-.ownerButton{
+.ownerButton {
     margin: 10px;
     padding: 10px 20px;
     transition-duration: 1s;
     border: 0px solid black;
 }
 
-.ownerButton:hover{
+.ownerButton:hover {
     border: solid 2px rgb(0, 0, 0, .3);
     padding: 10px 25px;
 }
 
-.imageDiv{
-    max-width: 200px;
-    max-height: 200px;
-    margin: 50px;
-    display: inline;
-    justify-content: flex-start;
+.imageDiv {
+    max-width: 400px;
+    max-height: 400px;
+    /* display: inline; */
+    align-items: center;
+    justify-content: center;
     transition-duration: 1s;
- /* object-fit: contain; */
+    /* object-fit: contain; */
 }
 
-.imageDiv:hover{
+.imageDiv:hover {
     box-shadow: 3px 3px rgb(0, 0, 0, .3);
 }
 
-.businessTitle{
+.businessTitle {
     margin: 10px 10px;
     font-weight: 50px solid black;
     border-bottom: solid 2px black;
@@ -62,11 +80,12 @@ max-width: fit-content;
     margin-top: 40px;
 }
 
-.businessName{
-    display:inline-block;
+.businessName {
+    display: inline-block;
 
 }
-p{
+
+p {
 
     padding: 20px;
     align-items: center;
@@ -74,24 +93,25 @@ p{
     list-style-type: none;
 }
 
-.informationDiv{
+.informationDiv {
     border-left: solid rgb(92, 91, 91, .4) 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.description{
+
+.description {
     margin: 10px 10px;
     font-size: 20px;
 }
 
-.address{
+.address {
     margin: 10px 10px;
     font-size: 20px;
 }
 
-.allBusinessDiv{
+.allBusinessDiv {
     display: flex;
     flex-direction: column;
     padding: 0px;

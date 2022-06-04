@@ -34,10 +34,12 @@ function ReviewsPage() {
             <div>
                 {newReviews.length > 0 ? newReviews.map(review => {
                     return (
-                        <div key={`outerDiv${review.id}`}>
+                        <div
+                        className='reviewForm'
+                        key={`outerDiv${review.id}`}>
                             <h2 key={`h2${review.id}`}>Review</h2>
-                            <label key={`label${review.id}`}>Review:</label>
-                            <div key={`answer${review.id}`}>{review.answer}</div>
+                            {/* <label key={`label${review.id}`}>Review:</label> */}
+                            <div key={`answer${review.id}`}>"{review.answer}"</div>
                             <div key={`rating${review.id}`}>Rating: {review.rating}</div>
 
 
