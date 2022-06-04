@@ -1,9 +1,16 @@
 button{
-    border-radius: 4px;
-    border: white;
-    color: white;
-    background-color: red;
+    padding: 8px 40px;
+    background-color: rgb(216, 29, 29);
+    margin: 20px;
+    transition-duration: 1s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
+button:hover{
+    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
+}
+
 
 
 .signUpFormDiv{

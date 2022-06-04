@@ -53,8 +53,10 @@ function ReviewForm() {
     return (
         <div>
             <div>
-                <form onSubmit={handleSubmit}>
-                    {errors.length > 0 ? <h3 className='validationErrorsReviews'>Validation Errors</h3> : null}
+                <form
+                className='editForm'
+                onSubmit={handleSubmit}>
+                    {errors.length > 0 ? <h3 className='validationErrorsReviews'>Validation Errors</h3> : <h3>Post Your Review</h3>}
                     <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
                         return <li key={error}>{error}</li>
                     }) : null}
@@ -77,9 +79,10 @@ function ReviewForm() {
                             setAnswer(e.target.value);
                         }}></input>
                     <button
+                        className='submitButton'
                         disabled={errors.length > 0 ? true : false}
                         type='submit'
-                    >Post Review</button>
+                    >{errors.length > 0 ? 'FIX YOUR ERRORS' : 'Post Review'}</button>
                 </form>
             </div>
         </div>

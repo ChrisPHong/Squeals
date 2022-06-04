@@ -25,7 +25,7 @@ function BusinessPage() {
     }, [dispatch])
 
     return (
-        <div>
+        <div className='entireDiv'>
             <h1>Businesses</h1>
             <div className='allBusinessDiv'>
 
@@ -34,10 +34,13 @@ function BusinessPage() {
                         <div key={`div${business.id}`} className={`divbusinessCard`}>
                             <div className='contentDiv'>
                                 <Link to={`/businesses/${business.id}`}>
-                                    <img className='imageDiv' onClick={() => {
-                                        dispatch(getOneBusiness(business.id))
-                                    }} key={`image${business.id}`} src={business.image}
-                                    />
+                                    <div className='fillPhoto'>
+
+                                        <img className='imageDiv' onClick={() => {
+                                            dispatch(getOneBusiness(business.id))
+                                        }} key={`image${business.id}`} src={business.image}
+                                        />
+                                    </div>
                                 </Link>
                                 <div className='informationDiv'>
                                     <div className='businessName'>

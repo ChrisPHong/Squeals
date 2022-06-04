@@ -1,0 +1,61 @@
+.reviewForm {
+    /* color: black;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: solid black 2px;
+    border-radius: 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
+    transition-duration: 1s;
+    background-color: rgba(128, 128, 128, 0.13); */
+    display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin: 30px;
+border-left: 2px rgb(0, 0, 0, .2) solid;
+border-right: 2px rgb(0, 0, 0, .2) solid;
+border-radius: 10px 10px solid rgb(102, 102, 102, .5);
+background-color: rgb(128, 128, 128, .2);
+transition-duration: 1s;
+
+}
+.reviewForm:hover{
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .7);
+}
+
+.formDiv {
+    padding: 4px;
+    margin: 4px;
+}
+
+.inputBox{
+    border-radius: 3px 3px;
+    transition-duration: 1s;
+    padding: 10px;
+}
+.inputBox:hover{
+
+    box-shadow: 3px 3px rgb(0, 0, 0, .3);
+}
+
+.businessForm:hover {
+    box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
+}
+
+.submitButton{
+    padding: 10px 40px;
+    background-color: rgb(216, 29, 29);
+    margin: 20px;
+    transition-duration: 1s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.submitButton:hover{
+    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
+}

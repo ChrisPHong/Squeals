@@ -9,8 +9,22 @@ import './SplashPage.css';
 function SplashPage (){
 
     return (
-        <div>
-            <h1>Welcome to Squeals</h1>
+        <div className='fullDiv'>
+            <div className='title'>
+            <h1 className='welcome'>Welcome to Squeals</h1>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+
+            </div>
         </div>
     )
 }

@@ -39,8 +39,8 @@ function App() {
             <ReviewEditFormPage />
           </Route>
           <Route exact path='/businesses/:businessId'>
-            <ReviewsPage />
             <ReviewForm />
+            <ReviewsPage />
             <BusinessPageEditForm />
           </Route>
           <Route exact path='/form'>

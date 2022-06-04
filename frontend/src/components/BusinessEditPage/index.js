@@ -73,7 +73,8 @@ function BusinessPageEditForm() {
     return (
         <>
             {userId === business.userId ?
-            <form onSubmit={onSubmit}>
+            <form className='businessForm'
+            onSubmit={onSubmit}>
                 <h2>Editing Business Form</h2>
                 <ul className='errors array'>
                     {(errors.length > 0) ? errors.map(error => {
@@ -82,6 +83,7 @@ function BusinessPageEditForm() {
                 </ul>
                 <label>Title</label>
                 <input type='text'
+                    className='inputBox'
                     required
                     placeholder='Business Title'
                     value={title}
@@ -91,6 +93,7 @@ function BusinessPageEditForm() {
                 <label>Description</label>
                 <input type='text'
                     required
+                    className='inputBox'
                     placeholder='Description'
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -99,6 +102,7 @@ function BusinessPageEditForm() {
                 <label>Address</label>
                 <input type='text'
                     required
+                    className='inputBox'
                     placeholder='12345 Squeals St.'
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
@@ -107,6 +111,7 @@ function BusinessPageEditForm() {
                 <label>City</label>
                 <input type='text'
                     required
+                    className='inputBox'
                     placeholder='City'
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
@@ -115,6 +120,7 @@ function BusinessPageEditForm() {
                 <label>State</label>
                 <input type='text'
                     required
+                    className='inputBox'
                     placeholder='State'
                     value={state}
                     onChange={(e) => setState(e.target.value)}
@@ -123,6 +129,7 @@ function BusinessPageEditForm() {
                 <label>Zip</label>
                 <input type='text'
                     required
+                    className='inputBox'
                     placeholder='Zip code'
                     value={zipCode}
                     onChange={(e) => setZipCode(e.target.value)}
@@ -131,6 +138,7 @@ function BusinessPageEditForm() {
                 <label>Phone Number</label>
                 <input type='text'
                     required
+                    className='inputBox'
                     placeholder='Phone Number'
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
@@ -139,14 +147,16 @@ function BusinessPageEditForm() {
                 <label>Image</label>
                 <input type='text'
                     required
+                    className='inputBox'
                     placeholder='Image url'
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                     />
                 <button
                     type='submit'
+                    className='submitButton'
                     disabled={errors.length > 0 ? true : false}
-                    >Submit</button>
+                    >{errors.length > 0 ? 'Fix Your Errors' : 'Submit'}</button>
             </form>
                     : null}
         </>
