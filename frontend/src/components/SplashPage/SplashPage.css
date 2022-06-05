@@ -1,13 +1,65 @@
-.title{
-    margin-top: 100px;
+.splashCard{
+    margin-top: 10px;
+    max-width: 80ch;
+
 }
 
 .fullDiv{
     background-image: url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
-    display:flex;
+    background-size: cover;
+    min-height: 650px;
+    max-height: 650px;
+    min-width: 500px;
+    display: grid;
+    place-items: center;
 }
 
 .welcome{
     color: white;
-    text-shadow: 1px 1px 2px black;;
+    padding-top: 10px;
+    font-size: 50px;
+    transition-duration: 1s;
+    text-shadow: 2px 2px 3px hsl(0, 0%, 0%);
+    /* transition: transform 2000ms ease-in; */
+}
+.welcome:hover{
+    color: white;
+    padding-top: 10px;
+    font-size: 52px;
+
+}
+
+.splashPageParagraph{
+    /* background-color: rgb(0, 0, 0, .5); */
+    color: white;
+    border-radius: 5px 5px;
+    background: linear-gradient(rgb(0, 0, 0, .2), rgb(0, 0, 0, .7));
+    padding: 35px;
+    box-shadow: 2px 2px rgb(0, 0, 0, .4);
+    transition-duration: .8s;
+    font-size: 18px;
+}
+.splashPageParagraph:hover{
+    /* background-color: rgb(0, 0, 0, .5); */
+    color: white;
+    border-radius: 5px 5px;
+    background: linear-gradient(rgb(0, 0, 0, .4), rgb(0, 0, 0, 1));
+    padding: 35px;
+    box-shadow: 2px 2px rgb(0, 0, 0, .4);
+    font-size: 18.5px;
+}
+
+.demoButtonSplashPage{
+background-color: rgb(216, 29, 29);
+font-family: Georgia, 'Times New Roman', Times, serif;
+padding: 10px 20px;
+font-size: 20px;
+display: flex;
+
+}
+
+.demoButtonSplashPage:hover{
+background-color: red;
+color: white;
+padding: 14px 24px;
 }
