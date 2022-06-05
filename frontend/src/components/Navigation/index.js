@@ -16,7 +16,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className='navbarDiv'>
         <Link className='squealsLink' to='/'><img className='navBarIcon'src='images/squeals_icon.png'/>Squeals</Link>
-        <NavLink exact to="/businesses">Home</NavLink>
+        <NavLink exact to="/businesses">Businesses</NavLink>
         <ProfileButton user={sessionUser} />
         <button onClick={() => {
           history.push('/form')
