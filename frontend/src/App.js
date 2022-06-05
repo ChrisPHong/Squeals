@@ -13,6 +13,7 @@ import ReviewForm from "./components/ReviewFormPage";
 import ReviewEditFormPage from './components/ReviewEditFormPage';
 import SplashPage from './components/SplashPage';
 import PageNotFound from "./components/PageNotFound";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,9 @@ function App() {
           </Route>
         </Switch>
       )}
+          <Route exact path={['/', '/signup', '/login']}>
+      <Footer />
+          </Route>
     </>
   );
 }

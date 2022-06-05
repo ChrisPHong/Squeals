@@ -17,12 +17,23 @@ a:hover{
     justify-content: space-around;
     align-items: center;
     background-color: rgb(216, 29, 29);
-    padding: 10px 40px;
+    padding: 10px 20px;
 
 
     /* margin: 100px; */
  }
 
+ .navBarIcon{
+     max-width: 30px;
+ }
+ .squealsLink{
+     text-decoration: none;
+     font-size: 30px;
+     display: flex;
+ }
+ .squealsLink:hover{
+     font-size: 31px;
+ }
 .homeLink{
     background-color: rgb(216, 29, 29);
 }
@@ -40,10 +51,9 @@ a:hover{
 }
 
 .LogInButton:hover{
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    border: rgba(68, 68, 68, 0.212) solid 2px;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.342);
+    background-color: rgb(255, 255, 255, .4);
+    /* border: rgba(68, 68, 68, 0.212) solid 2px; */
+    /* box-shadow: 2px 2px rgba(0, 0, 0, 0.342); */
 }
 
 .SignUpButton{

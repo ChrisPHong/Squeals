@@ -62,17 +62,22 @@ function BusinessPageForm() {
 
     }
 
+
     return (
         <form className="businessForm" onSubmit={onSubmit}>
-           {errors.length > 0 ?  <h2>Validation Errors</h2> : null}
-            <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
-                return (
-                <>
-                <li key={error}>{error}</li>
-                </>
-                )
-            }) : null}
+           {errors.length > 0 ?
+           <>
+           <h2>Create Your Business</h2>
+           <ul className='errors array'>{errors.map(error => {
+               return (
+               <>
+               <li key={error}>{error}</li>
+               </>
+               )
+            })}
             </ul>
+           </>
+           : null}
             <div className='titleInput'>
                 {/* <label className='labelInput'>Title</label> */}
                 <input type='text'

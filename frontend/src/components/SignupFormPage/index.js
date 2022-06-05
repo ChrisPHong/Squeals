@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css'
+import { login } from '../../store/session'
 
 function SignupFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const user = { credential: 'demo@user.io', password: 'password' }
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -29,53 +32,73 @@ function SignupFormPage() {
   };
 
   return (
-    <div className="signUpFormDiv">
+    <div className="centerpageDivSignUp">
+            <h2 className="titleforSignUpPage">Sign Up for Squeals
+            </h2>
+            <h4 className="titleDescriptionSignUpPage">Connect with Great Businesses</h4>
+    <div className="pageDiv">
+      <div className="signUpFormDiv">
+        <form onSubmit={handleSubmit}>
+          <div className="withinFormDiv">
 
-      <form onSubmit={handleSubmit}>
-        <div className="withinFormDiv">
-
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          <label>
-            Email
+            <ul>
+              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
+            <h2>{errors.length > 0 ? 'Fix Your Errors to Create an Account' : 'Create an Account'}</h2>
             <input
+              placeholder="Email..."
+              className="inputValuesSignUp"
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Username
+
             <input
               type="text"
+              className="inputValuesSignUp"
+              placeholder="Username..."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Password
+
             <input
               type="password"
+              className="inputValuesSignUp"
+              placeholder="Password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Confirm Password
+
+
             <input
               type="password"
+              className="inputValuesSignUp"
+              placeholder="Confirmed Password..."
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-          </label>
-          <button type="submit">Sign Up</button>
-        </div>
-      </form>
+
+            <button
+              className="submitSignUpButton"
+              type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      <div className='imageSignUpDiv'>
+      <img src='images/signup_illustration.png' />
+      </div>
+
+    </div>
+      <button
+                className='demoButtonSignupPage'
+                onClick={async () => {
+                    await dispatch(login(user))
+                    await history.push('/businesses')
+                }}>Demo User</button>
     </div>
   );
 }

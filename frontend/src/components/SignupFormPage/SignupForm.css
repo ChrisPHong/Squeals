@@ -1,26 +1,88 @@
-button{
-    padding: 8px 40px;
-    background-color: rgb(216, 29, 29);
-    margin: 20px;
-    transition-duration: 1s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-family:Georgia, 'Times New Roman', Times, serif;
+.pageDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
 }
-
-button:hover{
-    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
-}
-
-
-
-.signUpFormDiv{
+.signUpFormDiv {
     margin-top: 200px;
     display: flex;
     flex-direction: column;
 }
 
-.withinFormDiv{
+.withinFormDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.imageSignUpDiv{
+    margin-top: 200px;
+}
+
+.demoButtonSignupPage {
+    margin-top: 40px;
+    background-color: rgb(216, 29, 29);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    font-size: 20px;
+    display: flex;
+    transition-duration: 1.3s;
+}
+
+.demoButtonSignupPage:hover {
+    background-color: red;
+    color: white;
+    padding: 14px 24px;
+}
+
+
+.inputValuesSignUp {
+    border-radius: 5px 5px;
+    padding: 8px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 1.3s;
+
+}
+.inputValuesSignUp:hover{
+    padding: 12px;
+
+}
+
+.submitSignUpButton {
+    padding: 10px 40px;
+    background-color: rgb(216, 29, 29);
+    margin: 20px;
+    transition-duration: 1s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+}
+
+.submitSignUpButton:hover {
+    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
+    background-color: red;
+    font-size: 15.9px;
+}
+
+.centerpageDivSignUp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleforSignUpPage{
+    position: fixed;
+    top:110px;
+    color: rgb(216, 29, 29);
+}
+
+.titleDescriptionSignUpPage{
+    position: fixed;
+    top:140px;
+    color: black
 }
