@@ -1,0 +1,32 @@
+.footerDiv{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    /* background-color: rgb(216, 29, 29); */
+    background-color: rgba(83, 81, 81, 0.377);
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right:0;
+    width: 100%;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+
+.footerLink{
+    text-decoration: none;
+    color:black;
+    display: flex;
+    flex-direction: row;
+    transition-duration: 1s;
+    font-size: 20px;
+    border: 10px 8px solid black;
+}
+
+.footerLink:hover{
+    font-size: 22px;
+}

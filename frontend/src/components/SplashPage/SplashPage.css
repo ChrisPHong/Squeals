@@ -12,6 +12,7 @@
     min-width: 500px;
     display: grid;
     place-items: center;
+    margin-top: 100px;
 }
 
 .welcome{
@@ -20,7 +21,6 @@
     font-size: 50px;
     transition-duration: 1s;
     text-shadow: 2px 2px 3px hsl(0, 0%, 0%);
-    /* transition: transform 2000ms ease-in; */
 }
 .welcome:hover{
     color: white;
