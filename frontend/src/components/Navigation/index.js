@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import {login} from '../../store/session'
@@ -15,6 +15,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className='navbarDiv'>
+        <Link className='squealsLink' to='/'><img className='navBarIcon'src='images/squeals_icon.png'/>Squeals</Link>
         <NavLink exact to="/businesses">Home</NavLink>
         <ProfileButton user={sessionUser} />
         <button onClick={() => {
@@ -30,15 +31,16 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
       <div className='navbarDiv'>
+        <Link className='squealsLink' to='/'><img className='navBarIcon'src='images/squeals_icon.png'/>Squeals</Link>
         <NavLink className='LogInButton' to="/login">Log In</NavLink>
         <NavLink className='SignUpButton' to="/signup">Sign Up</NavLink>
 
-      <button
+      {/* <button
       className='demoButton'
       onClick={async () => {
         await dispatch(login(user))
         await history.push('/businesses')
-      }}>Demo User</button>
+      }}>Demo User</button> */}
         <a href='https://github.com/ChrisPHong/Squeals'>GitHub</a>
         <a href='https://www.linkedin.com/in/christopherpyohong/'>LinkedIn</a>
       </div>

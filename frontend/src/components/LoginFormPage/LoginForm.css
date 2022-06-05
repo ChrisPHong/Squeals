@@ -1,10 +1,116 @@
-button{
+button {
     border-radius: 4px;
     border: white;
     color: white;
     background-color: red;
 }
 
-.loginFormDiv{
+.OuterDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFormDiv {
+
+    color: black;
     margin-top: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-weight: bold;
+    transition-duration: 1s;
+}
+
+
+.loginButtonForm {
+    padding: 10px 40px;
+    background-color: rgb(216, 29, 29);
+    margin: 20px;
+    transition-duration: 1s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+}
+
+.loginButtonForm:hover {
+    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
+    background-color: red;
+    font-size: 15.9px;
+}
+
+.loginformDiv {
+    padding: 4px;
+    margin: 4px;
+    max-width: fit-content;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    transition-duration: 1.3s;
+}
+
+.linkforSignUpPage {
+
+    right: 280px;
+    color: #0073bb;
+}
+
+.inputLoginBox {
+    border-radius: 3px 3px;
+    transition-duration: 1s;
+    padding: 7px;
+    margin: 10px 2px;
+}
+
+.inputLoginBox:hover {
+    border-radius: 3px 3px;
+    transition-duration: 1s;
+    padding: 10px;
+
+}
+
+.titleforLoginPage {
+    position: fixed;
+    top: 110px;
+    color: rgb(216, 29, 29);
+}
+
+.titleDescriptionLoginPage {
+    position: fixed;
+    top: 140px;
+    color: black
+}
+
+.userNameLabel {
+    margin: 5px;
+    padding-right: 15px;
+    font-size: 19px;
+    transition-duration: 1.3s;
+}
+
+.userNameLabel:hover {
+    margin: 5px;
+    padding-right: 15px;
+    font-size: 21px;
+}
+
+.demoButtonLoginPage {
+    margin-top: 40px;
+    background-color: rgb(216, 29, 29);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    font-size: 20px;
+    display: flex;
+    transition-duration: 1.3s;
+
+}
+
+.demoButtonLoginPage:hover {
+    background-color: red;
+    color: white;
+    padding: 14px 24px;
 }

@@ -23,6 +23,17 @@ a:hover{
     /* margin: 100px; */
  }
 
+ .navBarIcon{
+     max-width: 30px;
+ }
+ .squealsLink{
+     text-decoration: none;
+     font-size: 30px;
+     display: flex;
+ }
+ .squealsLink:hover{
+     font-size: 31px;
+ }
 .homeLink{
     background-color: rgb(216, 29, 29);
 }

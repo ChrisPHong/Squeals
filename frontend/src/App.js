@@ -55,7 +55,9 @@ function App() {
           </Route>
         </Switch>
       )}
+          <Route exact path={['/', '/signup', '/login']}>
       <Footer />
+          </Route>
     </>
   );
 }
