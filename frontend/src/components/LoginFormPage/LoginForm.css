@@ -34,6 +34,8 @@ button {
     transition-duration: 1s;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .loginButtonForm:hover {
@@ -92,20 +94,16 @@ button {
     transition-duration: 1.3s;
 }
 
-.userNameLabel:hover {
-    margin: 5px;
-    padding-right: 15px;
-    font-size: 21px;
-}
 
 .demoButtonLoginPage {
     margin-top: 40px;
     background-color: rgb(216, 29, 29);
-    font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 10px 20px;
     font-size: 20px;
     display: flex;
     transition-duration: 1.3s;
+    font-family: Arial, Helvetica, sans-serif;
+
 
 }
 

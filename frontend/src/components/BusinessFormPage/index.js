@@ -68,10 +68,11 @@ function BusinessPageForm() {
            {errors.length > 0 ?
            <>
            <h2>Create Your Business</h2>
-           <ul className='errors array'>{errors.map(error => {
+           <ul className='errorsArray'>{errors.map(error => {
                return (
                <>
-               <li key={error}>{error}</li>
+               <li className='errorItem'
+               key={error}>{error}</li>
                </>
                )
             })}

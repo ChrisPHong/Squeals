@@ -17,8 +17,6 @@ function SplashPage() {
             <div className='fullDiv'>
                 <div className='splashCard'>
                     <h1 className='welcome'>Welcome to Squeals</h1>
-                    {/* <p className='splashPageParagraph'>Squeals is the app to look for a specific business and you can sign up and create your own business too! Don't be afraid to sign up and start your business journey!
-            </p> */}
                     <p className='splashPageParagraph'>Looking for a business? Squeals is the right application for you! Want to create your own business? Squeals is the right application for you! If you'd like a quick tour or what our app is all about, then please don't hesitate to click on the Demo User button! We hope you enjoy Squeals!</p>
                     <button
                         className='demoButtonSplashPage'

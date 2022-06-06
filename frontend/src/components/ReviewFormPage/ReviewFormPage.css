@@ -45,3 +45,8 @@
 .submitButton:hover{
     box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
 }
+
+.errorLi{
+    margin: 2px;
+
+}

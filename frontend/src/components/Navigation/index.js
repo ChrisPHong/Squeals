@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className='navbarDiv'>
-        <Link className='squealsLink' to='/'><img className='navBarIcon'src='images/squeals_icon.png'/>Squeals</Link>
+        <Link to='/'><img className='navBarIcon'src='images/squeals.png'/></Link>
         <NavLink exact to="/businesses">Businesses</NavLink>
         <ProfileButton user={sessionUser} />
         <button
@@ -33,7 +33,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
       <div className='navbarDiv'>
-        <Link className='squealsLink' to='/'><img className='navBarIcon'src='images/squeals_icon.png'/>Squeals</Link>
+        <Link className='squealsLink' to='/'><img className='navBarIcon'src='images/squeals.png'/></Link>
         <NavLink className='LogInButton' to="/login">Log In</NavLink>
         <NavLink className='SignUpButton' to="/signup">Sign Up</NavLink>
 
