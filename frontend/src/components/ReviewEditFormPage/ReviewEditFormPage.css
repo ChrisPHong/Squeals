@@ -1,5 +1,5 @@
-.editFormDiv{
-    margin-top: 200px;
+.editFormDiv {
+    /* margin-top: 200px; */
     display: flex;
     align-self: center;
     justify-content: center;
@@ -22,33 +22,38 @@
     transition-duration: 1s;
 }
 
-.formDiv {
-    padding: 4px;
-    margin: 4px;
+.inputValueReviews {
+
+    border-radius: 5px 5px;
+    padding: 8px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 1.3s;
+    margin-left: 10px;
+    margin-right: 10px;
+
 }
 
-.inputBox{
-    border-radius: 3px 3px;
-    transition-duration: 1s;
-    padding: 10px;
-}
-.inputBox:hover{
-
-    box-shadow: 3px 3px rgb(0, 0, 0, .3);
+.inputValueReviews:hover {
+    padding: 12px;
 }
 
-.businessForm:hover {
-    box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
-}
-
-.submitButton{
-    padding: 10px 40px;
+.reviewSubmitEditButton {
     background-color: rgb(216, 29, 29);
-    margin: 20px;
-    transition-duration: 1s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 5px 10px;
+    font-size: 14px;
+    display: flex;
+    transition-duration: 1.3s;
+    margin-bottom: 5px;
+    text-decoration: none;
+    margin-top: 10px;
 }
 
-.submitButton:hover{
-    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
+.reviewSubmitEditButton:hover {
+    background-color: red;
+    color: white;
+    padding: 8px 12px;
 }

@@ -31,7 +31,7 @@ function ReviewsPage() {
     return (
         <div>
             <h1>Reviews</h1>
-            <div>
+            <div className='ReviewDiv'>
                 {newReviews.length > 0 ? newReviews.map(review => {
                     return (
                         <div
@@ -46,7 +46,7 @@ function ReviewsPage() {
                             <div className='editDiv'>
                                 {(review.userId === userId) ?
                                     <Link to={`/reviews/${review.id}`}>
-                                        <button className='editButton'
+                                        <button className='editReviewButton'
 
                                         >Edit</button>
                                     </Link>
@@ -55,7 +55,7 @@ function ReviewsPage() {
 
                             <div className='deleteDiv'>
                                 {(review.userId === userId) ?
-                                    <button className='deleteButton'
+                                    <button className='deleteReviewButton'
                                         onClick={() => {
                                             dispatch(deleteReview(businessId, review.id))
                                         }}

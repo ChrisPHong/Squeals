@@ -68,3 +68,52 @@ a:hover{
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
 }
+
+.profileButton{
+    background-color: rgb(216, 29, 29);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    font-size: 15px;
+    display: flex;
+    transition-duration: 1.3s;
+}
+
+.profileButton:hover {
+    background-color: red;
+    color: white;
+    padding: 14px 24px;
+}
+
+.userName{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.logOutButton{
+    background-color: rgb(216, 29, 29);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    font-size: 15px;
+    display: flex;
+    transition-duration: 1.3s;
+}
+
+.logOutButton:hover{
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+}
+.createYourBusinessButton{
+
+    background-color: rgb(216, 29, 29);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    font-size: 15px;
+    display: flex;
+    transition-duration: 1.3s;
+}
+
+.createYourBusinessButton:hover {
+    background-color: red;
+    color: white;
+    padding: 14px 24px;
+}
