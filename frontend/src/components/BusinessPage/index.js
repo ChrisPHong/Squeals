@@ -43,6 +43,13 @@ function BusinessPage() {
                                                 dispatch(getOneBusiness(business.id))
                                             }} key={`image${business.id}`} src={business.image}
                                             />
+                                            <button
+                                            onClick={() => {
+                                                dispatch(getOneBusiness(business.id))
+                                            }}
+                                            className='editButton ownerButton'
+
+                                            >Add a Review</button>
                                         </div>
                                     </Link>
                                     <div className='informationDiv'>
