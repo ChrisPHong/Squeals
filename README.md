@@ -6,6 +6,18 @@ Hello! [Squeals](https://squeals.herokuapp.com/) is a place where you explore bu
 ### Home Page
 ![image](https://user-images.githubusercontent.com/98856057/172088500-0414920a-5682-4186-bcb6-4cd8c3d1a873.png)
 
+### Demo User
+If you'd like to explore the website without signing up, you can! Click on the demo user button located on the home page!
+![image](https://user-images.githubusercontent.com/98856057/172090158-4d57715c-96b2-4fa3-a32c-4024e9021c30.png)
+
+### Create A Business!
+If you have a business and would like to share your business then create a profile for it!
+And if you ever need to update it or delete your business, you'll be able to do so on the businesses page.
+![image](https://user-images.githubusercontent.com/98856057/172090393-77f8bfdb-032c-4757-8c47-9df2bffd5fb3.png)
+
+### Leave a Review
+What kind of business website would it be without a review?! You can leave reviews for all the businesses around and if you ever go back, you can create another review, update your review(s), and even delete your reviews!
+![image](https://user-images.githubusercontent.com/98856057/172090622-8448635d-c598-4d37-94d5-df3c254e5fee.png)
 
 ## Squeals Summary
 Squeals allows signed in users to create their own business and post reviews for the businesses. Users are able to explore through each of the businesses and see all of the details for each business including: title, address, phone number, and a short description about their business.
