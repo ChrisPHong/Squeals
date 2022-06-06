@@ -5,7 +5,7 @@ import * as sessionActions from '../../store/session'
 import { addReview } from '../../store/review'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { editReview, oneReview} from '../../store/review';
+import { editReview, oneReview } from '../../store/review';
 
 
 function EditFormPage() {
@@ -62,8 +62,8 @@ function EditFormPage() {
 
         <div className='editFormDiv'>
             <form
-            className='editForm'
-            onSubmit={handleSubmit}>
+                className='editForm'
+                onSubmit={handleSubmit}>
                 {errors.length > 0 ? <h3>Validation Errors</h3> : <h3>Post Your Review</h3>}
                 <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
                     return <li key={error}>{error}</li>
@@ -71,6 +71,7 @@ function EditFormPage() {
                 </ul>
                 <label>Rating</label>
                 <input
+                    className='inputValueReviews'
                     placeholder='values 1 - 5'
                     value={rating}
                     onChange={(e) => {
@@ -79,6 +80,7 @@ function EditFormPage() {
                 ></input>
                 <label>Your Review</label>
                 <input
+                    className='inputValueReviews'
                     placeholder='Explain Your Experience'
                     value={answer}
                     onChange={(e) => {
@@ -86,6 +88,7 @@ function EditFormPage() {
                     }}></input>
                 <button
                     type='submit'
+                    className='reviewSubmitEditButton'
                     disabled={errors.length ? true : false}
                 >Post Review</button>
             </form>

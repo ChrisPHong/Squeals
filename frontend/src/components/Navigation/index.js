@@ -18,7 +18,9 @@ function Navigation({ isLoaded }) {
         <Link className='squealsLink' to='/'><img className='navBarIcon'src='images/squeals_icon.png'/>Squeals</Link>
         <NavLink exact to="/businesses">Businesses</NavLink>
         <ProfileButton user={sessionUser} />
-        <button onClick={() => {
+        <button
+        className='createYourBusinessButton'
+        onClick={() => {
           history.push('/form')
         }}
         to="/form">Create Your Business</button>
