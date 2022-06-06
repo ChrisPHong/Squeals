@@ -45,3 +45,16 @@
 .submitButton:hover{
     box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
 }
+
+.errorsArray{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.errorItem{
+margin: 4px;
+
+}

@@ -24,8 +24,9 @@ a:hover{
  }
 
  .navBarIcon{
-     max-width: 30px;
+     max-height: 45px;
  }
+
  .squealsLink{
      text-decoration: none;
      font-size: 30px;
@@ -65,8 +66,7 @@ a:hover{
 }
 
 .SignUpButton:hover{
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255, .4);
 }
 
 .profileButton{

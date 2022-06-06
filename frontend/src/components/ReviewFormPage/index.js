@@ -53,18 +53,19 @@ function ReviewForm() {
     return (
         <div>
             <div>
-                
+
                 <form
                 className='editForm'
                 onSubmit={handleSubmit}>
                     {errors.length > 0 ? <h3 className='validationErrorsReviews'>Add Your Review</h3> : <h3>Post Your Review</h3>}
                     <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
-                        return <li key={error}>{error}</li>
+                        return <li className='errorLi'
+                        key={error}>{error}</li>
                     }) : null}
                     </ul>
                     <label>Rating</label>
                     <input
-                        placeholder='values 1 - 5'
+                        placeholder='Values 1 - 5...'
                         value={rating}
                         onChange={(e) => {
                             console.log(rating)
@@ -73,7 +74,7 @@ function ReviewForm() {
                     ></input>
                     <label>Your Review</label>
                     <input
-                        placeholder='Explain Your Experience'
+                        placeholder='Explain Your Experience...'
                         value={answer}
 
                         onChange={(e) => {
