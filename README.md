@@ -3,6 +3,10 @@
 ## Live Link:
 Hello! [Squeals](https://squeals.herokuapp.com/) is a place where you explore businesses around you and even upload your own business to share that you're in the neighborhood! Follow this [link](https://squeals.herokuapp.com/) to check it out
 
+### Home Page
+![image](https://user-images.githubusercontent.com/98856057/172088500-0414920a-5682-4186-bcb6-4cd8c3d1a873.png)
+
+
 ## Squeals Summary
 Squeals allows signed in users to create their own business and post reviews for the businesses. Users are able to explore through each of the businesses and see all of the details for each business including: title, address, phone number, and a short description about their business.
 
