@@ -38,7 +38,7 @@ function BusinessPage() {
                                 <div className='contentDiv'>
                                     <Link to={`/businesses/${business.id}`}>
                                         <div className='fillPhoto'>
-
+                                            
                                             <img className='imageDiv' onClick={() => {
                                                 dispatch(getOneBusiness(business.id))
                                             }} key={`image${business.id}`} src={business.image}

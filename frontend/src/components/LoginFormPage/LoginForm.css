@@ -34,12 +34,13 @@ button {
     transition-duration: 1s;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
 
 }
 
 .loginButtonForm:hover {
     background-color: red;
+    cursor: pointer;
 }
 
 .loginformDiv {
@@ -61,15 +62,15 @@ button {
 
 .inputLoginBox {
     border-radius: 3px 3px;
-    transition-duration: 1s;
+    transition-duration: 1.3s;
     padding: 7px;
     margin: 10px 2px;
+    color: black;
 }
 
-.inputLoginBox:hover {
-    border-radius: 3px 3px;
-    transition-duration: 1s;
-    padding: 10px;
+.inputLoginBox:focus {
+   border: 1px solid rgb(216, 29, 29);
+    color: white;
 
 }
 
@@ -100,13 +101,12 @@ button {
     font-size: 20px;
     display: flex;
     transition-duration: 1.3s;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
 
 
 }
 
 .demoButtonLoginPage:hover {
     background-color: red;
-    color: white;
-    padding: 14px 24px;
+    cursor: pointer;
 }

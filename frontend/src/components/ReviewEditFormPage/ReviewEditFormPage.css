@@ -41,7 +41,7 @@
 }
 
 .reviewSubmitEditButton {
-    background-color: rgb(216, 29, 29);
+    background-color: rgba(216, 29, 29, 0.623);
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 5px 10px;
     font-size: 14px;
@@ -55,5 +55,5 @@
 .reviewSubmitEditButton:hover {
     background-color: red;
     color: white;
-    padding: 8px 12px;
+
 }
