@@ -53,6 +53,8 @@ function BusinessPageEditForm() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+
         if (errors.length === 0) {
             const payload = {
                 userId,

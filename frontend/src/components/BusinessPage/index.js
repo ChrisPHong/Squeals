@@ -38,11 +38,13 @@ function BusinessPage() {
                                 <div className='contentDiv'>
                                     <Link to={`/businesses/${business.id}`}>
                                         <div className='fillPhoto'>
-                                            
-                                            <img className='imageDiv' onClick={() => {
+                                        <figure className='imageDivPicture' onClick={() => {
+                                                dispatch(getOneBusiness(business.id))
+                                            }} style={{ backgroundImage: `url(${business.image})` }} />
+                                            {/* <img className='imageDiv' onClick={() => {
                                                 dispatch(getOneBusiness(business.id))
                                             }} key={`image${business.id}`} src={business.image}
-                                            />
+                                            /> */}
                                             <button
                                             onClick={() => {
                                                 dispatch(getOneBusiness(business.id))

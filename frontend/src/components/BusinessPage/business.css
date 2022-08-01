@@ -12,12 +12,15 @@ li {
     border-radius: 5px 5px solid rgb(102, 102, 102, .5);
 
     transition-duration: 1s;
-    max-width: fit-content;
+    width: 770px;
     border-radius: 5px;
 
 
 }
 
+.divbusinessCard:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .7);
+}
 .entireDiv{
     margin-top: 100px;
     display: flex;
@@ -43,10 +46,18 @@ li {
 
 }
 
-.divbusinessCard:hover {
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .7);
-}
+.imageDivPicture{
+    width: 200px;
+    background-size: cover;
+    background-position: 50% 25%;
+    border-radius: 5px;
 
+}
+.imageDivPicture::after{
+    display: block;
+    padding-top: 100%;
+    content: ''
+}
 .ownerButton {
     margin: 10px;
     padding: 10px 20px;
