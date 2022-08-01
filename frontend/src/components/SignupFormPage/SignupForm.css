@@ -34,7 +34,7 @@
 .demoButtonSignupPage:hover {
     background-color: red;
     color: white;
-    padding: 14px 24px;
+    cursor: pointer;
 
 }
 
@@ -49,8 +49,9 @@
     transition-duration: 1.3s;
 
 }
-.inputValuesSignUp:hover{
-    padding: 12px;
+.inputValuesSignUp:focus{
+/* border: 1px solid rebeccapurple; */
+box-shadow: 3px 3px rgba(0, 0, 0, 0.267);
 
 }
 
@@ -68,7 +69,8 @@
 .submitSignUpButton:hover {
     box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
     background-color: red;
-    font-size: 15.9px;
+    cursor: pointer;
+
 }
 
 .centerpageDivSignUp{
