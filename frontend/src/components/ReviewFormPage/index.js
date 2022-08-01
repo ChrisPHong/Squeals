@@ -21,9 +21,14 @@ function ReviewForm() {
     const [answer, setAnswer] = useState('');
     const [rating, setRating] = useState('');
     const [errors, setErrors] = useState([]);
+    const [show, setShow] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(errors.length > 0){
+            setShow(true)
+            return;
+        }
         if (errors.length === 0) {
             const payload = {
                 userId,
@@ -39,6 +44,7 @@ function ReviewForm() {
     }
     useEffect(() => {
         const error = [];
+        
         if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
         if (rating < 1 || rating > 5) error.push('Please give a rating within the range from 1 - 5')
         if (rating.length < 1) error.push('Please Put a valid Rating')
@@ -58,7 +64,7 @@ function ReviewForm() {
                 className='editForm'
                 onSubmit={handleSubmit}>
                     {errors.length > 0 ? <h3 className='validationErrorsReviews'>Add Your Review</h3> : <h3>Post Your Review</h3>}
-                    <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
+                    <ul className='errors array'>{show && errors.length > 0 ? errors.map(error => {
                         return <li className='errorLi'
                         key={error}>{error}</li>
                     }) : null}
@@ -82,9 +88,8 @@ function ReviewForm() {
                         }}></input>
                     <button
                         className='submitButton'
-                        disabled={errors.length > 0 ? true : false}
                         type='submit'
-                    >{errors.length > 0 ? 'FIX YOUR ERRORS' : 'Post Review'}</button>
+                    >Post Review</button>
                 </form>
             </div>
         </div>

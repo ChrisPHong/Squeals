@@ -18,6 +18,7 @@ function BusinessPageForm() {
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -44,6 +45,10 @@ function BusinessPageForm() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if(errors.length > 0){
+            setShow(true)
+            return;
+        }
         if (errors.length === 0) {
             const payload = {
                 userId,
@@ -65,9 +70,9 @@ function BusinessPageForm() {
 
     return (
         <form className="businessForm" onSubmit={onSubmit}>
-           {errors.length > 0 ?
+            <h2>Create Your Business</h2>
+           {show && errors.length > 0 ?
            <>
-           <h2>Create Your Business</h2>
            <ul className='errorsArray'>{errors.map(error => {
                return (
                <>
@@ -171,7 +176,6 @@ function BusinessPageForm() {
             <button
                 className='submitButton'
                 type='submit'
-                disabled={errors.length > 0 ? true : false}
             >Submit</button>
         </form>
     )

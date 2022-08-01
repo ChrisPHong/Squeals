@@ -59,6 +59,7 @@
 .demoButtonSplashPage:hover {
     background-color: red;
     color: white;
+    cursor: pointer;
 
 }
 
