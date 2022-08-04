@@ -40,9 +40,12 @@ function App() {
             <ReviewEditFormPage />
           </Route>
           <Route exact path='/businesses/:businessId'>
-            <ReviewForm />
+            {/* <ReviewForm /> */}
             <ReviewsPage />
             <BusinessPageEditForm />
+          </Route>
+          <Route exact path='/businesses/:businessId/reviews'>
+            <ReviewForm />
           </Route>
           <Route exact path='/form'>
             <BusinessPageForm />

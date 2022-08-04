@@ -38,20 +38,23 @@ function BusinessPage() {
                                 <div className='contentDiv'>
                                     <Link to={`/businesses/${business.id}`}>
                                         <div className='fillPhoto'>
-                                        <figure className='imageDivPicture' onClick={() => {
+                                            <figure className='imageDivPicture' onClick={() => {
                                                 dispatch(getOneBusiness(business.id))
                                             }} style={{ backgroundImage: `url(${business.image})` }} />
                                             {/* <img className='imageDiv' onClick={() => {
                                                 dispatch(getOneBusiness(business.id))
                                             }} key={`image${business.id}`} src={business.image}
-                                            /> */}
-                                            <button
-                                            onClick={() => {
-                                                dispatch(getOneBusiness(business.id))
-                                            }}
-                                            className='editButton ownerButton'
+                                        /> */}
 
-                                            >Add a Review</button>
+                                            <Link to={`/businesses/${business.id}/reviews`}>
+                                                <button
+                                                    onClick={() => {
+                                                        dispatch(getOneBusiness(business.id))
+                                                    }}
+                                                    className='ownerButton add-a-Review-Button'
+
+                                                >Add a Review</button>
+                                            </Link>
                                         </div>
                                     </Link>
                                     <div className='informationDiv'>
