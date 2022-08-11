@@ -119,6 +119,7 @@ const businessReducer = (state = initialState, action) => {
             // action.business.reviews.forEach(review =>{
             //     reviewStateAndBusiness[review.id] = review
             // });
+            console.log(action, 'this is the action! Make some reviews!')
             newState = { ...state, one: {}}
             newState.one[action.business.business.id] = action.business.business
 
