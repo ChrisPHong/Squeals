@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className='navbarDiv'>
-        <Link to='/'><img className='navBarIcon'src='images/squeals.png'/></Link>
+        <Link to='/businesses'><img className='navBarIcon'src='images/squeals.png'/></Link>
         <NavLink exact to="/businesses">Businesses</NavLink>
         <ProfileButton user={sessionUser} />
         <button
