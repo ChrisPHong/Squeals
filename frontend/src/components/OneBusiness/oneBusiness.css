@@ -7,11 +7,11 @@
     color: white;
     margin-top: 100px;
 }
-/* .image-background{
-    position: absolute;
-    z-index: -1;
+.image-background{
+    position: relative;
+    z-index: -10;
 
-} */
+}
 .ShareButton{
     margin: 10px;
     padding: 10px 20px;
@@ -70,7 +70,7 @@
 .photos-profile-page{
     width: 50em;
     position: absolute;
-    background-size: cover;
+    background-size:cover;
     background-position: 100% 100%;
     z-index: -1;
     }

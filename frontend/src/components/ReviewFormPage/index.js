@@ -80,13 +80,23 @@ function ReviewForm() {
                         }}
                     ></input>
                     <label>Your Review</label>
-                    <input
+                    {/* <input
                         placeholder='Explain Your Experience...'
                         value={answer}
 
                         onChange={(e) => {
                             setAnswer(e.target.value);
-                        }}></input>
+                        }}></input> */}
+                    <textarea
+                        placeholder="I can't believe this place hasn't been visited and reviewed enough! It was my first time and will NOT BE MY LAST! The atmosphere is a vibe. The service is a vibe!  everything here is just a great vibe..."
+                        value={answer}
+                        rows='10'
+                        col='50'
+                        className=''
+
+                        onChange={(e) => {
+                            setAnswer(e.target.value);
+                        }}></textarea>
                     <button
                         className='submitButton'
                         type='submit'
