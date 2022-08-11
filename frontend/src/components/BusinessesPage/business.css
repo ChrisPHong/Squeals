@@ -45,14 +45,7 @@ li {
     color: blue;
 }
 
-.editDiv{
-    max-width: fit-content;
-    display: flex;
-}
-.deleteDiv{
-    max-width: fit-content;
 
-}
 
 .imageDivPicture{
     width: 200px;

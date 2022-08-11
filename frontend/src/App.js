@@ -5,7 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/index";
-import BusinessPage from "./components/BusinessPage";
+import BusinessesPage from "./components/BusinessesPage";
 import BusinessPageForm from './components/BusinessFormPage';
 import BusinessPageEditForm from "./components/BusinessEditPage/index";
 import ReviewsPage from "./components/ReviewsPage";
@@ -14,6 +14,7 @@ import ReviewEditFormPage from './components/ReviewEditFormPage';
 import SplashPage from './components/SplashPage';
 import PageNotFound from "./components/PageNotFound";
 import Footer from "./components/Footer";
+import OneBusiness from './components/OneBusiness'
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +42,10 @@ function App() {
           </Route>
           <Route exact path='/businesses/:businessId'>
             {/* <ReviewForm /> */}
+           <OneBusiness />
             <ReviewsPage />
+          </Route>
+          <Route exact path='/businesses/:businessId/edit'>
             <BusinessPageEditForm />
           </Route>
           <Route exact path='/businesses/:businessId/reviews'>
@@ -51,7 +55,7 @@ function App() {
             <BusinessPageForm />
           </Route>
           <Route exact path="/businesses">
-            <BusinessPage />
+            <BusinessesPage />
           </Route>
           <Route>
             <PageNotFound />

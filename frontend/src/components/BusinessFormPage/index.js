@@ -31,19 +31,19 @@ function BusinessPageForm() {
 
     useEffect(() => {
         const error = [];
-        if (title.length < 1) error.push('You must put a title with at least 1 character')
-        if (title.length > 50) error.push('You must put a title with at max 50 characters')
-        if (description.length < 10) error.push('You must put at least 10 characters description')
-        if (description.length > 300) error.push('Description has a max 300 characters')
-        if (address.length < 5) error.push('You must put at 5 characters for a valid address')
-        if (address.length > 20) error.push('Address has a max 20 characters')
-        if (state.length < 1) error.push('You must put a state with at least 1 character')
-        if (state.length > 20) error.push('State has a max 20 characters')
-        if (city.length < 1) error.push('You must put a city with at least 1 character')
-        if (city.length > 36) error.push('City has a max 36 characters')
-        if (zipCode.length < 5 || zipCode.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
-        if (phoneNumber.length !== 10) error.push('You must put 10 numbers for a valid phone number')
-        if (!image.includes('https://') || !image.includes('.com')) error.push('You must put a valid image URL. i.e. "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"')
+        if (title?.length < 1) error.push('You must put a title with at least 1 character')
+        if (title?.length > 50) error.push('You must put a title with at max 50 characters')
+        if (description?.length < 10) error.push('You must put at least 10 characters description')
+        if (description?.length > 300) error.push('Description has a max 300 characters')
+        if (address?.length < 5) error.push('You must put at 5 characters for a valid address')
+        if (address?.length > 20) error.push('Address has a max 20 characters')
+        if (state?.length < 1) error.push('You must put a state with at least 1 character')
+        if (state?.length > 20) error.push('State has a max 20 characters')
+        if (city?.length < 1) error.push('You must put a city with at least 1 character')
+        if (city?.length > 36) error.push('City has a max 36 characters')
+        if (zipCode?.length < 5 || zipCode?.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
+        if (phoneNumber?.length !== 10) error.push('You must put 10 numbers for a valid phone number')
+        if (!image?.includes('https://') || !image?.includes('.com')) error.push('You must put a valid image URL. i.e. "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"')
 
         setErrors(error);
     }, [title, description, address, state, city, zipCode, phoneNumber, image])
@@ -80,10 +80,11 @@ function BusinessPageForm() {
            <>
            <ul className='errorsArray'>{errors.map(error => {
                return (
-               <>
+               <div key={error}>
                <li className='errorItem'
                key={error}>{error}</li>
-               </>
+               </div>
+
                )
             })}
             </ul>

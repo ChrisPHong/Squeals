@@ -95,25 +95,22 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 
     }
 }
-const initialState = {};
+const initialState = {entries:{}, one:{}};
 
 const businessReducer = (state = initialState, action) => {
-
+    let newState;
     switch (action.type) {
         case LOAD_BUSINESSES:
-            const newBusiness = {};
+            newState = {...state, entries: {}};
             action.businesses.business.forEach(business => {
-                newBusiness[business.id] = business
+                newState.entries[business.id] = business
             });
-            return {
-                ...state,
-                ...newBusiness
-            }
+            return newState
 
         case DELETE_BUSINESS:
-            const newState = { ...state }
-            delete newState[action.business]
-
+            newState = { ...state }
+            console.log(action, 'DELETE A BUSINES')
+            delete newState.entries[action.business]
             return newState;
 
         case ONE_BUSINESS:
@@ -122,13 +119,10 @@ const businessReducer = (state = initialState, action) => {
             // action.business.reviews.forEach(review =>{
             //     reviewStateAndBusiness[review.id] = review
             // });
+            newState = { ...state, one: {}}
+            newState.one[action.business.business.id] = action.business.business
 
-            return {
-                // ...reviewStateAndBusiness,
-                [action.business.business.id]: action.business.business,
-                // [action.business.reviews.id]: action.business.reviews
-
-            }
+            return newState
         case ADD_BUSINESS:
             if (!state[action.business.id]) {
                 const newState = {
@@ -138,10 +132,10 @@ const businessReducer = (state = initialState, action) => {
                 return newState;
             }
         case EDIT_BUSINESS:
-            return {
-                ...state,
-                [action.business.id]: action.business
-            }
+            newState = {...state, entries: {...state.entries}, one:{...state.one}}
+            console.log(action, 'THIS IS FOR THE EDIT"S THING')
+            newState.entries[action.business.id] = action.business
+            return newState
 
 
         default:
