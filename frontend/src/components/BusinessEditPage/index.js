@@ -36,6 +36,10 @@ function BusinessPageEditForm() {
 
     let userId = useSelector((state) => state.session.user.id)
 
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    }, [])
+
     useEffect(() => {
         const error = [];
         if (title.length < 1) error.push('You must put a title with at least 1 character')
