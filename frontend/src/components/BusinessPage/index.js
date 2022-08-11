@@ -34,7 +34,10 @@ function BusinessPage() {
                     {businesses.map(business => {
                         return (
                             <div key={`div${business.id}`}
-                                className={`divbusinessCard`}>
+                                className={`divbusinessCard`}
+                                onClick={()=>{
+                                    history.push(`/businesses/${business.id}`)
+                                }}>
                                 <div className='contentDiv'>
                                     <Link to={`/businesses/${business.id}`}>
                                         <div className='fillPhoto'>

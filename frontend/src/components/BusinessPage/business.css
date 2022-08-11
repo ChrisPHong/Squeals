@@ -27,6 +27,7 @@ li {
 }
 .divbusinessCard:hover {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, .6);
+    cursor: pointer;
 }
 .entireDiv{
     margin-top: 100px;
