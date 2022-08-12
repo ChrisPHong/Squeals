@@ -84,18 +84,19 @@ a{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .logOutButton{
-    background-color: rgb(216, 29, 29);
+    /* background-color: rgb(216, 29, 29); */
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 10px 20px;
     font-size: 15px;
     display: flex;
     transition-duration: 1.3s;
+    border: 1px solid white;
+    background-color: transparent;
 }
 
 .logOutButton:hover{
-    background-color: red;
-    color: white;
-    padding: 10px 15px;
+    background-color: rgba(68, 67, 67, 0.458);
+    cursor: pointer;
 }
 .createYourBusinessButton{
 

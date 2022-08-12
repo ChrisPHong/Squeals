@@ -48,6 +48,10 @@
 .phone-address-container{
     display: flex;
     flex-direction: column;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    position: sticky;
+
 }
 
 .phone-number-line{
@@ -66,6 +70,10 @@
     font-weight: bold;
 }
 
+.aboutBusiness{
+    font-family: Helvetica, sans-serif;
+    color:#363535;
+}
 
 .photos-profile-page{
     width: 50em;

@@ -40,9 +40,32 @@ function OneBusiness() {
         <>
             <div className='outerBusiness-container'>
                 <div
-                    // style={{ backgroundImage: `url(${business?.image})` }}
+                    style={{
+                        backgroundImage: `url(${business?.image})`,
+                        backgroundRepeat: 'none',
+    // backgroundSize: '100% 100%',
+    backgroundSize: 'auto',
+    // minHeight: '400px',
+    height: '700px',
+    // maxHeight: '600px',
+    // minWidth: 'auto',
+    width: '700px',
+    display: 'grid',
+    placeItems: 'center',
+    marginTop: '50px',
+    zIndex: '-1',
+
+                    }}
                     className='title-and-reviews-container'>
-                        <img className='image-background' style={{width: '400px', height:'600px', objectFit:'cover'}} src={business?.image}/>
+                        {/* <img className='image-background'
+                        style={{
+                            width: '400px',
+                            height:'600px',
+                            objectFit:'cover',
+
+
+                        }}
+                            src={business?.image}/> */}
                         {/* <figure  className='photos-profile-page' style={{backgroundImage: `url(${business?.image})`}} /> */}
 
                     <h1 className='Business-title'>{business?.title}</h1>

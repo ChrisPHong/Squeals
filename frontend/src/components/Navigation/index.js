@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import * as sessionActions from '../../store/session';
 import {login} from '../../store/session'
 import './Navigation.css';
 import {useHistory} from 'react-router-dom'
@@ -12,12 +13,19 @@ function Navigation({ isLoaded }) {
   const user = {credential:'demo@user.io', password: 'password'}
   const history = useHistory();
   let sessionLinks;
+
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+    history.push('/');
+  };
+
   if (sessionUser) {
     sessionLinks = (
       <div className='navbarDiv'>
         <Link to='/businesses'><img className='navBarIcon'src='images/squeals.png'/></Link>
         <NavLink exact to="/businesses">Businesses</NavLink>
-        <ProfileButton user={sessionUser} />
+        {/* <ProfileButton user={sessionUser} /> */}
         <button
         className='createYourBusinessButton'
         onClick={() => {
@@ -26,6 +34,11 @@ function Navigation({ isLoaded }) {
         to="/form">Create Your Business</button>
         <a href='https://github.com/ChrisPHong/Squeals'>GitHub</a>
         <a href='https://www.linkedin.com/in/christopherpyohong/'>LinkedIn</a>
+
+
+  <button
+            className="logOutButton"
+            onClick={logout}>Log Out</button>
 
       </div>
     );

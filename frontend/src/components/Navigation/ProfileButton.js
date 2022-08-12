@@ -31,6 +31,7 @@ function ProfileButton({ user }) {
     history.push('/');
   };
 
+
   return (
     <>
       <button
