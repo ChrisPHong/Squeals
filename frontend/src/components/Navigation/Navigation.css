@@ -10,7 +10,7 @@ a{
     right:0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(216, 29, 29);
     padding: 10px 20px;
@@ -105,11 +105,22 @@ a{
     padding: 10px 20px;
     font-size: 15px;
     display: flex;
-    transition-duration: 1.3s;
 }
 
 .createYourBusinessButton:hover {
-    background-color: red;
-    color: white;
-    padding: 14px 24px;
+    cursor: pointer;
+}
+
+
+.icon-image{
+    width: 30px;
+    margin: 5px;
+}
+
+.right-side-Nav-Bar{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-right: 40px;
+
 }
