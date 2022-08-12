@@ -55,8 +55,9 @@ export const getOneBusiness = (id) => async (dispatch) => {
 }
 
 export const createBusiness = (business) => async (dispatch) => {
-    const { title, description, address, city, state, zipCode, phoneNumber, image } = business
+    const { userId, title, description, address, city, state, zipCode, phoneNumber, image } = business
     const formData = new FormData();
+    formData.append("userId", userId);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("address", address);
