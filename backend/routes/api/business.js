@@ -51,14 +51,17 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post(
     '/',
-    validateSignup, requireAuth, singleMulterUpload("image"),
+    // validateSignup,
+     requireAuth, singleMulterUpload("image"),
     asyncHandler(async (req, res) => {
-        const { userId, title, description, address, city, state, zipCode, phoneNumber, image } = req.body;
+        const { userId, title, description, address, city, state, zipCode, phoneNumber} = req.body;
         const profileImageUrl = await singlePublicFileUpload(req.file);
-        console.log('<<<<<<<<<<<<<<<<<<< THIS IS THE URL OF THE PICTURE', profileImageUrl)
+        console.log('<<<<<<<<<<<<<<<<<<< city', city)
+        // console.log('<<<<<<<<<<<<<<<<<<< THIS IS THE URL OF THE PICTURE', profileImageUrl)
         const business = await Business.create({ userId, title, description, address, city, state, zipCode, phoneNumber, image: profileImageUrl });
+        console.log('<<<<<<<<<<<<<<<<<<< THIS IS THE business', business)
 
-        setTokenCookie(res, business);
+        // setTokenCookie(res, business);
 
         return res.json(business);
     }),

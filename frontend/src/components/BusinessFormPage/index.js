@@ -31,8 +31,9 @@ function BusinessPageForm() {
 
     const updateFile = (e) => {
         const file = e.target.files[0];
+        console.log(file, "<<<<<<<<<<<<<<<<<<< DOES THIS WORK?")
         if (file) setImage(file);
-      };
+    };
 
     useEffect(() => {
         const error = [];
@@ -48,14 +49,14 @@ function BusinessPageForm() {
         if (city?.length > 36) error.push('City has a max 36 characters')
         if (zipCode?.length < 5 || zipCode?.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
         if (phoneNumber?.length !== 10) error.push('You must put 10 numbers for a valid phone number')
-        if (!image?.includes('https://') || !image?.includes('.com')) error.push('You must put a valid image URL. i.e. "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"')
+        // if (!image?.includes('https://') || !image?.includes('.com')) error.push('You must put a valid image URL. i.e. "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"')
 
         setErrors(error);
     }, [title, description, address, state, city, zipCode, phoneNumber, image])
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if(errors.length > 0){
+        if (errors.length > 0) {
             setShow(true)
             return;
         }
@@ -71,18 +72,18 @@ function BusinessPageForm() {
                 phoneNumber,
                 image
             }
-            dispatch(createBusiness(payload))
+            await dispatch(createBusiness(payload))
 
-            setTitle('')
-            setDescription('')
-            setAddress('')
-            setCity('')
-            setState('')
-            setZipCode('')
-           setPhoneNumber('')
-            setImage(null)
+            // await setTitle('')
+            // await setDescription('')
+            // await setAddress('')
+            // await setCity('')
+            // await setState('')
+            // await setZipCode('')
+            // await setPhoneNumber('')
+            // await setImage(null)
 
-            history.push('/businesses');
+            await history.push('/businesses');
         }
 
     }
@@ -91,20 +92,20 @@ function BusinessPageForm() {
     return (
         <form className="businessForm" onSubmit={onSubmit}>
             <h2>Create Your Business</h2>
-           {show && errors.length > 0 ?
-           <>
-           <ul className='errorsArray'>{errors.map(error => {
-               return (
-               <div key={error}>
-               <li className='errorItem'
-               key={error}>{error}</li>
-               </div>
+            {show && errors.length > 0 ?
+                <>
+                    <ul className='errorsArray'>{errors.map(error => {
+                        return (
+                            <div key={error}>
+                                <li className='errorItem'
+                                    key={error}>{error}</li>
+                            </div>
 
-               )
-            })}
-            </ul>
-           </>
-           : null}
+                        )
+                    })}
+                    </ul>
+                </>
+                : null}
             <div className='titleInput'>
                 {/* <label className='labelInput'>Title</label> */}
                 <input type='text'
