@@ -4,6 +4,8 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { Business, User, Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3')
+
 
 const router = express.Router();
 
@@ -40,10 +42,13 @@ router.get('/:reviewId', asyncHandler(async (req, res) => {
 
 router.post(
     '/',
+    singleMulterUpload("image"),
     validateSignup, requireAuth,
     asyncHandler(async (req, res) => {
         const { userId, businessId, rating, answer } = req.body;
-        const review = await Review.create({ userId, businessId, rating, answer });
+        const profileImageUrl = await singlePublicFileUpload(req.file);
+
+        const review = await Review.create({ userId, businessId, rating, answer, image:profileImageUrl});
 
         return res.json(review);
     }),

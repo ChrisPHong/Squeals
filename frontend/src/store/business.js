@@ -66,12 +66,9 @@ export const createBusiness = (business) => async (dispatch) => {
     formData.append("zipCode", zipCode);
     formData.append("phoneNumber", phoneNumber);
 
-    console.log(formData, " THIS IS THE FORM DATA BEFORE IMAGE! ")
-
 
     if (image) formData.append("image", image);
 
-    console.log(formData, " THIS IS THE FORM DATA BEFORE IMAGE! ")
     const response = await csrfFetch('/api/businesses', {
         method: "POST",
         headers: {

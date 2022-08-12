@@ -31,7 +31,6 @@ function BusinessPageForm() {
 
     const updateFile = (e) => {
         const file = e.target.files[0];
-        console.log(file, "<<<<<<<<<<<<<<<<<<< DOES THIS WORK?")
         if (file) setImage(file);
     };
 

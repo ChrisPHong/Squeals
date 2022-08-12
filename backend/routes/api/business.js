@@ -33,9 +33,9 @@ const validateSignup = [
         .exists({ checkFalsy: true })
         .isLength({ min: 10 })
         .withMessage('A Phone number requires 10 minimum digits'),
-    check('image')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a picture of your business'),
+    // check('image')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Please provide a picture of your business'),
     handleValidationErrors
 ];
 
@@ -51,17 +51,13 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post(
     '/',
-    // validateSignup,
-     requireAuth, singleMulterUpload("image"),
+    requireAuth, singleMulterUpload("image"),
+    validateSignup,
     asyncHandler(async (req, res) => {
         const { userId, title, description, address, city, state, zipCode, phoneNumber} = req.body;
         const profileImageUrl = await singlePublicFileUpload(req.file);
-        console.log('<<<<<<<<<<<<<<<<<<< city', city)
-        // console.log('<<<<<<<<<<<<<<<<<<< THIS IS THE URL OF THE PICTURE', profileImageUrl)
-        const business = await Business.create({ userId, title, description, address, city, state, zipCode, phoneNumber, image: profileImageUrl });
-        console.log('<<<<<<<<<<<<<<<<<<< THIS IS THE business', business)
 
-        // setTokenCookie(res, business);
+        const business = await Business.create({ userId, title, description, address, city, state, zipCode, phoneNumber, image: profileImageUrl });
 
         return res.json(business);
     }),
