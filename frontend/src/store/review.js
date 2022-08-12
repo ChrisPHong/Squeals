@@ -45,10 +45,22 @@ export const loadReviews = (businessId) => async (dispatch) => {
 }
 
 export const addReview = (review) => async (dispatch) => {
+    const {userId, businessId, rating, answer, image} = review
+
+    const formData = new FormData();
+    formData.append("userId", userId);
+    formData.append("businessId", businessId);
+    formData.append("rating", rating);
+    formData.append("answer", answer);
+
+    if (image) formData.append("image", image);
+
     const response = await csrfFetch('/api/reviews', {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(review)
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
 
     })
     if (response.ok) {
@@ -59,7 +71,6 @@ export const addReview = (review) => async (dispatch) => {
 }
 
 export const editReview = (reviewId, review) => async (dispatch) => {
-    console.log('<<<<<<<<<<<<<<< IN THE EDIT THUNK >>>>>>>>>>>>', review);
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },

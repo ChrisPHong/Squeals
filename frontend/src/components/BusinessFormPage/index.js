@@ -48,7 +48,6 @@ function BusinessPageForm() {
         if (city?.length > 36) error.push('City has a max 36 characters')
         if (zipCode?.length < 5 || zipCode?.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
         if (phoneNumber?.length !== 10) error.push('You must put 10 numbers for a valid phone number')
-        // if (!image?.includes('https://') || !image?.includes('.com')) error.push('You must put a valid image URL. i.e. "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"')
 
         setErrors(error);
     }, [title, description, address, state, city, zipCode, phoneNumber, image])

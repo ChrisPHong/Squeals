@@ -43,13 +43,14 @@ router.get('/:reviewId', asyncHandler(async (req, res) => {
 router.post(
     '/',
     singleMulterUpload("image"),
-    validateSignup, requireAuth,
+     requireAuth,
+     validateSignup,
     asyncHandler(async (req, res) => {
         const { userId, businessId, rating, answer } = req.body;
         const profileImageUrl = await singlePublicFileUpload(req.file);
 
         const review = await Review.create({ userId, businessId, rating, answer, image:profileImageUrl});
-
+        console.log(review, " THIS IS THE REVIEW YOu'VE BEEN WAITING FOR")
         return res.json(review);
     }),
 );
