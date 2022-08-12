@@ -15,7 +15,7 @@ function BusinessPageForm() {
     const [state, setState] = useState('');
     const [zipCode, setZipCode] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(null);
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [show, setShow] = useState(false);
@@ -28,6 +28,11 @@ function BusinessPageForm() {
     }, [dispatch]);
 
     let userId = useSelector((state) => state.session.user.id)
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+      };
 
     useEffect(() => {
         const error = [];
@@ -67,6 +72,16 @@ function BusinessPageForm() {
                 image
             }
             dispatch(createBusiness(payload))
+
+            setTitle('')
+            setDescription('')
+            setAddress('')
+            setCity('')
+            setState('')
+            setZipCode('')
+           setPhoneNumber('')
+            setImage(null)
+
             history.push('/businesses');
         }
 
@@ -171,12 +186,11 @@ function BusinessPageForm() {
             <div className='formDiv'>
 
                 {/* <label className='labelInput'>Image</label> */}
-                <input type='text'
+                <input type='file'
                     required
                     className='inputBox'
-                    placeholder='Image url'
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
+                    // placeholder='Image url'
+                    onChange={updateFile}
                 />
             </div>
             <button

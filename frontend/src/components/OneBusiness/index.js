@@ -13,7 +13,6 @@ function OneBusiness() {
     const business = useSelector((state) => state.business.one[id]);
     const reviews = useSelector((state) => Object.values(state?.review));
     const state = useSelector((state) => state);
-    console.log(reviews)
 
     const [isLoaded, setIsLoaded] = useState(false);
     const history = useHistory();
@@ -46,10 +45,10 @@ function OneBusiness() {
     // backgroundSize: '100% 100%',
     backgroundSize: 'auto',
     // minHeight: '400px',
-    height: '700px',
+    height: '500px',
     // maxHeight: '600px',
     // minWidth: 'auto',
-    width: '700px',
+    width: '600px',
     display: 'grid',
     placeItems: 'center',
     marginTop: '50px',

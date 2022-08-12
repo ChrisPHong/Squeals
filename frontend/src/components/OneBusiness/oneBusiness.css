@@ -24,7 +24,7 @@
 }
 .ShareButton:hover{
     cursor: pointer;
-    background-color: rgba(45,46,47,.3);
+    background-color: rgba(134, 135, 136, 0.264);
 }
 
 
@@ -50,7 +50,7 @@
     flex-direction: column;
     border: 1px solid #ebebeb;
     border-radius: 5px;
-    position: sticky;
+    /* position: sticky; */
 
 }
 

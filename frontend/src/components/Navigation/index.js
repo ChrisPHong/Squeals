@@ -35,7 +35,7 @@ function Navigation({ isLoaded }) {
             onClick={() => {
               history.push('/form')
             }}
-            to="/form">Create Your Business</button>
+            to="/form">Create Business</button>
           <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
           <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
 
