@@ -17,6 +17,8 @@ function ReviewsPage() {
     const user = useSelector((state) => Object.values(state.session.user));
     const userName = user[1]
 
+    console.log(reviews, "<<<<<<<<<<< REVIEWS")
+
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -37,10 +39,9 @@ function ReviewsPage() {
                         <div
                         className='reviewForm'
                         key={`outerDiv${review.id}`}>
-                            <h2 key={`h2${review.id}`}>Review</h2>
-                            {/* <label key={`label${review.id}`}>Review:</label> */}
-                            <div key={`answer${review.id}`}>"{review.answer}"</div>
                             <div key={`rating${review.id}`}>Rating: {review.rating}</div>
+                            <div key={`answer${review.id}`}>"{review.answer}"</div>
+                            <img className='review-picture' src={review.image} />
 
 
                             <div className='editDiv'>

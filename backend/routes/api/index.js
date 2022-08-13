@@ -38,7 +38,6 @@ const { User } = require('../../db/models');
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
-
 router.use('/reviews', reviewRouter)
 router.use('/businesses', businessRouter);
 

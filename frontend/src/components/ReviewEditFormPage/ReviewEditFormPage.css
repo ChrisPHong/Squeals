@@ -37,11 +37,10 @@
 }
 
 .inputValueReviews:hover {
-    padding: 12px;
+cursor: pointer;
 }
 
 .reviewSubmitEditButton {
-    background-color: rgba(216, 29, 29, 0.623);
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 5px 10px;
     font-size: 14px;
@@ -53,7 +52,6 @@
 }
 
 .reviewSubmitEditButton:hover {
-    background-color: red;
-    color: white;
+    cursor: pointer;
 
 }

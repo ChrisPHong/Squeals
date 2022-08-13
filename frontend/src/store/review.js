@@ -33,7 +33,7 @@ const getOneReview = (review) =>({
 //Thunks
 
 export const loadReviews = (businessId) => async (dispatch) => {
-    const response = await fetch(`/api/businesses/${businessId}`, {
+    const response = await fetch(`/api/reviews/${businessId}`, {
         method: 'GET'
         //might need to fetch a specific business and get all the reviews for that specific business
     })
@@ -113,6 +113,7 @@ const reviewsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_REVIEWS:
             const reviewStateAndBusiness = {};
+            console.log(action, "ACTION REVIEWSSSSSSSSSSSSSSSS")
              action.reviews.reviews.forEach(review =>{
                 reviewStateAndBusiness[review.id] = review
             });
@@ -135,7 +136,6 @@ const reviewsReducer = (state = initialState, action) => {
             }
 
         case EDIT_REVIEW:
-            console.log('<<<<<<<<<<<<<<< ACTION >>>>>>>>>>>>', action)
             return {
                 ...state,
                 [action.review.id]: action.review

@@ -28,8 +28,13 @@ router.get('/', asyncHandler(async (req, res) => {
     const reviews = await Review.findAll({
         where: { businessId },
         order: [['rating', 'ASC']]
-    }
-    )
+    })
+    const usernames = await User.findAll({
+        where: { reviewId },
+        order: [['rating', 'ASC']]
+
+    })
+    console.log(usernames, "USER NAMES >>>>>>>>>>>>>>>>>>>>>")
     return res.json({ reviews });
 
 }))
@@ -50,7 +55,6 @@ router.post(
         const profileImageUrl = await singlePublicFileUpload(req.file);
 
         const review = await Review.create({ userId, businessId, rating, answer, image:profileImageUrl});
-        console.log(review, " THIS IS THE REVIEW YOu'VE BEEN WAITING FOR")
         return res.json(review);
     }),
 );
