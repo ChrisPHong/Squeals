@@ -50,9 +50,11 @@ function EditFormPage() {
 
     useEffect(() => {
         const error = [];
-        if (answer?.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
-        if (rating < 1 || rating > 5) error.push('Please give a rating within the range from 1 - 5')
-        if (rating?.length < 1) error.push('Please Put a valid Rating')
+        const numbers = '12345'
+        if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
+        if (!numbers.includes(rating)) error.push('You need to put only 1 - 5 values')
+        if (rating.length < 1) error.push('Please Put a valid Rating')
+        if (answer.length < 1) error.push('Please Put a valid answer')
 
         setErrors(error);
     }, [answer, rating])
