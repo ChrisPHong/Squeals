@@ -2,18 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './ReviewsPage.css';
 import { useSelector, useDispatch } from 'react-redux'
 import * as sessionActions from '../../store/session'
-import { deleteReview, loadReviews } from '../../store/review';
+import { deleteReview, loadReviews, oneReview } from '../../store/review';
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory} from 'react-router-dom'
 import { getOneBusiness } from '../../store/business'
 
 
 function ReviewsPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const businessId = Number(useParams()?.businessId);
     const reviews = useSelector((state) => Object.values(state.review.entries));
-  console.log(reviews, 'THIS IS TH EREVIEWLKSJD:LKJSDF')
-    // const newReviews = reviews.filter(review => review.businessId == businessId)
     const user = useSelector((state) => Object.values(state.session.user));
     const userName = user[1]
 
@@ -45,11 +44,15 @@ function ReviewsPage() {
 
                             <div className='editDiv'>
                                 {(review.userId === userId) ?
-                                    <Link to={`/reviews/${review.id}`}>
-                                        <button className='editReviewButton'
+                                        <button 
+                                        className='editReviewButton'
+                                        onClick={async()=>{
+                                            await dispatch(oneReview(review.id))
+                                            await history.push(`/reviews/${review.id}`)
+                                        }}
 
                                         >Edit</button>
-                                    </Link>
+                                
                                     : null}
                             </div>
 
@@ -64,9 +67,9 @@ function ReviewsPage() {
                             </div>
                         </div>
                     )
-                }) : <div>
-                    <h3>This Business Has No Reviews</h3>
-                    <h4>Be the First to Review!</h4>
+                }) : <div className='no-review-div'>
+                    <p>This Business Has No Reviews</p>
+                    <p>Be the First to Review!</p>
                 </div>}
 
             </div>

@@ -12,24 +12,25 @@ function EditFormPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    useEffect(() => {
-        dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-        dispatch(oneReview(reviewId))
-    }, [dispatch]);
-
-    const reviewid = useParams();
-    const reviewId = reviewid.reviewId
-    const reviews = useSelector((state) => Object.values(state.review));
-    const review = reviews.filter(review => review.id == reviewId);
-    const businessId = review[0].businessId
-
+    
+    const reviewId = Number(useParams()?.reviewId);
+    const state = useSelector((state) => state);
+    const review = useSelector((state) =>state?.review?.one)[reviewId];
+    const businessId = review?.businessId
+    console.log(review, "THIS IS THE REVIEW")
+    
     const user = useSelector((state) => Object.values(state.session.user));
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
-    const [answer, setAnswer] = useState(review[0].answer);
-    const [rating, setRating] = useState(review[0].rating);
+    const [answer, setAnswer] = useState('');
+    const [rating, setRating] = useState('');
     const [errors, setErrors] = useState([]);
-
+    
+    useEffect(() => {
+        dispatch(oneReview(reviewId))
+        setAnswer(review.answer)
+        setRating(review.rating)
+    }, [dispatch, reviewId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +42,7 @@ function EditFormPage() {
                 answer
             }
             await dispatch(editReview(reviewId, payload));
-            await history.push(`/businesses/${businessId}`)
+            await history.push(`/businesses/${review.businessId}`)
 
         }
     }
@@ -49,9 +50,9 @@ function EditFormPage() {
 
     useEffect(() => {
         const error = [];
-        if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
+        if (answer?.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
         if (rating < 1 || rating > 5) error.push('Please give a rating within the range from 1 - 5')
-        if (rating.length < 1) error.push('Please Put a valid Rating')
+        if (rating?.length < 1) error.push('Please Put a valid Rating')
 
         setErrors(error);
     }, [answer, rating])

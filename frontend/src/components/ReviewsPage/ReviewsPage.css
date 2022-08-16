@@ -91,3 +91,11 @@
 .review-picture{
     width: 300px
 }
+
+
+.no-review-div{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}

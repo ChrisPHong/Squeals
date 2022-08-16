@@ -107,7 +107,7 @@ export const oneReview = (id) => async (dispatch) => {
         dispatch(getOneReview(review));
     }
 }
-const initialState = {entries:{}}
+const initialState = {entries:{}, one:{}}
 
 const reviewsReducer = (state = initialState, action) => {
     let newState;
@@ -144,7 +144,8 @@ const reviewsReducer = (state = initialState, action) => {
 
         case EDIT_REVIEW:
             newState = {...state}
-            console.log(action, "THIS IS THE ACTION <<<<<<<<<<<<<<")
+            console.log(action, "THIS IS THE ACTION <<<<<<<<<<<<<< HIT HTISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs")
+            console.log(action.review, "THIS IS THE ACTION <<<<<<<<<<<<<<")
             newState[action.review.id] = action.review
             return newState
         case DELETE_REVIEW:
@@ -153,9 +154,9 @@ const reviewsReducer = (state = initialState, action) => {
 
             return delState;
         case ONE_REVIEW:
-            return{
-                [action.review.review.id]: action.review.review
-            }
+            newState = {...state, one:{}}
+            newState.one[action.review.id] = action.review
+            return newState
 
         default:
             return state
