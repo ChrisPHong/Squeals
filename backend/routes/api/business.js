@@ -66,12 +66,9 @@ router.post(
 router.get('/:businessId', asyncHandler(async (req, res) => {
     const businessId = parseInt(req.params.businessId, 10)
     const business = await Business.findByPk(businessId)
-    // const reviews = await Review.findAll({
-    //     where:{businessId: businessId},
-    //     order: [['rating', 'ASC']]}
-    //     )
+        
 
-    // return res.json({reviews, business});
+    console.log('<<<<<<<<<<<<<<<<<<<<<<< BUSIneSS"', business)
     return res.json({business});
 })
 
@@ -111,15 +108,14 @@ router.delete('/:businessId', asyncHandler(async (req, res) => {
 router.get('/:businessId/reviews', asyncHandler(async (req, res) => {
     const businessId = parseInt(req.params.businessId, 10)
     const business = await Business.findByPk(businessId)
-    const reviews = await Review.findAll({where: {businessId: businessId}})
-    console.log(business, "Which business are we talking about? <<<<<<<<<<<<<<<<<<<<<")
-    console.log(reviews, "What are the reviews <<<<<<<<<<<<<<<<<<<<<")
-    // const reviews = await Review.findAll({
-    //     where:{businessId: businessId},
-    //     order: [['rating', 'ASC']]}
-    //     )
-
-    // return res.json({reviews, business});
+    const reviews = await Review.findAll({
+        include: {model: User},
+        where: {businessId: businessId},
+        order: [['rating', 'ASC']]}
+    
+        )
+    
+    
     return res.json(reviews);
 })
 
