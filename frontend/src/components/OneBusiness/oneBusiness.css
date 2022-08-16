@@ -1,0 +1,90 @@
+.outerBusiness-container{
+    margin-top: 100px;
+}
+
+.Business-title{
+    font-family: Helvetica, sans-serif;
+    color: white;
+    margin-top: 100px;
+}
+.image-background{
+    position: relative;
+    z-index: -10;
+
+}
+.ShareButton{
+    margin: 10px;
+    padding: 10px 20px;
+    transition-duration: .8s;
+    background-color: transparent;
+    border: 1px solid rgba(45,46,47,1);
+    color: black;
+    font-family: sans-serif;
+    font-weight: bolder;
+}
+.ShareButton:hover{
+    cursor: pointer;
+    background-color: rgba(134, 135, 136, 0.264);
+}
+
+
+.reviews-tag{
+    color: white;
+    font-family:Helvetica, sans-serif;
+}
+
+.title-and-reviews-container{
+    border-radius: 5px;
+}
+
+.address-line{
+    margin: 10px 10px;
+    font-size: 20px;
+    font-family: Helvetica, sans-serif;
+    color: rgba(110,112,114,1);
+}
+
+
+.phone-address-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    /* position: sticky; */
+
+}
+
+.phone-number-line{
+    margin: 10px 10px;
+    font-size: 20px;
+    font-family: Helvetica, sans-serif;
+    color: black;
+}
+
+.About-the-business-Container{
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+}
+.h2-tag-AboutBusiness{
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.aboutBusiness{
+    font-family: Helvetica, sans-serif;
+    color:#363535;
+}
+
+.photos-profile-page{
+    width: 50em;
+    position: absolute;
+    background-size:cover;
+    background-position: 100% 100%;
+    z-index: -1;
+    }
+
+    .photos-profile-page::after{
+    display: block;
+    padding-top: 100%;
+    content: ''
+    }

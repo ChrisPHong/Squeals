@@ -22,6 +22,7 @@ function ReviewForm() {
     const [rating, setRating] = useState('');
     const [errors, setErrors] = useState([]);
     const [show, setShow] = useState(false);
+    const [image, setImage] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,11 +35,12 @@ function ReviewForm() {
                 userId,
                 businessId,
                 rating,
-                answer
+                answer,
+                image
             }
+            await dispatch(addReview(payload));
             setAnswer('');
             setRating('');
-            await dispatch(addReview(payload));
             await history.push(`/businesses/${businessId}`)
 
         }
@@ -49,6 +51,7 @@ function ReviewForm() {
         if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
         if (rating < 1 || rating > 5) error.push('Please give a rating within the range from 1 - 5')
         if (rating.length < 1) error.push('Please Put a valid Rating')
+        if (answer.length < 1) error.push('Please Put a valid answer')
 
         setErrors(error);
     }, [answer, rating])
@@ -56,6 +59,11 @@ function ReviewForm() {
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     }, [dispatch]);
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
 
     return (
         <div>
@@ -75,18 +83,35 @@ function ReviewForm() {
                         placeholder='Values 1 - 5...'
                         value={rating}
                         onChange={(e) => {
-                            console.log(rating)
                             setRating(e.target.value);
                         }}
                     ></input>
                     <label>Your Review</label>
-                    <input
+                    {/* <input
                         placeholder='Explain Your Experience...'
                         value={answer}
 
                         onChange={(e) => {
                             setAnswer(e.target.value);
-                        }}></input>
+                        }}></input> */}
+                    <textarea
+                        placeholder="I can't believe this place hasn't been visited and
+                        reviewed enough! It was my first time and will NOT BE MY LAST!
+                        The atmosphere is a vibe. The service is a vibe!
+                        Everything here is just a great vibe..."
+                        value={answer}
+                        rows='10'
+                        col='50'
+                        className=''
+
+                        onChange={(e) => {
+                            setAnswer(e.target.value);
+                        }}></textarea>
+                    <input type='file'
+                    required
+                    className='inputBox'
+                    onChange={updateFile}
+                />
                     <button
                         className='submitButton'
                         type='submit'

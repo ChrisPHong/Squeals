@@ -15,7 +15,7 @@ function BusinessPageForm() {
     const [state, setState] = useState('');
     const [zipCode, setZipCode] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(null);
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [show, setShow] = useState(false);
@@ -29,23 +29,32 @@ function BusinessPageForm() {
 
     let userId = useSelector((state) => state.session.user.id)
 
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
+
     useEffect(() => {
         const error = [];
-        if (title.length < 1) error.push('You must put a title with at least 1 character')
-        if (description.length < 10) error.push('You must put at least 10 characters description')
-        if (address.length < 5) error.push('You must put at 5 characters for a valid address')
-        if (state.length < 1) error.push('You must put a state with at least 1 character')
-        if (city.length < 1) error.push('You must put a city with at least 1 character')
-        if (zipCode.length < 5 || zipCode.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
-        if (phoneNumber.length < 10) error.push('You must put 10 numbers for a valid phone number')
-        if (!image.includes('https://') || !image.includes('.com')) error.push('You must put a valid image URL. i.e. "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"')
+        if (title?.length < 1) error.push('You must put a title with at least 1 character')
+        if (title?.length > 50) error.push('You must put a title with at max 50 characters')
+        if (description?.length < 10) error.push('You must put at least 10 characters description')
+        if (description?.length > 300) error.push('Description has a max 300 characters')
+        if (address?.length < 5) error.push('You must put at 5 characters for a valid address')
+        if (address?.length > 20) error.push('Address has a max 20 characters')
+        if (state?.length < 1) error.push('You must put a state with at least 1 character')
+        if (state?.length > 20) error.push('State has a max 20 characters')
+        if (city?.length < 1) error.push('You must put a city with at least 1 character')
+        if (city?.length > 36) error.push('City has a max 36 characters')
+        if (zipCode?.length < 5 || zipCode?.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
+        if (phoneNumber?.length !== 10) error.push('You must put 10 numbers for a valid phone number')
 
         setErrors(error);
     }, [title, description, address, state, city, zipCode, phoneNumber, image])
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if(errors.length > 0){
+        if (errors.length > 0) {
             setShow(true)
             return;
         }
@@ -61,8 +70,18 @@ function BusinessPageForm() {
                 phoneNumber,
                 image
             }
-            dispatch(createBusiness(payload))
-            history.push('/businesses');
+            await dispatch(createBusiness(payload))
+
+            // await setTitle('')
+            // await setDescription('')
+            // await setAddress('')
+            // await setCity('')
+            // await setState('')
+            // await setZipCode('')
+            // await setPhoneNumber('')
+            // await setImage(null)
+
+            await history.push('/businesses');
         }
 
     }
@@ -71,19 +90,20 @@ function BusinessPageForm() {
     return (
         <form className="businessForm" onSubmit={onSubmit}>
             <h2>Create Your Business</h2>
-           {show && errors.length > 0 ?
-           <>
-           <ul className='errorsArray'>{errors.map(error => {
-               return (
-               <>
-               <li className='errorItem'
-               key={error}>{error}</li>
-               </>
-               )
-            })}
-            </ul>
-           </>
-           : null}
+            {show && errors.length > 0 ?
+                <>
+                    <ul className='errorsArray'>{errors.map(error => {
+                        return (
+                            <div key={error}>
+                                <li className='errorItem'
+                                    key={error}>{error}</li>
+                            </div>
+
+                        )
+                    })}
+                    </ul>
+                </>
+                : null}
             <div className='titleInput'>
                 {/* <label className='labelInput'>Title</label> */}
                 <input type='text'
@@ -165,12 +185,11 @@ function BusinessPageForm() {
             <div className='formDiv'>
 
                 {/* <label className='labelInput'>Image</label> */}
-                <input type='text'
+                <input type='file'
                     required
                     className='inputBox'
-                    placeholder='Image url'
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
+                    // placeholder='Image url'
+                    onChange={updateFile}
                 />
             </div>
             <button

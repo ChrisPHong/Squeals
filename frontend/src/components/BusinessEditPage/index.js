@@ -3,54 +3,65 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './BusinessEditPage.css';
-import { createBusiness, editBusiness } from '../../store/business';
+import { editBusiness, loadBusinesses} from '../../store/business';
 import { useHistory, useParams } from 'react-router-dom';
-import { getOneBusiness, deleteBusiness } from '../../store/business' //We might just need only one
+import { getOneBusiness} from '../../store/business'
 
 function BusinessPageEditForm() {
-    const businessId = useParams();
-    const actualId = Object.values(businessId)[0]
-    const business = useSelector(state => state.business[actualId])
     const dispatch = useDispatch();
+
+    const businessId = Number(useParams()?.businessId);
+    const business = useSelector(state => state?.business.one[businessId])
     const [isLoaded, setIsLoaded] = useState(false);
 
-    useEffect(() => {
-        dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-        dispatch(getOneBusiness(Object.values(businessId)[0]))
-
-    }, [dispatch, businessId]);
-
-
-
-    const [title, setTitle] = useState(business.title);
-    const [description, setDescription] = useState(business.description);
-    const [address, setAddress] = useState(business.address);
-    const [city, setCity] = useState(business.city);
-    const [state, setState] = useState(business.state);
-    const [zipCode, setZipCode] = useState(business.zipCode);
-    const [phoneNumber, setPhoneNumber] = useState(business.phoneNumber);
-    const [image, setImage] = useState(business.image);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [zipCode, setZipCode] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
 
     const history = useHistory();
-
     let userId = useSelector((state) => state.session.user.id)
+
+    useEffect(() => {
+        dispatch(getOneBusiness(businessId))
+        // dispatch(loadBusinesses())
+        setTitle(business?.title);
+        setDescription(business?.description);
+        setAddress(business?.address);
+        setCity(business?.city);
+        setState(business?.state);
+        setZipCode(business?.zipCode);
+       setPhoneNumber(business?.phoneNumber);
+        setImage(business?.image);
+
+
+    }, [dispatch, businessId]);
 
     useEffect(()=>{
         window.scrollTo(0,0)
+
     }, [])
 
     useEffect(() => {
         const error = [];
-        if (title.length < 1) error.push('You must put a title with at least 1 character')
-        if (description.length < 10) error.push('You must put at least 10 characters description')
-        if (address.length < 5) error.push('You must put at 5 characters for a valid address')
-        if (state.length < 1) error.push('You must put a state with at least 1 character')
-        if (city.length < 1) error.push('You must put a city with at least 1 character')
-        if (zipCode.length < 5 || zipCode.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
-        if (phoneNumber.length < 10) error.push('You must put 10 numbers for a valid phone number')
-        if (!image.includes('https://') || !image.includes('.com')) error.push('You must put a valid image URL. i.e. "https://website.com/photoId"')
-
+        if (title?.length < 1) error.push('You must put a title with at least 1 character')
+        if (title?.length > 50) error.push('You must put a title with at max 50 characters')
+        if (description?.length < 10) error.push('You must put at least 10 characters description')
+        if (description?.length > 300) error.push('Description has a max 300 characters')
+        if (address?.length < 5) error.push('You must put at 5 characters for a valid address')
+        if (address?.length > 20) error.push('Address has a max 20 characters')
+        if (state?.length < 1) error.push('You must put a state with at least 1 character')
+        if (state?.length > 20) error.push('State has a max 20 characters')
+        if (city?.length < 1) error.push('You must put a city with at least 1 character')
+        if (city?.length > 36) error.push('City has a max 36 characters')
+        if (zipCode?.length < 5 || zipCode?.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
+        if (phoneNumber?.length !== 10) error.push('You must put 10 numbers for a valid phone number')
+        if (!image?.includes('https://') || !image?.includes('.com')) error.push('You must put a valid image URL. i.e. "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"')
 
         setErrors(error);
     }, [title, description, address, state, city, zipCode, phoneNumber, image])
@@ -71,14 +82,14 @@ function BusinessPageEditForm() {
                 phoneNumber,
                 image
             }
-            dispatch(editBusiness(actualId, payload))
+            dispatch(editBusiness(businessId, payload))
             history.push('/businesses');
         }
 
     }
     return (
         <>
-            {userId === business.userId ?
+            {userId === business?.userId ?
             <form className='businessForm'
             onSubmit={onSubmit}>
                 <h2>Editing Business Form</h2>

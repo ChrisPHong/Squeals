@@ -10,7 +10,7 @@ a{
     right:0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(216, 29, 29);
     padding: 10px 20px;
@@ -84,18 +84,19 @@ a{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .logOutButton{
-    background-color: rgb(216, 29, 29);
+    /* background-color: rgb(216, 29, 29); */
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 10px 20px;
     font-size: 15px;
     display: flex;
     transition-duration: 1.3s;
+    border: 1px solid white;
+    background-color: transparent;
 }
 
 .logOutButton:hover{
-    background-color: red;
-    color: white;
-    padding: 10px 15px;
+    background-color: rgba(68, 67, 67, 0.458);
+    cursor: pointer;
 }
 .createYourBusinessButton{
 
@@ -104,11 +105,22 @@ a{
     padding: 10px 20px;
     font-size: 15px;
     display: flex;
-    transition-duration: 1.3s;
 }
 
 .createYourBusinessButton:hover {
-    background-color: red;
-    color: white;
-    padding: 14px 24px;
+    cursor: pointer;
+}
+
+
+.icon-image{
+    width: 30px;
+    margin: 5px;
+}
+
+.right-side-Nav-Bar{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-right: 40px;
+
 }

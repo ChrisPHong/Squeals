@@ -55,10 +55,27 @@ export const getOneBusiness = (id) => async (dispatch) => {
 }
 
 export const createBusiness = (business) => async (dispatch) => {
+    const { userId, title, description, address, city, state, zipCode, phoneNumber, image } = business
+    const formData = new FormData();
+
+    formData.append("userId", userId);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("address", address);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("zipCode", zipCode);
+    formData.append("phoneNumber", phoneNumber);
+
+
+    if (image) formData.append("image", image);
+
     const response = await csrfFetch('/api/businesses', {
-        method: 'POST',
-        headers: { "Content-Type": 'application/json' },
-        body: JSON.stringify(business)
+        method: "POST",
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
     })
     if (response.ok) {
         const business = await response.json();
@@ -95,25 +112,22 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 
     }
 }
-const initialState = {};
+const initialState = { entries: {}, one: {} };
 
 const businessReducer = (state = initialState, action) => {
-
+    let newState;
     switch (action.type) {
         case LOAD_BUSINESSES:
-            const newBusiness = {};
+            newState = { ...state, entries: {} };
             action.businesses.business.forEach(business => {
-                newBusiness[business.id] = business
+                newState.entries[business.id] = business
             });
-            return {
-                ...state,
-                ...newBusiness
-            }
+            return newState
 
         case DELETE_BUSINESS:
-            const newState = { ...state }
-            delete newState[action.business]
-
+            newState = { ...state }
+            console.log(action, 'DELETE A BUSINES')
+            delete newState.entries[action.business]
             return newState;
 
         case ONE_BUSINESS:
@@ -122,26 +136,24 @@ const businessReducer = (state = initialState, action) => {
             // action.business.reviews.forEach(review =>{
             //     reviewStateAndBusiness[review.id] = review
             // });
+            console.log(action, 'this is the action! Make some reviews!')
+            newState = { ...state, one: {} }
+            newState.one[action.business.business.id] = action.business.business
 
-            return {
-                // ...reviewStateAndBusiness,
-                [action.business.business.id]: action.business.business,
-                // [action.business.reviews.id]: action.business.reviews
-
-            }
+            return newState
         case ADD_BUSINESS:
             if (!state[action.business.id]) {
-                const newState = {
+                newState = {
                     ...state,
-                    [action.business.id]: action.business
                 };
+                newState.entries[action.business.id] =  action.business
                 return newState;
             }
         case EDIT_BUSINESS:
-            return {
-                ...state,
-                [action.business.id]: action.business
-            }
+            newState = { ...state, entries: { ...state.entries }, one: { ...state.one } }
+            console.log(action, 'THIS IS FOR THE EDIT"S THING')
+            newState.entries[action.business.id] = action.business
+            return newState
 
 
         default:

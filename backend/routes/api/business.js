@@ -4,6 +4,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { Business, User, Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3')
 
 const router = express.Router();
 
@@ -32,9 +33,9 @@ const validateSignup = [
         .exists({ checkFalsy: true })
         .isLength({ min: 10 })
         .withMessage('A Phone number requires 10 minimum digits'),
-    check('image')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a picture of your business'),
+    // check('image')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Please provide a picture of your business'),
     handleValidationErrors
 ];
 
@@ -50,10 +51,13 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post(
     '/',
-    validateSignup, requireAuth,
+    requireAuth, singleMulterUpload("image"),
+    validateSignup,
     asyncHandler(async (req, res) => {
-        const { userId, title, description, address, city, state, zipCode, phoneNumber, image } = req.body;
-        const business = await Business.create({ userId, title, description, address, city, state, zipCode, phoneNumber, image });
+        const { userId, title, description, address, city, state, zipCode, phoneNumber} = req.body;
+        const profileImageUrl = await singlePublicFileUpload(req.file);
+
+        const business = await Business.create({ userId, title, description, address, city, state, zipCode, phoneNumber, image: profileImageUrl });
 
         return res.json(business);
     }),

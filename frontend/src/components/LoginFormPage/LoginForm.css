@@ -68,11 +68,6 @@ button {
     color: black;
 }
 
-.inputLoginBox:focus {
-   border: 1px solid rgb(216, 29, 29);
-    color: white;
-
-}
 
 .titleforLoginPage {
     position: fixed;
