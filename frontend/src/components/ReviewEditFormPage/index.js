@@ -17,7 +17,6 @@ function EditFormPage() {
     const state = useSelector((state) => state);
     const review = useSelector((state) =>state?.review?.one)[reviewId];
     const businessId = review?.businessId
-    console.log(review, "THIS IS THE REVIEW")
     
     const user = useSelector((state) => Object.values(state.session.user));
     const userId = user[0]
@@ -50,9 +49,12 @@ function EditFormPage() {
 
     useEffect(() => {
         const error = [];
-        if (answer?.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
-        if (rating < 1 || rating > 5) error.push('Please give a rating within the range from 1 - 5')
-        if (rating?.length < 1) error.push('Please Put a valid Rating')
+        const numbers = '12345'
+        if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
+        if (answer.length > 5000) error.push('Your review exceeds the 5,000 character limit. Shorten your response please')
+        if (!numbers.includes(rating)) error.push('You need to put only 1 - 5 values')
+        if (rating.length < 1) error.push('Please Put a valid Rating')
+        if (answer.length < 1) error.push('Please Put a valid answer')
 
         setErrors(error);
     }, [answer, rating])

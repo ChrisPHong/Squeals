@@ -33,9 +33,13 @@ router.post(
     '/',
     validateSignup,
     asyncHandler(async (req, res) => {
-        const { email, password, username } = req.body;
-        const user = await User.signup({ email, username, password });
-
+        const { email, password, username, image} = req.body;
+        console.log(req.body, 'what is this image?')
+        console.log("<<<<<<<<<<<<<<<<,,,,,, image ", image)
+        
+        const user = await User.signup({ email, username, password, image});
+        // user.image = 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png'
+        console.log("<<<<<<<<<<<<<<<<,,,,,, What kind of User is it", user)
         await setTokenCookie(res, user);
 
         return res.json({

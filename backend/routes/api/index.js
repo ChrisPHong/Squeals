@@ -42,10 +42,4 @@ router.use('/reviews', reviewRouter)
 router.use('/businesses', businessRouter);
 
 
-// router.post('/test', (req, res) => {
-//   res.json({ requestBody: req.body });
-// });
-
-
-
 module.exports = router;
