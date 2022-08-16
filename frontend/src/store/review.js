@@ -33,7 +33,7 @@ const getOneReview = (review) =>({
 //Thunks
 
 export const loadReviews = (businessId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${businessId}`, {
+    const response = await fetch(`/api/businesses/${businessId}/reviews`, {
         method: 'GET'
         //might need to fetch a specific business and get all the reviews for that specific business
     })
@@ -107,23 +107,30 @@ export const oneReview = (id) => async (dispatch) => {
         dispatch(getOneReview(review));
     }
 }
-const initialState = {}
+const initialState = {entries:{}, one:{}}
 
 const reviewsReducer = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
         case LOAD_REVIEWS:
-            const reviewStateAndBusiness = {};
-            console.log(action, "ACTION REVIEWSSSSSSSSSSSSSSSS")
-             action.reviews.reviews.forEach(review =>{
-                reviewStateAndBusiness[review.id] = review
-            });
-            const newState = {};
-        action.reviews.reviews.forEach(review => {
-            newState[review.id] = review
-        })
+            newState = {...state, entries:{}}
+            action.reviews.forEach(review => {
+                newState.entries[review.id] = review
+            })
+            // console.log(newState, "newState ------------")
+
+            // const reviewStateAndBusiness = {};
+            // console.log(action, "ACTION REVIEWSSSSSSSSSSSSSSSS")
+            //  action.reviews.reviews.forEach(review =>{
+            //     reviewStateAndBusiness[review.id] = review
+            // });
+            // const newState = {};
+        // action.reviews.reviews.forEach(review => {
+        //     newState[review.id] = review
+        // })
 
 
-        return { ...state, ...newState }
+        return newState
 
         case ADD_REVIEW:
 
@@ -136,19 +143,20 @@ const reviewsReducer = (state = initialState, action) => {
             }
 
         case EDIT_REVIEW:
-            return {
-                ...state,
-                [action.review.id]: action.review
-            }
+            newState = {...state}
+            console.log(action, "THIS IS THE ACTION <<<<<<<<<<<<<< HIT HTISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs")
+            console.log(action.review, "THIS IS THE ACTION <<<<<<<<<<<<<<")
+            newState[action.review.id] = action.review
+            return newState
         case DELETE_REVIEW:
             const delState = { ...state }
             delete delState[action.review]
 
             return delState;
         case ONE_REVIEW:
-            return{
-                [action.review.review.id]: action.review.review
-            }
+            newState = {...state, one:{}}
+            newState.one[action.review.id] = action.review
+            return newState
 
         default:
             return state

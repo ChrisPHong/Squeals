@@ -11,7 +11,8 @@ function OneBusiness() {
     const dispatch = useDispatch();
     const id = Number(useParams()?.businessId)
     const business = useSelector((state) => state.business.one[id]);
-    const reviews = useSelector((state) => Object.values(state?.review));
+    const reviews = useSelector((state) => Object.values(state?.review.entries));
+
     const state = useSelector((state) => state);
 
     const [isLoaded, setIsLoaded] = useState(false);
