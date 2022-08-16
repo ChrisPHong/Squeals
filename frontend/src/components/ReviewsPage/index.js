@@ -13,9 +13,9 @@ function ReviewsPage() {
     const history = useHistory();
     const businessId = Number(useParams()?.businessId);
     const reviews = useSelector((state) => Object.values(state.review.entries));
-    const user = useSelector((state) => Object.values(state.session.user));
-    const userName = user[1]
+    const user = useSelector((state) => Object.values(state?.session?.user));
 
+    console.log(reviews, "<<<<<<<<<<<<< THESE ARE THE REVIEWS")
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -32,11 +32,13 @@ function ReviewsPage() {
             <h1>Reviews</h1>
             <div className='ReviewDiv'>
                 {reviews.length > 0 ? reviews.map(review => {
-                    console.log(review, "this is one review of the reviews")
+                    console.log(review, "<<<<<<<<<<<<< REVIEW")
                     return (
                         <div
                         className='reviewForm'
                         key={`outerDiv${review.id}`}>
+                            <img className='review-profilepicture' src={review.User.image}/>
+                            <p className='review-username-p-tag'>{review.User.username}</p>
                             <div key={`rating${review.id}`}>Rating: {review.rating}</div>
                             <div key={`answer${review.id}`}>"{review.answer}"</div>
                             <img className='review-picture' src={review.image} />
