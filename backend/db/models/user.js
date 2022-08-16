@@ -17,13 +17,15 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2000),
       allowNull: false,
       validate: {
         len: [3, 256]
       }
     },
-    image: DataTypes.STRING,
+    image: { 
+      allowNull: false,
+        type: DataTypes.STRING },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
@@ -50,14 +52,14 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function (models) {
     // associations can be defined here
-    User.hasMany(models.Business, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
-    User.hasMany(models.Like, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
-    User.hasMany(models.Review, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
+    User.hasMany(models.Business, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true })
+    User.hasMany(models.Like, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true })
+    User.hasMany(models.Review, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true })
   };
 
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, image } = this; // context will be the User instance
+    return { id, username, email, image };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -83,12 +85,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, password, image }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
-      hashedPassword
+      hashedPassword,
+      image
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
