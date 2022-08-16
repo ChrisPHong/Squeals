@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import { loadBusinesses, deleteBusiness, getOneBusiness } from '../../store/business'
+import './BusinessPage.css'
+import { deleteBusiness, getOneBusiness } from '../../store/business'
 
 function BusinessPage({ business }) {
     const dispatch = useDispatch();
-    const businesses = useSelector((state) => Object.values(state.business));
     const [isLoaded, setIsLoaded] = useState(false);
     const history = useHistory();
 
-    let userId = useSelector((state) => state.session)
+    let userId = useSelector((state) => state?.session?.user.id)
 
 
     useEffect(() => {
@@ -43,30 +43,33 @@ function BusinessPage({ business }) {
                         </div>
                     </div>
                 </div>
-                <div className='editDiv'>
-                    {(business.userId === userId.user.id) ?
+                {business?.userId === userId ?
+                    <div className='edit-Delete-container'>
 
-                        <button
-                            onClick={async () => {
-                                await dispatch(getOneBusiness(business.id))
-                                await history.push(`/businesses/${business.id}/edit`)
-                            }}
-                            className='editButton ownerButton Link'
+                        <div className='editDiv'>
 
-                        >Edit</button>
+                            <button
+                                onClick={async () => {
+                                    await dispatch(getOneBusiness(business.id))
+                                    await history.push(`/businesses/${business.id}/edit`)
+                                }}
+                                className='editButton ownerButton Link'
 
-                        : null}
-                </div>
+                            >Edit</button>
+                        </div>
 
-                <div className='deleteDiv'>
-                    {(business.userId === userId.user.id) ?
-                        <button className='deleteButton ownerButton'
-                            onClick={() => {
-                                dispatch(deleteBusiness(business.id))
-                            }}
-                        >Delete</button>
-                        : null}
-                </div>
+
+                        <div className='deleteDiv'>
+
+                            <button className='deleteButton ownerButton'
+                                onClick={() => {
+                                    dispatch(deleteBusiness(business.id))
+                                }}
+                            >Delete</button>
+                        </div>
+                    </div>
+                    : null}
+
             </div>
 
 

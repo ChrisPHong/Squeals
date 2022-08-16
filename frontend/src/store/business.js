@@ -44,11 +44,10 @@ export const loadBusinesses = () => async (dispatch) => {
 }
 
 export const getOneBusiness = (id) => async (dispatch) => {
-    console.log(id, "What is the id?")
     const response = await fetch(`/api/businesses/${id}`, {
         method: 'GET'
     });
-    // console.log(response, "What is the response????")
+
 
     if (response.ok) {
         const business = await response.json();
@@ -106,9 +105,11 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
     const response = await csrfFetch(`api/businesses/${businessId}`, {
         method: 'DELETE',
     })
+
     if (response.ok) {
         const data = await response.json();
-        dispatch(removeBusiness(businessId));
+        console.log(data, "THIS IS THE DATA")
+        dispatch(removeBusiness(data));
 
         return data
 
@@ -129,16 +130,11 @@ const businessReducer = (state = initialState, action) => {
         case DELETE_BUSINESS:
             newState = { ...state }
             console.log(action, 'DELETE A BUSINES')
-            delete newState.entries[action.business]
+            delete newState.entries[action.business.id]
+            console.log(newState, "New STATE<<<<<<<<<")
             return newState;
 
         case ONE_BUSINESS:
-            //this is for getting the reviews as well
-            // const reviewStateAndBusiness = {};
-            // action.business.reviews.forEach(review =>{
-            //     reviewStateAndBusiness[review.id] = review
-            // });
-            console.log(action, 'this is the action! Make some reviews!')
             newState = { ...state, one: {} }
             newState.one[action.business.business.id] = action.business.business
 
@@ -153,7 +149,6 @@ const businessReducer = (state = initialState, action) => {
             }
         case EDIT_BUSINESS:
             newState = { ...state, entries: { ...state.entries }, one: { ...state.one } }
-            console.log(action, 'THIS IS FOR THE EDIT"S THING')
             newState.entries[action.business.id] = action.business
             return newState
 

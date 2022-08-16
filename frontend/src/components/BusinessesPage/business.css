@@ -5,7 +5,7 @@ li {
 
 .divbusinessCard {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     margin: 30px;
     border: 1px rgb(0, 0, 0, .2) solid;
@@ -106,7 +106,6 @@ li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background:linear-gradient(#FFF2F2, #FAD4D4, #F47C7C, #EF9F9F); */
     transition-duration: 1.2s;
     width: auto;
 }
