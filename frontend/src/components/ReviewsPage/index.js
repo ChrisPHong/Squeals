@@ -10,14 +10,12 @@ import { getOneBusiness } from '../../store/business'
 
 function ReviewsPage() {
     const dispatch = useDispatch();
-    const businessid = useParams();
-    const businessId = businessid.businessId
-    const reviews = useSelector((state) => Object.values(state.review));
-    const newReviews = reviews.filter(review => review.businessId == businessId)
+    const businessId = Number(useParams()?.businessId);
+    const reviews = useSelector((state) => Object.values(state.review.entries));
+  console.log(reviews, 'THIS IS TH EREVIEWLKSJD:LKJSDF')
+    // const newReviews = reviews.filter(review => review.businessId == businessId)
     const user = useSelector((state) => Object.values(state.session.user));
     const userName = user[1]
-
-    console.log(reviews, "<<<<<<<<<<< REVIEWS")
 
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
@@ -34,7 +32,8 @@ function ReviewsPage() {
         <div>
             <h1>Reviews</h1>
             <div className='ReviewDiv'>
-                {newReviews.length > 0 ? newReviews.map(review => {
+                {reviews.length > 0 ? reviews.map(review => {
+                    console.log(review, "this is one review of the reviews")
                     return (
                         <div
                         className='reviewForm'

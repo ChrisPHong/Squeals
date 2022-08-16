@@ -66,12 +66,13 @@ router.post(
 router.get('/:businessId', asyncHandler(async (req, res) => {
     const businessId = parseInt(req.params.businessId, 10)
     const business = await Business.findByPk(businessId)
-    const reviews = await Review.findAll({
-        where:{businessId: businessId},
-        order: [['rating', 'ASC']]}
-        )
+    // const reviews = await Review.findAll({
+    //     where:{businessId: businessId},
+    //     order: [['rating', 'ASC']]}
+    //     )
 
-    return res.json({reviews, business});
+    // return res.json({reviews, business});
+    return res.json({business});
 })
 
 )
@@ -101,11 +102,29 @@ router.delete('/:businessId', asyncHandler(async (req, res) => {
 
     const business = await Business.findByPk(parseInt(req.params.businessId, 10))
     await business.destroy();
-    return res.json("succesfully deleted post");
+    console.log(business, "is this the business<<<<<<<<<<<<<<<<<<<<<<<")
+    return res.json({business});
+    // return res.json("succesfully deleted post");
 
 })
 
 )
 
+router.get('/:businessId/reviews', asyncHandler(async (req, res) => {
+    const businessId = parseInt(req.params.businessId, 10)
+    const business = await Business.findByPk(businessId)
+    const reviews = await Review.findAll({where: {businessId: businessId}})
+    console.log(business, "Which business are we talking about? <<<<<<<<<<<<<<<<<<<<<")
+    console.log(reviews, "What are the reviews <<<<<<<<<<<<<<<<<<<<<")
+    // const reviews = await Review.findAll({
+    //     where:{businessId: businessId},
+    //     order: [['rating', 'ASC']]}
+    //     )
+
+    // return res.json({reviews, business});
+    return res.json(reviews);
+})
+
+)
 
 module.exports = router;

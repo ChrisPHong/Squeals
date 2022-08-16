@@ -34,7 +34,7 @@ router.get('/', asyncHandler(async (req, res) => {
         order: [['rating', 'ASC']]
 
     })
-    console.log(usernames, "USER NAMES >>>>>>>>>>>>>>>>>>>>>")
+    // console.log(usernames, "USER NAMES >>>>>>>>>>>>>>>>>>>>>")
     return res.json({ reviews });
 
 }))

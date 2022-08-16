@@ -44,9 +44,11 @@ export const loadBusinesses = () => async (dispatch) => {
 }
 
 export const getOneBusiness = (id) => async (dispatch) => {
+    console.log(id, "What is the id?")
     const response = await fetch(`/api/businesses/${id}`, {
         method: 'GET'
     });
+    // console.log(response, "What is the response????")
 
     if (response.ok) {
         const business = await response.json();
