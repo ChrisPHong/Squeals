@@ -99,14 +99,10 @@ router.put(
 )
 
 router.delete('/:businessId', asyncHandler(async (req, res) => {
-    console.log(Number(req.params.businessId), "<<<<<<<<<<<<<<<<<<<<<<<<<<<< businessId")
-    
     const business = await Business.findByPk(Number(req.params.businessId))
-    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< BUSINESS', business)
-    // const business = await Business.findByPk(parseInt(req.params.businessId, 10))
-    // await business.destroy();
+    await business.destroy();
     return res.json(business);
-    // return res.json('deleted the thing');
+  
 
 })
 

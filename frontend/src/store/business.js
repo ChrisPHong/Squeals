@@ -129,9 +129,7 @@ const businessReducer = (state = initialState, action) => {
 
         case DELETE_BUSINESS:
             newState = { ...state }
-            console.log(action, 'DELETE A BUSINES')
             delete newState.entries[action.business.id]
-            console.log(newState, "New STATE<<<<<<<<<")
             return newState;
 
         case ONE_BUSINESS:
