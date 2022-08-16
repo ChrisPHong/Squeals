@@ -52,6 +52,7 @@ function EditFormPage() {
         const error = [];
         const numbers = '12345'
         if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
+        if (answer.length > 2000) error.push('Please Put a valid Answer with at least 10 characters')
         if (!numbers.includes(rating)) error.push('You need to put only 1 - 5 values')
         if (rating.length < 1) error.push('Please Put a valid Rating')
         if (answer.length < 1) error.push('Please Put a valid answer')
