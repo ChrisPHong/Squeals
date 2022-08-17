@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -33,18 +33,36 @@ router.post(
     '/',
     validateSignup,
     asyncHandler(async (req, res) => {
-        const { email, password, username, image} = req.body;
-        console.log(req.body, 'what is this image?')
-        console.log("<<<<<<<<<<<<<<<<,,,,,, image ", image)
-        
-        const user = await User.signup({ email, username, password, image});
-        // user.image = 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png'
-        console.log("<<<<<<<<<<<<<<<<,,,,,, What kind of User is it", user)
+        const { email, password, username, image } = req.body;
+
+
+        const user = await User.signup({ email, username, password, image });
+
         await setTokenCookie(res, user);
 
         return res.json({
             user,
         });
+    }),
+);
+// Profile Page
+router.get(
+    '/:userId', asyncHandler(async (req, res) => {
+        let userId = parseInt(req.params.userId, 10)
+
+        const user = await User.findByPk(userId, {
+            include: {
+                model: Review
+            },
+            where: { userId: userId },
+            order: [['createdAt', 'ASC']]
+
+        })
+       
+
+
+
+        return res.json(user);
     }),
 );
 

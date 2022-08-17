@@ -68,7 +68,7 @@ router.get('/:businessId', asyncHandler(async (req, res) => {
     const business = await Business.findByPk(businessId)
         
 
-    console.log('<<<<<<<<<<<<<<<<<<<<<<< BUSIneSS"', business)
+    
     return res.json({business});
 })
 

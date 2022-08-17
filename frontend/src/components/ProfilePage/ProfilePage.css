@@ -1,0 +1,56 @@
+.profile-container {
+    margin-top: 100px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.username-profilePicture-container{
+    display: flex; 
+    justify-content: flex-start;
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+.profile-picture {
+
+    width: 8em;
+    background-size: cover;
+    background-position: 50% 25%;
+    border-radius: 50%;
+
+
+}
+
+.profile-picture::after {
+    display: block;
+    padding-top: 100%;
+    content: ''
+}
+
+.reviews-container-profilePage{
+    margin-top:200px;
+}
+
+.Each-Review-ProfilePage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    background-size: 400% 400%;
+    transition-duration: .8s;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    animation: change 10s, ease-in-out infinite;
+    padding: 20px;
+    border: 1px solid #ebebeb;
+    border-radius:5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    width: 400px;
+
+}
+
+
+.Each-Review-ProfilePage:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}

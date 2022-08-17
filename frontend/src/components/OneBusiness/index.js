@@ -67,8 +67,10 @@ function OneBusiness() {
                         }}
                             src={business?.image}/> */}
                         {/* <figure  className='photos-profile-page' style={{backgroundImage: `url(${business?.image})`}} /> */}
+                    <div className='Business-title-div'>
 
                     <h1 className='Business-title'>{business?.title}</h1>
+                    </div>
                     <p className='reviews-tag'>{reviews?.length} reviews</p>
 
                 </div>

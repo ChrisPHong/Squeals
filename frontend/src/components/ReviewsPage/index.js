@@ -15,7 +15,6 @@ function ReviewsPage() {
     const reviews = useSelector((state) => Object.values(state.review.entries));
     const user = useSelector((state) => Object.values(state?.session?.user));
 
-    console.log(reviews, "<<<<<<<<<<<<< THESE ARE THE REVIEWS")
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -32,7 +31,6 @@ function ReviewsPage() {
             <h1>Reviews</h1>
             <div className='ReviewDiv'>
                 {reviews.length > 0 ? reviews.map(review => {
-                    console.log(review, "<<<<<<<<<<<<< REVIEW")
                     return (
                         <div
                         className='reviewForm'
