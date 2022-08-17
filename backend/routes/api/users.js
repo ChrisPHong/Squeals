@@ -49,7 +49,6 @@ router.post(
 router.get(
     '/:userId', asyncHandler(async (req, res) => {
         let userId = parseInt(req.params.userId, 10)
-        console.log('USER ID >>>>>>>>>>>>>>>>>>>>', userId);
 
         const user = await User.findByPk(userId, {
             include: {
@@ -59,7 +58,7 @@ router.get(
             order: [['createdAt', 'ASC']]
 
         })
-        console.log('<<<<<<<<<<<<< ________ USER ______ >>>>>', user)
+       
 
 
 
