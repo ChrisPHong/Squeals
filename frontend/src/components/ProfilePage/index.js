@@ -35,26 +35,26 @@ function ProfilePage() {
                 {user?.Reviews.map((review, idx) => {
                     return (
 
-                        <div 
-                        key={idx} 
-                        onClick={()=>{
-                            history.push(`/businesses/${review.businessId}`)
-                        }}
-                        className='Each-Review-ProfilePage'>
+                        <div
+                            key={idx}
+                            onClick={() => {
+                                history.push(`/businesses/${review.businessId}`)
+                            }}
+                            className='Each-Review-ProfilePage'>
                             <div >Rating: {review?.rating}</div>
                             <div >"{review?.answer}"</div>
                             <img className='review-picture' src={review?.image} />
                             <div className='editDiv'>
                                 {(review.userId === userId) ?
-                                        <button 
+                                    <button
                                         className='editReviewButton'
-                                        onClick={async()=>{
+                                        onClick={async () => {
                                             await dispatch(oneReview(review.id))
                                             await history.push(`/reviews/${review.id}`)
                                         }}
 
-                                        >Edit</button>
-                                
+                                    >Edit</button>
+
                                     : null}
                             </div>
 
