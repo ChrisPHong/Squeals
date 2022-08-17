@@ -15,7 +15,6 @@ function ReviewsPage() {
     const reviews = useSelector((state) => Object.values(state.review.entries));
     const user = useSelector((state) => Object.values(state?.session?.user));
 
-    console.log(reviews, "<<<<<<<<<<<<< THESE ARE THE REVIEWS")
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
 

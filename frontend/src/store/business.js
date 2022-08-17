@@ -36,6 +36,10 @@ export const loadBusinesses = () => async (dispatch) => {
     const response = await fetch('/api/businesses', {
         method: 'GET'
     });
+    const test = await fetch(`/api/users/${5}`, {
+        method: 'GET'
+    });
+    console.log(await test.json(), "THIS IS THE TEST")
 
     if (response.ok) {
         const businesses = await response.json();

@@ -15,6 +15,7 @@ import SplashPage from './components/SplashPage';
 import PageNotFound from "./components/PageNotFound";
 import Footer from "./components/Footer";
 import OneBusiness from './components/OneBusiness'
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route exact path="/businesses">
             <BusinessesPage />
+          </Route>
+          <Route exact path="/users/:userId">
+            <ProfilePage />
           </Route>
           <Route>
             <PageNotFound />
