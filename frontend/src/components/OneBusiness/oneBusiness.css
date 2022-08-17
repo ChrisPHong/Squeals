@@ -2,10 +2,16 @@
     margin-top: 100px;
 }
 
+.Business-title-div{
+   
+    margin-top: 100px;
+}
 .Business-title{
     font-family: Helvetica, sans-serif;
     color: white;
-    margin-top: 100px;
+    background-color: #36353561;
+    padding: 10px;
+    border-radius: 5px;
 }
 .image-background{
     position: relative;
@@ -31,6 +37,9 @@
 .reviews-tag{
     color: white;
     font-family:Helvetica, sans-serif;
+    background-color: #36353561;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .title-and-reviews-container{

@@ -32,7 +32,6 @@ function ReviewsPage() {
             <h1>Reviews</h1>
             <div className='ReviewDiv'>
                 {reviews.length > 0 ? reviews.map(review => {
-                    console.log(review, "<<<<<<<<<<<<< REVIEW")
                     return (
                         <div
                         className='reviewForm'

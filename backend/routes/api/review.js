@@ -34,7 +34,7 @@ router.get('/', asyncHandler(async (req, res) => {
         order: [['rating', 'ASC']]
 
     })
-    // console.log(usernames, "USER NAMES >>>>>>>>>>>>>>>>>>>>>")
+
     return res.json({ reviews });
 
 }))
@@ -42,7 +42,6 @@ router.get('/', asyncHandler(async (req, res) => {
 router.get('/:reviewId', asyncHandler(async (req, res) => {
     const reviewId = parseInt(req.params.reviewId, 10)
     const review = await Review.findByPk(reviewId)
-    console.log(review, 'BACK END reviewwwwww ')
     return res.json( review );
 }))
 

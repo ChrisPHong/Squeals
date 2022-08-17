@@ -117,17 +117,6 @@ const reviewsReducer = (state = initialState, action) => {
             action.reviews.forEach(review => {
                 newState.entries[review.id] = review
             })
-            // console.log(newState, "newState ------------")
-
-            // const reviewStateAndBusiness = {};
-            // console.log(action, "ACTION REVIEWSSSSSSSSSSSSSSSS")
-            //  action.reviews.reviews.forEach(review =>{
-            //     reviewStateAndBusiness[review.id] = review
-            // });
-            // const newState = {};
-        // action.reviews.reviews.forEach(review => {
-        //     newState[review.id] = review
-        // })
 
 
         return newState
@@ -144,13 +133,11 @@ const reviewsReducer = (state = initialState, action) => {
 
         case EDIT_REVIEW:
             newState = {...state}
-            console.log(action, "THIS IS THE ACTION <<<<<<<<<<<<<< HIT HTISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs")
-            console.log(action.review, "THIS IS THE ACTION <<<<<<<<<<<<<<")
+            
             newState[action.review.id] = action.review
             return newState
         case DELETE_REVIEW:
             newState = { ...state }
-            console.log(action, "<<<<<<<<<<<<< HELLO??")
             delete newState.entries[action.review]
 
             return newState

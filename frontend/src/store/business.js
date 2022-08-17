@@ -108,7 +108,6 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log(data, "THIS IS THE DATA")
         dispatch(removeBusiness(data));
 
         return data
