@@ -1,5 +1,4 @@
 .profile-container {
-    margin-top: 100px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -153,4 +152,15 @@
 
 .rating-review-container {
     margin-left: 10px;
+}
+
+.reviews-container-profilePage{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+.username-header-review{
+ font-family: Helvetica, sans-serif;
 }

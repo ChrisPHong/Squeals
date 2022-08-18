@@ -54,7 +54,6 @@ router.get(
             include: {
                 model: Review,
                 include: Business,
-                // include: User
             },
             where: { userId: userId },
             order: [['createdAt', 'ASC']]

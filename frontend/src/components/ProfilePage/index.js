@@ -37,8 +37,10 @@ function ProfilePage() {
             <div className='username-profilePicture-container'>
                 <h1>{user?.username}</h1>
                 <figure className='profile-picture' style={{ backgroundImage: `url(${user?.image})` }} />
+                <span>Biography</span>
             </div>
             <div className='reviews-container-profilePage'>
+                <h1 className='username-header-review'>{user?.username}'s Reviews</h1>
                 {user?.Reviews.map((review, idx) => {
 
                     return (
@@ -62,7 +64,7 @@ function ProfilePage() {
                                 </div>
                                 <div className='review-business-container'>
                                     <div className='business-container-profilePage'>
-                                    <figure className='review-business-image' style={{ backgroundImage: `url(${review.Business.image})` }} />
+                                        <figure className='review-business-image' style={{ backgroundImage: `url(${review.Business.image})` }} />
                                         {/* <img className='review-business-image' src={review.Business.image} /> */}
                                         <div className='business-title-descrip-profilePage'>
 
@@ -72,7 +74,7 @@ function ProfilePage() {
                                         </div>
                                     </div>
                                     <div className='Review-container-profilePage'>
-                                    <figure className='review-picture' style={{ backgroundImage: `url(${review?.image})` }} />
+                                        <figure className='review-picture' style={{ backgroundImage: `url(${review?.image})` }} />
                                         {/* <img className='review-picture' src={review?.image} /> */}
                                         <div className='rating-review-container'>
                                             <h4>Rating: {review?.rating}</h4>
