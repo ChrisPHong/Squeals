@@ -53,14 +53,15 @@ router.get(
         const user = await User.findByPk(userId, {
             include: {
                 model: Review,
-                include: Business
+                include: Business,
+                // include: User
             },
             where: { userId: userId },
             order: [['createdAt', 'ASC']]
 
         })
 
-        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USER', user.Reviews[0].Business);
+        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USER', user);
        
 
 
