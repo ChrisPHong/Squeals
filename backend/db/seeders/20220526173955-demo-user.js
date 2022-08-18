@@ -8,20 +8,28 @@ module.exports = {
         email: 'demo@user.io',
         username: 'Demo-lition',
         image: 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png',
-        hashedPassword: bcrypt.hashSync('password')
+        hashedPassword: bcrypt.hashSync('password'),
+        bio: 'Thanks For checking out my site!'
       },
       {
         email: 'user1@user.io',
-        username: 'FakeUser1',
+        username: 'SquealsJr',
         image: 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
         email: 'user2@user.io',
-        username: 'FakeUser2',
+        username: 'SquealsExpert',
         image: 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png',
         hashedPassword: bcrypt.hashSync('password3')
-      }
+      },
+      {
+        email: 'chrisC@aa.io',
+        username: 'PrettyBoy123',
+        image: 'https://squealsbucket.s3.us-west-1.amazonaws.com/chrispicture.gif',
+        hashedPassword: bcrypt.hashSync('password'),
+        bio: "Some think I'm pretty pretty, but I'm just pretty"
+      },
     ], {});
   },
 
