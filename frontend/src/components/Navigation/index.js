@@ -8,6 +8,7 @@ import './Navigation.css';
 import { useHistory } from 'react-router-dom'
 import github from './github.png'
 import linkedIn from './linkedIn.png'
+import profilePicture from './defaultPicture.png'
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -38,6 +39,9 @@ function Navigation({ isLoaded }) {
             to="/form">Create Business</button>
           <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
           <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
+          <Link to={`/users/${sessionUser.id}`}>
+          <img className='icon-image' src={profilePicture}/> 
+          </Link>
 
 
           <button

@@ -8,7 +8,15 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getOneBusiness } from '../../store/business'
 import { oneReview, deleteReview } from '../../store/review'
 
-
+/* 
+Things to do
+- Design the profile page and what information you'd like to display on there
+- Maybe display the types of businesss you wrote about? 
+- Show how many reviews you've written? 
+- on average your rating scale? 
+- latest review
+- Highest review (because you want to go back to the place you gave the highest review for)
+*/
 function ProfilePage() {
     const dispatch = useDispatch();
     const history = useHistory();
