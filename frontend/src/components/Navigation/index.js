@@ -56,6 +56,8 @@ function Navigation({ isLoaded }) {
       <>
         <div className='navbarDiv'>
           <Link className='squealsLink' to='/'><img className='navBarIcon' src='images/squeals.png' /></Link>
+          <div className='right-side-Nav-Bar'>
+            
           <NavLink className='LogInButton' to="/login">Log In</NavLink>
           <NavLink className='SignUpButton' to="/signup">Sign Up</NavLink>
 
@@ -65,8 +67,11 @@ function Navigation({ isLoaded }) {
         await dispatch(login(user))
         await history.push('/businesses')
       }}>Demo User</button> */}
-          <a href='https://github.com/ChrisPHong/Squeals'>GitHub</a>
-          <a href='https://www.linkedin.com/in/christopherpyohong/'>LinkedIn</a>
+      <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
+      <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
+          {/* <a href='https://github.com/ChrisPHong/Squeals'>GitHub</a>
+          <a href='https://www.linkedin.com/in/christopherpyohong/'>LinkedIn</a> */}
+      </div>
         </div>
       </>
     );
