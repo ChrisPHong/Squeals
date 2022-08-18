@@ -51,7 +51,7 @@ function ProfilePage() {
                 </div>
             </div>
             <div className='reviews-container-profilePage'>
-                {user.Reviews.length != 1 ? 
+                {user?.Reviews?.length != 1 ? 
                 <h1 className='username-header-review'>{user?.username}'s Reviews</h1>
             : 
                 <h1 className='username-header-review'>{user?.username}'s Review</h1>
