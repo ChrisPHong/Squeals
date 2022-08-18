@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { loadUserInfo } from '../../store/user';
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router-dom'
-import { getOneBusiness } from '../../store/business'
-import { oneReview, deleteReview } from '../../store/review'
+import { oneReview } from '../../store/review'
 
 /* 
 Things to do
@@ -45,13 +44,19 @@ function ProfilePage() {
 
                         <div
                             key={idx}
-                            onClick={() => {
-                                history.push(`/businesses/${review.businessId}`)
-                            }}
-                            className='Each-Review-ProfilePage'>
-                            <div >Rating: {review?.rating}</div>
-                            <div >"{review?.answer}"</div>
-                            <img className='review-picture' src={review?.image} />
+
+                            className='Each-Review-Container'>
+                            <div
+                                className='Each-Review-ProfilePage'
+                                onClick={() => {
+                                    history.push(`/businesses/${review.businessId}`)
+                                }
+                                }>
+
+                                <div >Rating: {review?.rating}</div>
+                                <div >"{review?.answer}"</div>
+                                <img className='review-picture' src={review?.image} />
+                            </div>
                             <div className='editDiv'>
                                 {(review.userId === userId) ?
                                     <button
@@ -66,15 +71,7 @@ function ProfilePage() {
                                     : null}
                             </div>
 
-                            <div className='deleteDiv'>
-                                {(review.userId === userId) ?
-                                    <button className='deleteReviewButton'
-                                        onClick={() => {
-                                            dispatch(deleteReview(review.businessId, review.id))
-                                        }}
-                                    >Delete</button>
-                                    : null}
-                            </div>
+
 
                         </div>
                     )

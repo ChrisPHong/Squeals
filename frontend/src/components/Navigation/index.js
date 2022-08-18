@@ -27,8 +27,6 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className='navbarDiv'>
         <Link to='/businesses'><img className='navBarIcon' src='images/squeals.png' /></Link>
-        {/* <NavLink exact to="/businesses">Businesses</NavLink> */}
-        {/* <ProfileButton user={sessionUser} /> */}
         <div className='right-side-Nav-Bar'>
 
           <button
@@ -58,19 +56,13 @@ function Navigation({ isLoaded }) {
           <Link className='squealsLink' to='/'><img className='navBarIcon' src='images/squeals.png' /></Link>
           <div className='right-side-Nav-Bar'>
             
-          <NavLink className='LogInButton' to="/login">Log In</NavLink>
-          <NavLink className='SignUpButton' to="/signup">Sign Up</NavLink>
+          <NavLink className='LogInButton nav-bar-button' to="/login">Log In</NavLink>
+          <NavLink className='SignUpButton nav-bar-button' to="/signup">Sign Up</NavLink>
 
-          {/* <button
-      className='demoButton'
-      onClick={async () => {
-        await dispatch(login(user))
-        await history.push('/businesses')
-      }}>Demo User</button> */}
+      
       <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
       <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
-          {/* <a href='https://github.com/ChrisPHong/Squeals'>GitHub</a>
-          <a href='https://www.linkedin.com/in/christopherpyohong/'>LinkedIn</a> */}
+  
       </div>
         </div>
       </>
