@@ -19,6 +19,13 @@ a{
     /* margin: 100px; */
  }
 
+
+ .nav-bar-button{
+    margin-right: 10px;
+ }
+ /* .nav-bar-button:hover{
+    background-color: grey;
+ } */
  .navBarIcon{
      max-height: 45px;
  }
@@ -44,11 +51,11 @@ a{
     border-radius: 5px;
     padding: 5px;
     text-decoration: none;
-    background-color: rgb(219, 52, 52);
+    /* background-color: rgb(219, 52, 52); */
 }
 
 .LogInButton:hover{
-    background-color: transparent;
+    background-color: rgba(86, 86, 86, 0.373);
 }
 
 .SignUpButton{
@@ -60,7 +67,8 @@ a{
 }
 
 .SignUpButton:hover{
-    background-color: transparent;
+    background-color: rgba(86, 86, 86, 0.373);
+    
 
 }
 

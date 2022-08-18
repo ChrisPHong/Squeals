@@ -5,10 +5,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { loadUserInfo } from '../../store/user';
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router-dom'
-import { getOneBusiness } from '../../store/business'
-import { oneReview, deleteReview } from '../../store/review'
+import { oneReview } from '../../store/review'
 
-
+/* 
+Things to do
+- Design the profile page and what information you'd like to display on there
+- Maybe display the types of businesss you wrote about? 
+- Show how many reviews you've written? 
+- on average your rating scale? 
+- latest review
+- Highest review (because you want to go back to the place you gave the highest review for)
+*/
 function ProfilePage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -30,43 +37,68 @@ function ProfilePage() {
             <div className='username-profilePicture-container'>
                 <h1>{user?.username}</h1>
                 <figure className='profile-picture' style={{ backgroundImage: `url(${user?.image})` }} />
+                <span>Biography</span>
             </div>
             <div className='reviews-container-profilePage'>
+                <h1 className='username-header-review'>{user?.username}'s Reviews</h1>
                 {user?.Reviews.map((review, idx) => {
+
                     return (
 
                         <div
                             key={idx}
-                            onClick={() => {
-                                history.push(`/businesses/${review.businessId}`)
-                            }}
-                            className='Each-Review-ProfilePage'>
-                            <div >Rating: {review?.rating}</div>
-                            <div >"{review?.answer}"</div>
-                            <img className='review-picture' src={review?.image} />
-                            <div className='editDiv'>
+
+                            className='Each-Review-Container'>
+                            <div
+                                className='Each-Review-ProfilePage'
+                                onClick={() => {
+                                    history.push(`/businesses/${review.businessId}`)
+                                }
+                                }>
+                                <div className='userInfo-container'>
+                                    <div className='username-profilePicture-container'>
+                                        <p className='username-title'>{user?.username}</p>
+                                        <figure className='profile-picture-review' style={{ backgroundImage: `url(${user?.image})` }} />
+                                    </div>
+
+                                </div>
+                                <div className='review-business-container'>
+                                    <div className='business-container-profilePage'>
+                                        <figure className='review-business-image' style={{ backgroundImage: `url(${review.Business.image})` }} />
+                                        {/* <img className='review-business-image' src={review.Business.image} /> */}
+                                        <div className='business-title-descrip-profilePage'>
+
+                                            <h4 className='business-title-profilePage'>{review.Business.title} </h4>
+
+                                            <span className='business-descrip-profilePage'>{review.Business.description} </span>
+                                        </div>
+                                    </div>
+                                    <div className='Review-container-profilePage'>
+                                        <figure className='review-picture' style={{ backgroundImage: `url(${review?.image})` }} />
+                                        {/* <img className='review-picture' src={review?.image} /> */}
+                                        <div className='rating-review-container'>
+                                            <h4>Rating: {review?.rating}</h4>
+                                            <span >"{review?.answer}"</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {/* <div className='editDiv'>
                                 {(review.userId === userId) ?
                                     <button
-                                        className='editReviewButton'
-                                        onClick={async () => {
-                                            await dispatch(oneReview(review.id))
-                                            await history.push(`/reviews/${review.id}`)
-                                        }}
-
+                                    className='editReviewButton'
+                                    onClick={async () => {
+                                        await dispatch(oneReview(review.id))
+                                        await history.push(`/reviews/${review.id}`)
+                                    }}
+                                    
                                     >Edit</button>
-
+                                    
                                     : null}
-                            </div>
+                                </div> */}
 
-                            <div className='deleteDiv'>
-                                {(review.userId === userId) ?
-                                    <button className='deleteReviewButton'
-                                        onClick={() => {
-                                            dispatch(deleteReview(review.businessId, review.id))
-                                        }}
-                                    >Delete</button>
-                                    : null}
-                            </div>
+
 
                         </div>
                     )

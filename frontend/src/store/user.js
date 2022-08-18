@@ -1,6 +1,8 @@
 export const LOAD_USER = 'user/INFO';
 export const ADD_REVIEW = 'review/ADD';
 export const EDIT_REVIEW = 'review/EDIT';
+// export const DELETE_REVIEW = 'user/review/delete';
+
 
 const { csrfFetch } = require('../store/csrf')
 //actions
@@ -8,6 +10,11 @@ const load = (user) => ({
     type: LOAD_USER,
     user
 })
+
+// const delReview = (review) => ({
+//     type: DELETE_REVIEW,
+//     review
+// })
 
 // const add = (review) => ({
 //     type: ADD_REVIEW,
@@ -28,6 +35,17 @@ export const loadUserInfo = (userId) => async (dispatch) => {
     }
 }
 
+// export const deleteReview = (reviewId) => async (dispatch) => {
+
+//     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+//         method: "DELETE",
+//     })
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(delReview(reviewId))
+//         return data;
+//     }
+// }
 // export const addReview = (review) => async (dispatch) => {
 //     const {userId, businessId, rating, answer, image} = review
 
@@ -63,11 +81,12 @@ const usersReducer = (state = initialState, action) => {
         case LOAD_USER:
             newState = { ...state, one: {} }
             newState.one[action.user.id] = action.user
-            console.log(action, newState, "<<<<<<<< ACTION AND NeWSTATE")
-
-
             return newState
-
+        // case DELETE_REVIEW:
+        //     newState = {...state}
+        //     console.log(action, " THIS IS THE ACTION>>>>>>>>")
+        //     // delete newState.one[action.review]
+        //     return newState;
 
         default:
             return state
