@@ -45,7 +45,7 @@
 }
 
 .reviews-container-profilePage {
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .Each-Review-ProfilePage {
@@ -163,4 +163,15 @@
 
 .username-header-review{
  font-family: Helvetica, sans-serif;
+}
+
+.user-bio-when-joined{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-family: Helvetica, sans-serif;
+}
+
+.bio-date-joined{
+padding: 5px 5px;
 }

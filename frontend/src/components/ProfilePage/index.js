@@ -32,15 +32,30 @@ function ProfilePage() {
         dispatch(loadUserInfo(profileId))
     }, [dispatch])
 
+    const helperDate = (data) => {
+
+        let date = new Date(data);
+        return date?.toLocaleDateString();
+
+    }
+
     return (
         <div className='profile-container'>
             <div className='username-profilePicture-container'>
                 <h1>{user?.username}</h1>
                 <figure className='profile-picture' style={{ backgroundImage: `url(${user?.image})` }} />
-                <span>Biography</span>
+                <div className='user-bio-when-joined'>
+
+                <span className='bio-date-joined'>Bio: {user?.bio}</span>
+                <span className='bio-date-joined'>Joined Squeals: {helperDate(user?.createdAt)}</span>
+                </div>
             </div>
             <div className='reviews-container-profilePage'>
+                {user.Reviews.length != 1 ? 
                 <h1 className='username-header-review'>{user?.username}'s Reviews</h1>
+            : 
+                <h1 className='username-header-review'>{user?.username}'s Review</h1>
+            }
                 {user?.Reviews.map((review, idx) => {
 
                     return (
