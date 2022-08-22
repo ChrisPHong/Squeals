@@ -1,17 +1,17 @@
 .reviewForm {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     flex-direction: column;
     margin: 10px;
-    background-size: 400% 400%;
+    /* background-size: 400% 400%; */
     transition-duration: .8s;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    animation: change 10s, ease-in-out infinite;
-    padding: 20px;
+    font-family: Helvetica, sans-serif;
+    padding: 10px;
     border: 1px solid #ebebeb;
     border-radius:5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    width:400px;
 
 }
 
@@ -62,30 +62,27 @@
 
 .deleteReviewButton{
     background-color: rgb(216, 29, 29);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Helvetica, sans-serif;
     padding: 5px 10px;
     font-size: 14px;
     display: flex;
     margin-bottom: 5px;
-
     transition-duration: 1.3s;
 }
 .editReviewButton{
     background-color: rgb(216, 29, 29);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    padding: 5px 10px;
+    font-family: Helvetica, sans-serif;
+    padding: 5px 15px;
     font-size: 14px;
     display: flex;
     transition-duration: 1.3s;
     margin-bottom: 5px;
     text-decoration: none;
+    margin-right: 10px;
 }
 
-.editReviewButton:hover {
+.editReviewButton,.deleteReviewButton:hover {
    cursor: pointer;
-}
-.deleteReviewButton:hover {
-    cursor: pointer;
 }
 
 .review-picture{
@@ -101,5 +98,52 @@ flex-direction: column;
 }
 
 .review-profilepicture{
-    width: 30px;
+
+    width: 100px;
+    background-size: cover;
+    background-position: 50% 25%;
+    border-radius: 50%;
+
+
+}
+
+.review-profilepicture::after {
+    display: block;
+    padding-top: 100%;
+    content: ''
+}
+
+.review-username-image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.review-username-image-container:hover{
+cursor: pointer;
+}
+
+.each-review-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.review-rating-answer-picture-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 20px;
+}
+.edit-delete-button-container{
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+    margin-bottom: 10px;
+
+}
+.review-username-p-tag{
+font-weight: bold;
+font-family: Helvetica, sans-serif;
 }

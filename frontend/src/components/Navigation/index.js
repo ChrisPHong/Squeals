@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom'
 import github from './github.png'
 import linkedIn from './linkedIn.png'
 import profilePicture from './defaultPicture.png'
+import squealsLogo from './squeals.png'
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -26,7 +27,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className='navbarDiv'>
-        <Link to='/businesses'><img className='navBarIcon' src='images/squeals.png' /></Link>
+        <Link to='/businesses'><img className='navBarIcon' src={squealsLogo} /></Link>
         <div className='right-side-Nav-Bar'>
 
           <button
@@ -53,7 +54,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <div className='navbarDiv'>
-          <Link className='squealsLink' to='/'><img className='navBarIcon' src='images/squeals.png' /></Link>
+          <Link className='squealsLink' to='/'><img className='navBarIcon' src={squealsLogo} /></Link>
           <div className='right-side-Nav-Bar'>
             
           <NavLink className='LogInButton nav-bar-button' to="/login">Log In</NavLink>

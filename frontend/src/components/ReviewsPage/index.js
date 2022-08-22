@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as sessionActions from '../../store/session'
 import { deleteReview, loadReviews, oneReview } from '../../store/review';
 import { Link } from 'react-router-dom'
-import { useParams, useHistory} from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { getOneBusiness } from '../../store/business'
 
 
@@ -33,30 +33,51 @@ function ReviewsPage() {
                 {reviews.length > 0 ? reviews.map(review => {
                     return (
                         <div
-                        className='reviewForm'
-                        key={`outerDiv${review.id}`}>
-                            <img className='review-profilepicture' src={review.User.image}/>
-                            <p className='review-username-p-tag'>{review.User.username}</p>
-                            <div key={`rating${review.id}`}>Rating: {review.rating}</div>
-                            <div key={`answer${review.id}`}>"{review.answer}"</div>
-                            <img className='review-picture' src={review.image} />
-
-
-                            <div className='editDiv'>
+                            className='reviewForm'
+                            key={`outerDiv${review.id}`}>
                                 {(review.userId === userId) ?
-                                        <button 
+                                <div className='edit-delete-button-container'> 
+
+                                    <button
                                         className='editReviewButton'
-                                        onClick={async()=>{
+                                        onClick={async () => {
                                             await dispatch(oneReview(review.id))
                                             await history.push(`/reviews/${review.id}`)
                                         }}
-
+                                        
                                         >Edit</button>
-                                
-                                    : null}
-                            </div>
+                                        <button className='deleteReviewButton'
+                                        onClick={() => {
+                                            dispatch(deleteReview(businessId, review.id))
+                                        }}
+                                    >Delete</button>
 
-                            <div className='deleteDiv'>
+                                        </div>
+                                    : null}
+                            <div className='each-review-container'>
+                                <div
+                                    onClick={() => {
+                                        history.push(`/users/${review.userId}`)
+                                    }}
+                                    className='review-username-image-container'>
+                                        <figure className='review-profilepicture' style={{ backgroundImage: `url(${review.User.image})` }} />
+                                    {/* <img className='review-profilepicture' src={review.User.image} /> */}
+                                    <p className='review-username-p-tag'>{review.User.username}</p>
+                                </div>
+                                <div className='review-rating-answer-picture-container'>
+
+                                    <div key={`rating${review.id}`}>Rating: {review.rating}</div>
+                                    <div key={`answer${review.id}`}>"{review.answer}"</div>
+                                    <img className='review-picture' src={review.image} />
+                                </div>
+
+
+                            </div>
+                           
+                                
+                           
+
+                            {/* <div className='deleteDiv'>
                                 {(review.userId === userId) ?
                                     <button className='deleteReviewButton'
                                         onClick={() => {
@@ -64,7 +85,7 @@ function ReviewsPage() {
                                         }}
                                     >Delete</button>
                                     : null}
-                            </div>
+                            </div> */}
                         </div>
                     )
                 }) : <div className='no-review-div'>
