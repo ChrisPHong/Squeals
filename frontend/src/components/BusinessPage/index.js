@@ -30,19 +30,6 @@ function BusinessPage({ business }) {
                     </div>
                 </Link>
                 <div className='informationDiv'>
-                    <div className='businessName'>
-                        <h2 className='businessTitle' key={`title${business.id}`}>{business.title}</h2>
-                    </div>
-                    <div className='pDiv'>
-                        <p className='description' key={`description${business.id}`}>{business.description}</p>
-                    </div>
-                    <div className='addressBusiness'>
-                        <p className='address' key={`address${business.address}`}>{`${business.address} ${business.city}, ${business.state} ${business.zipCode}`}</p>
-                        <div>
-                            <p>{`(${business.phoneNumber.slice(0, 3)})-${business.phoneNumber.slice(3, 6)}-${business.phoneNumber.slice(6.10)}`}</p>
-                        </div>
-                    </div>
-                </div>
                 {business?.userId === userId ?
                     <div className='edit-Delete-container'>
 
@@ -69,6 +56,20 @@ function BusinessPage({ business }) {
                         </div>
                     </div>
                     : null}
+                    <div className='businessName'>
+                        <h2 className='businessTitle' key={`title${business.id}`}>{business.title}</h2>
+                    </div>
+                    <div className='pDiv'>
+                        <p className='description' key={`description${business.id}`}>{business.description}</p>
+                    </div>
+                    <div className='addressBusiness'>
+                        <p className='address' key={`address${business.address}`}>{`${business.address} ${business.city}, ${business.state} ${business.zipCode}`}</p>
+                        <div>
+                            <p className='address'>{`(${business.phoneNumber.slice(0, 3)})-${business.phoneNumber.slice(3, 6)}-${business.phoneNumber.slice(6.10)}`}</p>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
 

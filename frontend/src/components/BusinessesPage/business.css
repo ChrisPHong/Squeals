@@ -64,10 +64,12 @@ li {
     padding: 10px 20px;
     transition-duration: 1s;
     border: 0px solid black;
+
 }
 
 .ownerButton:hover {
     cursor: pointer;
+    background-color: rgb(248, 39, 39);
 
 }
 
@@ -89,7 +91,7 @@ li {
 .businessTitle {
     margin: 10px 10px;
     font-weight: 50px solid black;
-    border-bottom: solid 2px black;
+    border-bottom: solid 1px black;
     /* padding-top: 10px; */
     margin-top: 40px;
 }
@@ -101,28 +103,22 @@ li {
 
 
 .informationDiv {
-    border-left: solid rgb(92, 91, 91, .4) 2px;
+    border-left: solid rgb(92, 91, 91, .4) 1px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     transition-duration: 1.2s;
-    width: auto;
+    /* width: auto; */
 }
-.informationDiv:hover {
-    border-left: solid rgb(92, 91, 91, .4) 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .description {
     margin: 10px 10px;
     font-size: 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    overflow-wrap: anywhere;
 }
 
 .address {
@@ -139,7 +135,7 @@ li {
 
 .addressBusiness{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
 }
