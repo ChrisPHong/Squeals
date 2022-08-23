@@ -64,8 +64,8 @@ function BusinessPage({ business }) {
                     </div>
                     <div className='addressBusiness'>
                         <p className='address' key={`address${business.address}`}>{`${business.address} ${business.city}, ${business.state} ${business.zipCode}`}</p>
+                            <p className='phone-number'>{`(${business.phoneNumber.slice(0, 3)})-${business.phoneNumber.slice(3, 6)}-${business.phoneNumber.slice(6.10)}`}</p>
                         <div>
-                            <p className='address'>{`(${business.phoneNumber.slice(0, 3)})-${business.phoneNumber.slice(3, 6)}-${business.phoneNumber.slice(6.10)}`}</p>
                         </div>
                     </div>
                 </div>
