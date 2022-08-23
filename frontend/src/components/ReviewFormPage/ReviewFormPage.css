@@ -14,6 +14,22 @@
     box-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
     transition-duration: 1s;
 }
+.review-form{
+    color: black;
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: solid black 1px;
+    border-radius: 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
+    transition-duration: 1s;
+
+}
 
 .formDiv {
     padding: 4px;
@@ -49,4 +65,8 @@
 .errorLi{
     margin: 2px;
 
+}
+
+.review-textarea{
+    padding: 100px 200px;
 }

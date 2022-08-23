@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import * as sessionActions from '../../store/session';
-import { login } from '../../store/session'
 import './Navigation.css';
 import { useHistory } from 'react-router-dom'
-import github from './github.png'
-import linkedIn from './linkedIn.png'
-import profilePicture from './defaultPicture.png'
+import github from './githubLogoW.png'
+import linkedIn from './LinkedInLogoW.png'
+import profilePicture from './profileLogoW.png'
 import squealsLogo from './squeals.png'
+
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -39,7 +38,7 @@ function Navigation({ isLoaded }) {
           <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
           <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
           <Link to={`/users/${sessionUser.id}`}>
-          <img className='icon-image' src={profilePicture}/> 
+          <img className='icon-image' src={profilePicture}/>
           </Link>
 
 
@@ -56,14 +55,14 @@ function Navigation({ isLoaded }) {
         <div className='navbarDiv'>
           <Link className='squealsLink' to='/'><img className='navBarIcon' src={squealsLogo} /></Link>
           <div className='right-side-Nav-Bar'>
-            
+
           <NavLink className='LogInButton nav-bar-button' to="/login">Log In</NavLink>
           <NavLink className='SignUpButton nav-bar-button' to="/signup">Sign Up</NavLink>
 
-      
+
       <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
       <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
-  
+
       </div>
         </div>
       </>

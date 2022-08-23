@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { loadBusinesses, deleteBusiness, getOneBusiness } from '../../store/business'
 import './oneBusiness.css'
+import cameraPic from './camera.png'
 
 
 function OneBusiness() {
@@ -39,69 +40,69 @@ function OneBusiness() {
     return (
         <>
             <div className='outerBusiness-container'>
-                <div
-                    style={{
-                        backgroundImage: `url(${business?.image})`,
-                        backgroundRepeat: 'none',
-    // backgroundSize: '100% 100%',
-    backgroundSize: 'auto',
-    // minHeight: '400px',
-    height: '500px',
-    // maxHeight: '600px',
-    // minWidth: 'auto',
-    width: '600px',
-    display: 'grid',
-    placeItems: 'center',
-    marginTop: '50px',
-    zIndex: '-1',
+                <div className='main-picture-container'>
 
-                    }}
-                    className='title-and-reviews-container'>
-                        {/* <img className='image-background'
+                    <div
                         style={{
-                            width: '400px',
-                            height:'600px',
-                            objectFit:'cover',
+                            backgroundImage: `url(${business?.image})`,
+                            backgroundSize: 'auto',
+                            height: '500px',
 
+                            width: '600px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            placeItems: 'center',
+                            marginTop: '50px',
+                            justifyContent: 'center'
 
                         }}
-                            src={business?.image}/> */}
-                        {/* <figure  className='photos-profile-page' style={{backgroundImage: `url(${business?.image})`}} /> */}
-                    <div className='Business-title-div'>
+                        className='title-and-reviews-container'>
+                        <div className='Business-title-div'>
 
-                    <h1 className='Business-title'>{business?.title}</h1>
+                            <h1 className='Business-title'>{business?.title}</h1>
+                        </div>
+                        <p className='reviews-tag'>{reviews?.length} reviews</p>
+
                     </div>
-                    <p className='reviews-tag'>{reviews?.length} reviews</p>
+                    <div className='review-share-container'>
 
-                </div>
-                <div className='review-share-container'>
+                        <Link to={`/businesses/${business?.id}/reviews`}>
+                            <button
+                                onClick={() => {
+                                    dispatch(getOneBusiness(business?.id))
+                                }}
+                                className='ownerButton add-a-Review-Button'
 
-                    <Link to={`/businesses/${business?.id}/reviews`}>
-                        <button
-                            onClick={() => {
-                                dispatch(getOneBusiness(business?.id))
-                            }}
-                            className='ownerButton add-a-Review-Button'
+                            >Add a Review</button>
+                        </Link>
+                        <Link to={`/businesses/${business?.id}/reviews`}>
+                            <button
+                                onClick={() => {
+                                    dispatch(getOneBusiness(business?.id))
+                                }}
+                                className='Add-Photo-Button'
 
-                        >Add a Review</button>
-                    </Link>
-                    <button onClick={copyBusinessLink} className='ShareButton'>
-                        Share
-                    </button>
+                            ><img className='camera-img' src={cameraPic}/>Add photo</button>
 
-                </div>
+                        </Link>
+                        <button onClick={copyBusinessLink} className='ShareButton'>
+                            Share
+                        </button>
 
-                <div className='phone-address-container'>
-                    <p className='phone-number-line' onClick={copyPhoneNumber}>{`(${business?.phoneNumber.slice(0, 3)}) ${business?.phoneNumber.slice(3, 6)} - ${business?.phoneNumber.slice(6.10)}`}</p>
-                    <p className='address-line'>{business?.address} {business?.city} {business?.state} {business?.zipCode}</p>
-                </div>
+                    </div>
 
-                <div className='About-the-business-Container'>
-                    <h2 className='h2-tag-AboutBusiness'>About the Business</h2>
-                    <div className='aboutBusiness'>
+                    <div className='phone-address-container'>
+                        <p className='phone-number-line' onClick={copyPhoneNumber}>{`(${business?.phoneNumber.slice(0, 3)}) ${business?.phoneNumber.slice(3, 6)} - ${business?.phoneNumber.slice(6.10)}`}</p>
+                        <p className='address-line'>{business?.address} {business?.city} {business?.state} {business?.zipCode}</p>
+                    </div>
+
+                    <div className='About-the-business-Container'>
+                        <h2 className='h2-tag-AboutBusiness'>About the Business</h2>
+                        <div className='aboutBusiness'>
                             {business?.description}
-                    </div>
+                        </div>
 
+                    </div>
                 </div>
             </div>
 

@@ -71,7 +71,7 @@ function ReviewForm() {
             <div>
 
                 <form
-                className='editForm'
+                className='review-form'
                 onSubmit={handleSubmit}>
                     {errors.length > 0 ? <h3 className='validationErrorsReviews'>Add Your Review</h3> : <h3>Post Your Review</h3>}
                     <ul className='errors array'>{show && errors.length > 0 ? errors.map(error => {
@@ -96,6 +96,7 @@ function ReviewForm() {
                             setAnswer(e.target.value);
                         }}></input> */}
                     <textarea
+
                         placeholder="I can't believe this place hasn't been visited and
                         reviewed enough! It was my first time and will NOT BE MY LAST!
                         The atmosphere is a vibe. The service is a vibe!
@@ -103,7 +104,7 @@ function ReviewForm() {
                         value={answer}
                         rows='10'
                         col='50'
-                        className=''
+                        className='review-textarea'
 
                         onChange={(e) => {
                             setAnswer(e.target.value);
