@@ -1,5 +1,8 @@
 .outerBusiness-container {
     margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Business-title-div {
@@ -65,10 +68,14 @@
 }
 
 .address-line {
-    margin: 10px 10px;
-    font-size: 20px;
+    margin: 0px 10px;
+    font-size: 18px;
     font-family: Helvetica, sans-serif;
     color: rgba(110, 112, 114, 1);
+    padding: 5px 0px;
+    border-bottom: #ebebeb 1px solid;
+    font-weight: bold;
+
 }
 
 
@@ -77,15 +84,19 @@
     flex-direction: column;
     border: 1px solid #ebebeb;
     border-radius: 5px;
+    width: 200px;
     /* position: sticky; */
 
 }
 
 .phone-number-line {
-    margin: 10px 10px;
+    margin: 0px 10px;
     font-size: 20px;
     font-family: Helvetica, sans-serif;
     color: black;
+    padding: 10px 0px;
+    border-bottom: 1px #ebebeb solid;
+    font-weight: bold;
 }
 
 .About-the-business-Container {

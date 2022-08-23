@@ -27,8 +27,10 @@ function ReviewsPage() {
     }, [dispatch])
 
     return (
-        <div>
+        <div className='outer-div-container-Reviews'>
+            <div className='Reviews-title-container'>
             <h1 className='businessesTitle'>Reviews</h1>
+            </div>
             <div className='ReviewDiv'>
                 {reviews.length > 0 ? reviews.map(review => {
                     return (
