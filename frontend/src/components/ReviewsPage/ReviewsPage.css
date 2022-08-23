@@ -147,3 +147,18 @@ cursor: pointer;
 font-weight: bold;
 font-family: Helvetica, sans-serif;
 }
+
+.outer-div-container-Reviews{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Reviews-title-container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: flex-start;
+    flex-direction: column;
+
+}

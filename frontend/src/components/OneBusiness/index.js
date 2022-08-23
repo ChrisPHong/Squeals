@@ -82,7 +82,7 @@ function OneBusiness() {
                                 }}
                                 className='Add-Photo-Button'
 
-                            ><img className='camera-img' src={cameraPic}/>Add photo</button>
+                            ><img className='camera-img' src={cameraPic} />Add photo</button>
 
                         </Link>
                         <button onClick={copyBusinessLink} className='ShareButton'>
@@ -91,10 +91,10 @@ function OneBusiness() {
 
                     </div>
 
-                    <div className='phone-address-container'>
+                    {/* <div className='phone-address-container'>
                         <p className='phone-number-line' onClick={copyPhoneNumber}>{`(${business?.phoneNumber.slice(0, 3)}) ${business?.phoneNumber.slice(3, 6)} - ${business?.phoneNumber.slice(6.10)}`}</p>
                         <p className='address-line'>{business?.address} {business?.city} {business?.state} {business?.zipCode}</p>
-                    </div>
+                    </div> */}
 
                     <div className='About-the-business-Container'>
                         <h2 className='h2-tag-AboutBusiness'>About the Business</h2>
@@ -103,6 +103,11 @@ function OneBusiness() {
                         </div>
 
                     </div>
+                </div>
+
+                <div className='phone-address-container'>
+                    <p className='phone-number-line' onClick={copyPhoneNumber}>{`(${business?.phoneNumber.slice(0, 3)}) ${business?.phoneNumber.slice(3, 6)} - ${business?.phoneNumber.slice(6.10)}`}</p>
+                    <p className='address-line'>{business?.address} {business?.city} {business?.state} {business?.zipCode}</p>
                 </div>
             </div>
 

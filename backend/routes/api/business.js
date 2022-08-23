@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { Business, User, Review } = require('../../db/models');
+const { Business, User, Review, Like } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3')
@@ -66,7 +66,9 @@ router.post(
 router.get('/:businessId', asyncHandler(async (req, res) => {
     const businessId = parseInt(req.params.businessId, 10)
     const business = await Business.findByPk(businessId)
-        
+    
+    const like = await Like.findByPk(businessId)
+    console.log(like, "THIS IS THE LIKE!!!<<<<<<<<<<<<<<<<<<<<<<<<<")
 
     
     return res.json({business});
