@@ -28,7 +28,7 @@ function ReviewsPage() {
 
     return (
         <div>
-            <h1>Reviews</h1>
+            <h1 className='businessesTitle'>Reviews</h1>
             <div className='ReviewDiv'>
                 {reviews.length > 0 ? reviews.map(review => {
                     return (
@@ -36,7 +36,7 @@ function ReviewsPage() {
                             className='reviewForm'
                             key={`outerDiv${review.id}`}>
                                 {(review.userId === userId) ?
-                                <div className='edit-delete-button-container'> 
+                                <div className='edit-delete-button-container'>
 
                                     <button
                                         className='editReviewButton'
@@ -44,7 +44,7 @@ function ReviewsPage() {
                                             await dispatch(oneReview(review.id))
                                             await history.push(`/reviews/${review.id}`)
                                         }}
-                                        
+
                                         >Edit</button>
                                         <button className='deleteReviewButton'
                                         onClick={() => {
@@ -73,9 +73,9 @@ function ReviewsPage() {
 
 
                             </div>
-                           
-                                
-                           
+
+
+
 
                             {/* <div className='deleteDiv'>
                                 {(review.userId === userId) ?
