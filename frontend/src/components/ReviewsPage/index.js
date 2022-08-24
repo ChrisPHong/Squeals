@@ -26,7 +26,6 @@ function ReviewsPage() {
     }, [dispatch])
 
     const reviewLikes = (likesArr) => {
-
         const results = {
             'funny': [],
             'cool': [],

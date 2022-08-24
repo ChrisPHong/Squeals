@@ -116,7 +116,6 @@ export const oneReview = (id) => async (dispatch) => {
 }
 
 export const reactionReviews = (reaction) => async (dispatch) => {
-    console.log(reaction, "<<<<<<<< INSID ETHE THUNK >>>>>>>>>>>")
     const response = await csrfFetch(`/api/likes/${reaction.reactionId}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
