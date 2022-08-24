@@ -60,10 +60,6 @@ router.get(
 
         })
 
-        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USER', user);
-       
-
-
 
         return res.json(user);
     }),
