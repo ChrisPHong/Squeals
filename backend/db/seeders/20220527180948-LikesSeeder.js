@@ -9,10 +9,16 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Likes', [
-     {userId: 1, businessId:1, createdAt: new Date(), updatedAt: new Date()},
-     {userId: 2, businessId:2, createdAt: new Date(), updatedAt: new Date()},
-     {userId: 3, businessId:3, createdAt: new Date(), updatedAt: new Date()},
-     {userId: 4, businessId:1, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 2, reviewId:1, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 3, reviewId:1, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 4, reviewId:1, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 1, reviewId:1, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 1, reviewId:2, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 1, reviewId:3, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 1, reviewId:4, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 2, reviewId:2, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 3, reviewId:3, createdAt: new Date(), updatedAt: new Date()},
+     {userId: 4, reviewId:1, createdAt: new Date(), updatedAt: new Date()},
    ], {});
   },
 

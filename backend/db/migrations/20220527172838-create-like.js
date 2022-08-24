@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      businessId: {
+      reviewId: {
         allowNull: false,
         type: Sequelize.INTEGER
       },

@@ -4,7 +4,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { Business, User, Review, Like } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3')
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
 
 const router = express.Router();
 
@@ -54,7 +54,7 @@ router.post(
     requireAuth, singleMulterUpload("image"),
     validateSignup,
     asyncHandler(async (req, res) => {
-        const { userId, title, description, address, city, state, zipCode, phoneNumber} = req.body;
+        const { userId, title, description, address, city, state, zipCode, phoneNumber } = req.body;
         const profileImageUrl = await singlePublicFileUpload(req.file);
 
         const business = await Business.create({ userId, title, description, address, city, state, zipCode, phoneNumber, image: profileImageUrl });
@@ -66,12 +66,9 @@ router.post(
 router.get('/:businessId', asyncHandler(async (req, res) => {
     const businessId = parseInt(req.params.businessId, 10)
     const business = await Business.findByPk(businessId)
-    
-    const like = await Like.findByPk(businessId)
-    console.log(like, "THIS IS THE LIKE!!!<<<<<<<<<<<<<<<<<<<<<<<<<")
 
-    
-    return res.json({business});
+
+    return res.json({ business });
 })
 
 )
@@ -101,7 +98,7 @@ router.delete('/:businessId', asyncHandler(async (req, res) => {
     const business = await Business.findByPk(Number(req.params.businessId))
     await business.destroy();
     return res.json(business);
-  
+
 
 })
 
@@ -109,15 +106,17 @@ router.delete('/:businessId', asyncHandler(async (req, res) => {
 
 router.get('/:businessId/reviews', asyncHandler(async (req, res) => {
     const businessId = parseInt(req.params.businessId, 10)
-    const business = await Business.findByPk(businessId)
     const reviews = await Review.findAll({
-        include: {model: User},
-        where: {businessId: businessId},
-        order: [['rating', 'ASC']]}
-    
-        )
-    
-    
+        include: [
+            User, Like
+        ],
+        where: { businessId: businessId },
+        order: [['rating', 'ASC']],
+
+    }
+
+    )
+
     return res.json(reviews);
 })
 
