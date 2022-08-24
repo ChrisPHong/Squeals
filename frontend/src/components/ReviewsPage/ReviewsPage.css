@@ -204,3 +204,8 @@ font-family: Helvetica, sans-serif;
     background-color: rgba(104, 89, 238);
 
 }
+
+.star-icon{
+    width: 30px;
+    margin-right: 2px;
+}

@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import './BusinessPage.css'
 import { deleteBusiness, getOneBusiness } from '../../store/business'
+import emptyStar from './EmptyStar.png'
+import fullStar from './FullStar.png'
+import halfStar from './HalfStar.png'
 
 function BusinessPage({ business }) {
     const dispatch = useDispatch();
