@@ -42,7 +42,9 @@ const validateSignup = [
 // Get all the businesses
 router.get('/', asyncHandler(async (req, res) => {
 
-    const business = await Business.findAll({ order: [['id', 'ASC']] })
+    const business = await Business.findAll({ order: [['id', 'ASC']], include:{
+        model: Review,
+    }})
 
     return res.json({ business })
 })

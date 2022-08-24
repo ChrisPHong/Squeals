@@ -29,7 +29,7 @@ function ReviewsPage() {
     }, [dispatch])
 
 
-    const starRatings = (rating) => {
+     const starRatings = (rating) => {
         if (rating === 1) {
             return (
                 <div>
@@ -271,6 +271,5 @@ function ReviewsPage() {
         </div>
     )
 }
-
 
 export default ReviewsPage;
