@@ -125,96 +125,60 @@ function ReviewsPage() {
                                     <button
                                         onClick={async () => {
                                             let reactionId = userReacted(review?.Likes, 'funny')
-                                            if (reactionId) {
-                                                const payload = {
-                                                    userId,
-                                                    reviewId: review.id,
-                                                    label: 'funny',
-                                                    reactionId: reactionId
 
-                                                }
-                                                await dispatch(reactionReviews(payload))
-                                                await dispatch(loadReviews(businessId))
+                                            const payload = {
+                                                userId,
+                                                reviewId: review.id,
+                                                label: 'funny',
+                                                reactionId: reactionId
 
                                             }
-                                            else {
+                                            await dispatch(reactionReviews(payload))
+                                            await dispatch(loadReviews(businessId))
 
-                                                const payload = {
-                                                    userId,
-                                                    reviewId: review.id,
-                                                    label: 'funny',
-                                                    reactionId: 0
 
-                                                }
-                                                await dispatch(reactionReviews(payload))
-                                                await dispatch(loadReviews(businessId))
-                                            }
                                         }}
-                                        className='reaction-button'
+                                        className={userReacted(review?.Likes, 'funny') > 0 ? 'reacted-button' :'reaction-button'}
                                     > {`Funny
                                     ${reviewLikes(review?.Likes).funny.length}`}
                                     </button>
                                     <button
                                         onClick={async () => {
                                             let reactionId = userReacted(review?.Likes, 'cool')
-                                            if (reactionId) {
-                                                const payload = {
-                                                    userId,
-                                                    reviewId: review.id,
-                                                    label: 'cool',
-                                                    reactionId: reactionId
 
-                                                }
-                                                await dispatch(reactionReviews(payload))
-                                                await dispatch(loadReviews(businessId))
+                                            const payload = {
+                                                userId,
+                                                reviewId: review.id,
+                                                label: 'cool',
+                                                reactionId: reactionId
 
                                             }
-                                            else {
+                                            await dispatch(reactionReviews(payload))
+                                            await dispatch(loadReviews(businessId))
 
-                                                const payload = {
-                                                    userId,
-                                                    reviewId: review.id,
-                                                    label: 'cool',
-                                                    reactionId: 0
 
-                                                }
-                                                await dispatch(reactionReviews(payload))
-                                                await dispatch(loadReviews(businessId))
-                                            }
                                         }}
-                                        className='reaction-button'
+
+                                        className={userReacted(review?.Likes, 'cool') > 0 ? 'reacted-button' :'reaction-button'}
                                     > {`Cool
                                     ${reviewLikes(review?.Likes).cool.length}`}
                                     </button>
                                     <button
                                         onClick={async () => {
                                             let reactionId = userReacted(review?.Likes, 'useful')
-                                            if (reactionId) {
-                                                const payload = {
-                                                    userId,
-                                                    reviewId: review.id,
-                                                    label: 'useful',
-                                                    reactionId: reactionId
 
-                                                }
-                                                await dispatch(reactionReviews(payload))
-                                                await dispatch(loadReviews(businessId))
+                                            const payload = {
+                                                userId,
+                                                reviewId: review.id,
+                                                label: 'useful',
+                                                reactionId: reactionId
 
                                             }
-                                            else {
+                                            await dispatch(reactionReviews(payload))
+                                            await dispatch(loadReviews(businessId))
 
-                                                const payload = {
-                                                    userId,
-                                                    reviewId: review.id,
-                                                    label: 'useful',
-                                                    reactionId: 0
-
-                                                }
-                                                await dispatch(reactionReviews(payload))
-                                                await dispatch(loadReviews(businessId))
-                                            }
                                         }}
-                                        className='reaction-button'
+                                        className={userReacted(review?.Likes, 'useful') > 0 ? 'reacted-button' :'reaction-button'}
                                     > {`Useful
                                     ${reviewLikes(review?.Likes).useful.length}`}
                                     </button>

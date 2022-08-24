@@ -176,4 +176,31 @@ font-family: Helvetica, sans-serif;
     padding: 5px 10px;
     border-radius: 5px;
     margin-right: 5px;
+    font-family: Helvetica, sans-serif;
+    background-color: transparent;
+    border: 1px solid rgb(196, 196, 196);
+    color:black;
+    transition-duration: .8s;
+}
+.reaction-button:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.reacted-button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-family: Helvetica, sans-serif;
+    background-color: rgba(76, 60, 226, 0.699);
+    border: 1px solid rgb(25, 0, 255);
+    color:white;
+    transition-duration: .8s;
+    font-weight: bold;
+}
+
+.reacted-button:hover{
+    cursor: pointer;
+    background-color: rgba(104, 89, 238);
+
 }
