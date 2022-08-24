@@ -3,6 +3,7 @@ export const ADD_REVIEW = 'review/ADD';
 export const EDIT_REVIEW = 'review/EDIT';
 export const DELETE_REVIEW = 'review/delete';
 export const ONE_REVIEW = 'review/ONE';
+export const REACTION_REVIEW = 'review/REACTION'
 
 const { csrfFetch } = require('../store/csrf')
 //actions
@@ -30,6 +31,12 @@ const getOneReview = (review) =>({
     type: ONE_REVIEW,
     review
 })
+
+const reactReview = (review) => ({
+    type: REACTION_REVIEW,
+    review
+})
+
 //Thunks
 
 export const loadReviews = (businessId) => async (dispatch) => {
@@ -107,6 +114,22 @@ export const oneReview = (id) => async (dispatch) => {
         dispatch(getOneReview(review));
     }
 }
+
+export const reactionReviews = (reaction) => async (dispatch) => {
+    console.log(reaction, "<<<<<<<< INSID ETHE THUNK >>>>>>>>>>>")
+    const response = await csrfFetch(`/api/likes/${reaction.reactionId}`, {
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reaction)
+    })
+
+    if (response.ok) {
+        const reaction = await response.json();
+        dispatch(reactReview(reaction));
+        return reaction;
+    }
+
+}
 const initialState = {entries:{}, one:{}}
 
 const reviewsReducer = (state = initialState, action) => {
@@ -119,21 +142,21 @@ const reviewsReducer = (state = initialState, action) => {
             })
 
 
-        return newState
+            return newState
 
-        case ADD_REVIEW:
+            case ADD_REVIEW:
 
-            if (!state[action.review.id]) {
-                const newState = {
-                    ...state,
-                    [action.review.id]: action.review
+                if (!state[action.review.id]) {
+                    const newState = {
+                        ...state,
+                        [action.review.id]: action.review
                 };
                 return newState;
             }
 
         case EDIT_REVIEW:
             newState = {...state}
-            
+
             newState[action.review.id] = action.review
             return newState
         case DELETE_REVIEW:

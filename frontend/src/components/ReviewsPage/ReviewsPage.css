@@ -135,6 +135,7 @@ cursor: pointer;
     justify-content: center;
     align-items: flex-start;
     margin-left: 20px;
+    font-family: Helvetica, sans-serif;
 }
 .edit-delete-button-container{
     display: flex;
@@ -161,4 +162,18 @@ font-family: Helvetica, sans-serif;
     align-items: flex-start;
     flex-direction: column;
 
+}
+
+.review-container-likes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.reaction-button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
 }
