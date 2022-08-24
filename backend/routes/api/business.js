@@ -116,7 +116,6 @@ router.get('/:businessId/reviews', asyncHandler(async (req, res) => {
     }
 
     )
-
     return res.json(reviews);
 })
 

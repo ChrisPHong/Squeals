@@ -6,6 +6,7 @@ const reviewRouter = require('./review')
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
+const reactionRouter = require('./likes')
 
 // router.get('/set-token-cookie', asyncHandler(async (_req, res) => {
 //   const user = await User.findOne({
@@ -40,6 +41,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/reviews', reviewRouter)
 router.use('/businesses', businessRouter);
+router.use('/likes', reactionRouter);
 
 
 module.exports = router;

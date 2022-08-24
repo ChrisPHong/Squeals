@@ -48,7 +48,6 @@ export const getOneBusiness = (id) => async (dispatch) => {
         method: 'GET'
     });
 
-
     if (response.ok) {
         const business = await response.json();
         dispatch(getOne(business));
