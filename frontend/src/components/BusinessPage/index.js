@@ -31,11 +31,9 @@ function BusinessPage({ business }) {
     const starRatings = (rating) => {
         let results = []
         for(let i = 0; i < 5; i++){
-            if(rating > 1){
-                console.log(rating, 'before')
+            if(rating >= 1){
                 results.push(<img className='star-icon' src={fullStar} />)
                 rating -= 1
-                console.log(rating, 'after')
             } else if( rating > 0 && rating < 1){
                 results.push(<img className='star-icon' src={halfStar} />)
                 rating -= 1
