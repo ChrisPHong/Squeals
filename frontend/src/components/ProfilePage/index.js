@@ -6,13 +6,16 @@ import { loadUserInfo } from '../../store/user';
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router-dom'
 import { oneReview } from '../../store/review'
+import emptyStar from './EmptyStar.png'
+import fullStar from './FullStar.png'
+import halfStar from './HalfStar.png'
 
-/* 
+/*
 Things to do
 - Design the profile page and what information you'd like to display on there
-- Maybe display the types of businesss you wrote about? 
-- Show how many reviews you've written? 
-- on average your rating scale? 
+- Maybe display the types of businesss you wrote about?
+- Show how many reviews you've written?
+- on average your rating scale?
 - latest review
 - Highest review (because you want to go back to the place you gave the highest review for)
 */
@@ -39,6 +42,65 @@ function ProfilePage() {
 
     }
 
+    const starRatings = (rating) => {
+        if (rating === 1) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 2) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 3) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 4) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 5) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                </div>
+            )
+        }
+    }
+
     return (
         <div className='profile-container'>
             <div className='username-profilePicture-container'>
@@ -51,9 +113,9 @@ function ProfilePage() {
                 </div>
             </div>
             <div className='reviews-container-profilePage'>
-                {user?.Reviews?.length != 1 ? 
+                {user?.Reviews?.length != 1 ?
                 <h1 className='username-header-review'>{user?.username}'s Reviews</h1>
-            : 
+            :
                 <h1 className='username-header-review'>{user?.username}'s Review</h1>
             }
                 {user?.Reviews.map((review, idx) => {
@@ -92,7 +154,7 @@ function ProfilePage() {
                                         <figure className='review-picture' style={{ backgroundImage: `url(${review?.image})` }} />
                                         {/* <img className='review-picture' src={review?.image} /> */}
                                         <div className='rating-review-container'>
-                                            <h4>Rating: {review?.rating}</h4>
+                                            <h4>{starRatings(review?.rating)}</h4>
                                             <span >"{review?.answer}"</span>
                                         </div>
                                     </div>
@@ -107,9 +169,9 @@ function ProfilePage() {
                                         await dispatch(oneReview(review.id))
                                         await history.push(`/reviews/${review.id}`)
                                     }}
-                                    
+
                                     >Edit</button>
-                                    
+
                                     : null}
                                 </div> */}
 

@@ -5,6 +5,9 @@ import * as sessionActions from '../../store/session'
 import { deleteReview, loadReviews, oneReview, reactionReviews } from '../../store/review';
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router-dom'
+import emptyStar from './EmptyStar.png'
+import fullStar from './FullStar.png'
+import halfStar from './HalfStar.png'
 
 
 function ReviewsPage() {
@@ -25,6 +28,65 @@ function ReviewsPage() {
         dispatch(loadReviews(businessId))
     }, [dispatch])
 
+
+     const starRatings = (rating) => {
+        if (rating === 1) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 2) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 3) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 4) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={emptyStar} />
+                </div>
+            )
+        }
+        if (rating === 5) {
+            return (
+                <div>
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                    <img className='star-icon' src={fullStar} />
+                </div>
+            )
+        }
+    }
     const reviewLikes = (likesArr) => {
         const results = {
             'funny': [],
@@ -114,7 +176,8 @@ function ReviewsPage() {
                                     </div>
                                     <div className='review-rating-answer-picture-container'>
 
-                                        <div key={`rating${review.id}`}>Rating: {review.rating}</div>
+                                        {/* <div key={`rating${review.id}`}>Rating: {review.rating}</div> */}
+                                        <div key={`rating${review.id}`}>{starRatings(review.rating)}</div>
                                         <div key={`answer${review.id}`}>"{review.answer}"</div>
                                         <img className='review-picture' src={review.image} />
                                     </div>
@@ -138,7 +201,7 @@ function ReviewsPage() {
 
 
                                         }}
-                                        className={userReacted(review?.Likes, 'funny') > 0 ? 'reacted-button' :'reaction-button'}
+                                        className={userReacted(review?.Likes, 'funny') > 0 ? 'reacted-button' : 'reaction-button'}
                                     > {`Funny
                                     ${reviewLikes(review?.Likes).funny.length}`}
                                     </button>
@@ -159,7 +222,7 @@ function ReviewsPage() {
 
                                         }}
 
-                                        className={userReacted(review?.Likes, 'cool') > 0 ? 'reacted-button' :'reaction-button'}
+                                        className={userReacted(review?.Likes, 'cool') > 0 ? 'reacted-button' : 'reaction-button'}
                                     > {`Cool
                                     ${reviewLikes(review?.Likes).cool.length}`}
                                     </button>
@@ -178,7 +241,7 @@ function ReviewsPage() {
                                             await dispatch(loadReviews(businessId))
 
                                         }}
-                                        className={userReacted(review?.Likes, 'useful') > 0 ? 'reacted-button' :'reaction-button'}
+                                        className={userReacted(review?.Likes, 'useful') > 0 ? 'reacted-button' : 'reaction-button'}
                                     > {`Useful
                                     ${reviewLikes(review?.Likes).useful.length}`}
                                     </button>
@@ -208,6 +271,5 @@ function ReviewsPage() {
         </div>
     )
 }
-
 
 export default ReviewsPage;
