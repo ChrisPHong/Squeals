@@ -17,6 +17,8 @@ function EditFormPage() {
     const state = useSelector((state) => state);
     const review = useSelector((state) => state?.review?.one)[reviewId];
     const businessId = review?.businessId
+    const businessName = useSelector((state) => state?.business?.one[businessId]?.title);
+
 
     const user = useSelector((state) => Object.values(state.session.user));
     const userId = user[0]
@@ -63,16 +65,19 @@ function EditFormPage() {
     return (
 
         <div className='editFormDiv'>
-            <form
-                className='editForm'
-                onSubmit={handleSubmit}>
-                {errors.length > 0 ? <h3>Validation Errors</h3> : <h3>Post Your Review</h3>}
-                <ul className='errors-array'>{errors.length > 0 ? errors.map(error => {
-                    return <span key={error}>{error}</span>
-                }) : null}
-                </ul>
+            <div className='title-business-review'>
 
-                <div className='star-widget'>
+                <h2 className='businessTitle-Review'>{businessName}</h2>
+                <form
+                    className='editForm'
+                    onSubmit={handleSubmit}>
+                    {errors.length > 0 ? <h3>Validation Errors</h3> : <h3>Post Your Review</h3>}
+                    <ul className='errors-array'>{errors.length > 0 ? errors.map(error => {
+                        return <span key={error}>{error}</span>
+                    }) : null}
+                    </ul>
+
+                    <div className='star-widget'>
                         <input
                             type='radio'
                             name='rate'
@@ -128,36 +133,37 @@ function EditFormPage() {
                         />
                         <label className='fas fa-star' for='rate-1'></label>
                     </div>
-                {/* <label className='custom-fieldEditReview'>
+                    {/* <label className='custom-fieldEditReview'>
                     <input
-                        className='inputValueReviews'
-                        required
-                        value={rating}
-                        onChange={(e) => {
-                            setRating(e.target.value);
-                        }}
+                    className='inputValueReviews'
+                    required
+                    value={rating}
+                    onChange={(e) => {
+                        setRating(e.target.value);
+                    }}
                     />
                     <span className='placeholder'>Rating</span>
                 </label> */}
 
-                <label className='custom-fieldEditReview'>
-                    <input
-                        className='inputValueReviews'
-                        required
-                        value={answer}
-                        onChange={(e) => {
-                            setAnswer(e.target.value);
-                        }}
+                    <label className='custom-fieldEditReview'>
+                        <input
+                            className='inputValueReviews'
+                            required
+                            value={answer}
+                            onChange={(e) => {
+                                setAnswer(e.target.value);
+                            }}
                         />
                         <span className='placeholder'>Review</span>
-                </label>
+                    </label>
 
-                <button
-                    type='submit'
-                    className='reviewSubmitEditButton'
-                    disabled={errors.length ? true : false}
-                >Post Review</button>
-            </form>
+                    <button
+                        type='submit'
+                        className='reviewSubmitEditButton'
+                        disabled={errors.length ? true : false}
+                    >Post Review</button>
+                </form>
+            </div>
         </div>
 
     )

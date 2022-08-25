@@ -209,3 +209,8 @@ font-family: Helvetica, sans-serif;
     width: 30px;
     margin-right: 2px;
 }
+
+
+.review-answer{
+    overflow-wrap: anywhere;
+}

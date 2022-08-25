@@ -178,7 +178,9 @@ function ReviewsPage() {
 
                                         {/* <div key={`rating${review.id}`}>Rating: {review.rating}</div> */}
                                         <div key={`rating${review.id}`}>{starRatings(review.rating)}</div>
-                                        <div key={`answer${review.id}`}>"{review.answer}"</div>
+                                        <div
+                                        className='review-answer'
+                                        key={`answer${review.id}`}>"{review.answer}"</div>
                                         <img className='review-picture' src={review.image} />
                                     </div>
 
