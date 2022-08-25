@@ -86,86 +86,61 @@ function ReviewForm() {
                     </ul>
 
                     <div className='star-widget'>
-
-
-
-
-
-                            <input
-                                type='radio'
-                                name='rate'
-                                id='rate-5'
-                                value={5}
-                                onChange={(e) => {
-                                    setRating(5);
-                                }}
-                            />
-                            <label className='fas fa-star' for='rate-5'></label>
-
-
-
-                            <input
-                                type='radio'
-                                name='rate'
-                                id='rate-4'
-                                value={4}
-                                onChange={(e) => {
-                                    setRating(4);
-                                }}
-                            />
-                            <label className='fas fa-star' for='rate-4'></label>
-
-
-
-                            <input
-                                type='radio'
-                                name='rate'
-                                id='rate-3'
-                                value={3}
-                                onChange={(e) => {
-                                    setRating(3);
-                                }}
-                            />
-                            <label className='fas fa-star' for='rate-3'></label>
-
-
-                            <input
-                                type='radio'
-                                name='rate'
-                                id='rate-2'
-                                value={2}
-                                onChange={(e) => {
-                                    setRating(2);
-                                }}
-                            />
-                            <label className='fas fa-star' for='rate-2'></label>
-
-
-
-                            <input
-                                type='radio'
-                                name='rate'
-                                id='rate-1'
-                                value={1}
-                                onChange={(e) => {
-                                    setRating(1);
-                                }}
-                            />
-                            <label className='fas fa-star' for='rate-1'></label>
-
-
-                    </div>
-
-                    {/* <label className='custom-fieldReview'>
                         <input
-                            required
-                            value={rating}
+                            type='radio'
+                            name='rate'
+                            id='rate-5'
+                            value={5}
                             onChange={(e) => {
-                                setRating(e.target.value);
+                                setRating(5);
                             }}
                         />
-                        <span className='placeholder'>Rating</span>
-                    </label> */}
+                        <label className='fas fa-star' for='rate-5'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-4'
+                            value={4}
+                            onChange={(e) => {
+                                setRating(4);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-4'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-3'
+                            value={3}
+                            onChange={(e) => {
+                                setRating(3);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-3'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-2'
+                            value={2}
+                            onChange={(e) => {
+                                setRating(2);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-2'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-1'
+                            value={1}
+                            onChange={(e) => {
+                                setRating(1);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-1'></label>
+                    </div>
 
                     <label className='custom-fieldReview'>
                         <input

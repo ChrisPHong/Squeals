@@ -28,7 +28,6 @@ function EditFormPage() {
     useEffect(() => {
         dispatch(oneReview(reviewId))
         setAnswer(review.answer)
-        setRating(review.rating)
     }, [dispatch, reviewId]);
 
     const handleSubmit = async (e) => {
@@ -53,7 +52,7 @@ function EditFormPage() {
         if (answer.length < 10) error.push('Please Put a valid Answer with at least 10 characters')
         if (answer.length > 5000) error.push('Your review exceeds the 5,000 character limit. Shorten your response please')
         if (!numbers.includes(rating)) error.push('You need to put only 1 - 5 values')
-        if (rating.length < 1) error.push('Please Put a valid Rating')
+        if (rating.length < 1) error.push('Click on a Rating')
         if (answer.length < 1) error.push('Please Put a valid answer')
 
         setErrors(error);
@@ -68,12 +67,68 @@ function EditFormPage() {
                 className='editForm'
                 onSubmit={handleSubmit}>
                 {errors.length > 0 ? <h3>Validation Errors</h3> : <h3>Post Your Review</h3>}
-                <ul className='errors array'>{errors.length > 0 ? errors.map(error => {
-                    return <li key={error}>{error}</li>
+                <ul className='errors-array'>{errors.length > 0 ? errors.map(error => {
+                    return <span key={error}>{error}</span>
                 }) : null}
                 </ul>
 
-                <label className='custom-fieldEditReview'>
+                <div className='star-widget'>
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-5'
+                            value={5}
+                            onChange={(e) => {
+                                setRating(5);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-5'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-4'
+                            value={4}
+                            onChange={(e) => {
+                                setRating(4);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-4'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-3'
+                            value={3}
+                            onChange={(e) => {
+                                setRating(3);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-3'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-2'
+                            value={2}
+                            onChange={(e) => {
+                                setRating(2);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-2'></label>
+
+                        <input
+                            type='radio'
+                            name='rate'
+                            id='rate-1'
+                            value={1}
+                            onChange={(e) => {
+                                setRating(1);
+                            }}
+                        />
+                        <label className='fas fa-star' for='rate-1'></label>
+                    </div>
+                {/* <label className='custom-fieldEditReview'>
                     <input
                         className='inputValueReviews'
                         required
@@ -83,7 +138,7 @@ function EditFormPage() {
                         }}
                     />
                     <span className='placeholder'>Rating</span>
-                </label>
+                </label> */}
 
                 <label className='custom-fieldEditReview'>
                     <input
