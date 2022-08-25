@@ -16,8 +16,11 @@ function ReviewForm() {
     const businessid = useParams();
     const businessId = businessid.businessId
     const reviews = useSelector((state) => Object.values(state.review));
+    const businessName = useSelector((state) => state?.business?.one[businessId]?.title);
     const user = useSelector((state) => Object.values(state.session.user));
     const userId = user[0]
+
+    console.log(businessName, " BUSINESS NAME??????")
 
 
     const [isLoaded, setIsLoaded] = useState(false);
@@ -69,100 +72,102 @@ function ReviewForm() {
         if (file) setImage(file);
     };
 
-    console.log(rating, "THIS IS  THE RATTING")
 
     return (
         <div>
-            <div>
+            <div className='review-container-entire'>
+                <div className='title-business-review'>
 
-                <form
-                    className='review-form'
-                    onSubmit={handleSubmit}>
-                    {errors.length > 0 ? <h3 className='validationErrorsReviews'>Add Your Review</h3> : <h3>Post Your Review</h3>}
-                    <ul className='errors-array'>{show && errors.length > 0 ? errors.map(error => {
-                        return <span className='errorLi'
-                            key={error}>{error}</span>
-                    }) : null}
-                    </ul>
+                    <h2 className='businessTitle-Review'>{businessName}</h2>
+                    <form
+                        className='review-form'
+                        onSubmit={handleSubmit}>
+                        {errors.length > 0 ? <h3 className='validationErrorsReviews'>Add Your Review</h3> : <h3>Post Your Review</h3>}
+                        <ul className='errors-array'>{show && errors.length > 0 ? errors.map(error => {
+                            return <span className='errorLi'
+                                key={error}>{error}</span>
+                        }) : null}
+                        </ul>
 
-                    <div className='star-widget'>
-                        <input
-                            type='radio'
-                            name='rate'
-                            id='rate-5'
-                            value={5}
-                            onChange={(e) => {
-                                setRating(5);
-                            }}
-                        />
-                        <label className='fas fa-star' for='rate-5'></label>
+                        <div className='star-widget'>
+                            <input
+                                type='radio'
+                                name='rate'
+                                id='rate-5'
+                                value={5}
+                                onChange={(e) => {
+                                    setRating(5);
+                                }}
+                            />
+                            <label className='fas fa-star' for='rate-5'></label>
 
-                        <input
-                            type='radio'
-                            name='rate'
-                            id='rate-4'
-                            value={4}
-                            onChange={(e) => {
-                                setRating(4);
-                            }}
-                        />
-                        <label className='fas fa-star' for='rate-4'></label>
+                            <input
+                                type='radio'
+                                name='rate'
+                                id='rate-4'
+                                value={4}
+                                onChange={(e) => {
+                                    setRating(4);
+                                }}
+                            />
+                            <label className='fas fa-star' for='rate-4'></label>
 
-                        <input
-                            type='radio'
-                            name='rate'
-                            id='rate-3'
-                            value={3}
-                            onChange={(e) => {
-                                setRating(3);
-                            }}
-                        />
-                        <label className='fas fa-star' for='rate-3'></label>
+                            <input
+                                type='radio'
+                                name='rate'
+                                id='rate-3'
+                                value={3}
+                                onChange={(e) => {
+                                    setRating(3);
+                                }}
+                            />
+                            <label className='fas fa-star' for='rate-3'></label>
 
-                        <input
-                            type='radio'
-                            name='rate'
-                            id='rate-2'
-                            value={2}
-                            onChange={(e) => {
-                                setRating(2);
-                            }}
-                        />
-                        <label className='fas fa-star' for='rate-2'></label>
+                            <input
+                                type='radio'
+                                name='rate'
+                                id='rate-2'
+                                value={2}
+                                onChange={(e) => {
+                                    setRating(2);
+                                }}
+                            />
+                            <label className='fas fa-star' for='rate-2'></label>
 
-                        <input
-                            type='radio'
-                            name='rate'
-                            id='rate-1'
-                            value={1}
-                            onChange={(e) => {
-                                setRating(1);
-                            }}
-                        />
-                        <label className='fas fa-star' for='rate-1'></label>
-                    </div>
+                            <input
+                                type='radio'
+                                name='rate'
+                                id='rate-1'
+                                value={1}
+                                onChange={(e) => {
+                                    setRating(1);
+                                }}
+                            />
+                            <label className='fas fa-star' for='rate-1'></label>
+                        </div>
 
-                    <label className='custom-fieldReview'>
-                        <input
+                        <label className='custom-fieldReview'>
+                            <input
+                                required
+                                value={answer}
+                                onChange={(e) => {
+                                    setAnswer(e.target.value);
+                                }}
+                            />
+                            <span className='placeholder'>Review</span>
+                        </label>
+
+                        <input type='file'
                             required
-                            value={answer}
-                            onChange={(e) => {
-                                setAnswer(e.target.value);
-                            }}
+                            className='inputBox'
+                            onChange={updateFile}
                         />
-                        <span className='placeholder'>Review</span>
-                    </label>
-
-                    <input type='file'
-                        required
-                        className='inputBox'
-                        onChange={updateFile}
-                    />
-                    <button
-                        className='submitButton'
-                        type='submit'
-                    >Post Review</button>
-                </form>
+                        <button
+                            className='submitButton'
+                            type='submit'
+                        >Post Review</button>
+                    </form>
+                </div>
             </div>
         </div>
     )
