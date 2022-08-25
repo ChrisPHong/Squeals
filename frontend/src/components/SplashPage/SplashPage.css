@@ -21,6 +21,7 @@
     font-size: 50px;
     transition-duration: 1.3s;
     text-shadow: 1px 1px 1.5px hsl(0, 0%, 0%);
+    font-family: Helvetica, sans-serif;
 }
 
 .welcome:hover {
@@ -38,6 +39,7 @@
     box-shadow: 2px 2px rgb(0, 0, 0, .4);
     transition-duration: 1.3s;
     font-size: 18px;
+    font-family: Helvetica, sans-serif;
 }
 
 .splashPageParagraph:hover {
@@ -53,6 +55,7 @@
     font-size: 20px;
     display: flex;
     transition-duration: 1.3s;
+    font-family: Helvetica, sans-serif;
 
 }
 

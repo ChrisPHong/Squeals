@@ -19,11 +19,11 @@ function BusinessPage({ business }) {
 
     const avgRating = (ratingsArray) => {
         let sum = 0;
-        if (ratingsArray.length === 0) return 0
+        if (ratingsArray?.length === 0) return 0
         for (let i = 0; i < ratingsArray?.length; i++) {
             sum += ratingsArray[i]?.rating
         }
-        let avg = sum / ratingsArray.length
+        let avg = sum / ratingsArray?.length
 
         return avg
     }

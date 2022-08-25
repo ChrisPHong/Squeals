@@ -1,9 +1,8 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { Business, User, Review, Like } = require('../../db/models');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
+const {requireAuth } = require('../../utils/auth');
+const { Like } = require('../../db/models');
+
 
 
 const router = express.Router();
@@ -13,7 +12,7 @@ router.put(
     '/:reactionId',
     requireAuth,
     asyncHandler(async (req, res) => {
-        console.log('hitting this route')
+
         const reactionId = parseInt(req.params.reactionId, 10)
         const reaction = await Like.findByPk(reactionId);
         if (reaction) {

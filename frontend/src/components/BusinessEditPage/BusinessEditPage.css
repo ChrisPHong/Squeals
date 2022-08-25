@@ -45,3 +45,63 @@
 .submitButton:hover{
     box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
 }
+
+.editing-business-title{
+    font-family: Helvetica, sans-serif;
+}
+
+
+.custom-fieldEdit{
+    position: relative;
+    font-size: 14px;
+    padding-top: 10px;
+    margin-bottom: 5px;
+
+}
+.custom-fieldEdit input {
+    border:#ddd 1px solid;
+    -webkit-appearance: none;
+    -ms-progress-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border-radius: 3px;
+    padding: 12px;
+    width:250px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color .3s ease;
+    font-family: Helvetica, sans-serif;
+
+}
+
+.custom-fieldEdit .placeholderEdit{
+    position: absolute;
+    left:12px;
+    top: 60%;
+    transform: translateY(-50%);
+    color:#aaa;
+    transition:
+    top 0.3s ease,
+    top 0.3s ease,
+    top 0.3s ease;
+    font-family: Helvetica, sans-serif;
+}
+
+.custom-fieldEdit input + .placeholderEdit{
+    padding: 0 5px;
+    left: 8px;
+}
+.custom-fieldEdit input:valid + .placeholderEdit,
+.custom-fieldEdit input:focus + .placeholderEdit{
+    top:10px;
+    font-size: 10px;
+    color: #222;
+    background: #fff;
+}
+
+.custom-fieldEdit input:valid,
+.custom-fieldEdit input:focus{
+    border-color: #222;
+    transition-delay: .1s;
+}
