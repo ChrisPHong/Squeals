@@ -82,7 +82,7 @@ function ReviewsPage() {
                     <img className='star-icon' src={fullStar} />
                     <img className='star-icon' src={fullStar} />
                     <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
+
                 </div>
             )
         }

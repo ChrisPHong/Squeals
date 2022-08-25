@@ -43,6 +43,7 @@ function ProfilePage() {
     }
 
     const starRatings = (rating) => {
+        console.log(rating)
         if (rating === 1) {
             return (
                 <div>
@@ -54,7 +55,7 @@ function ProfilePage() {
                 </div>
             )
         }
-        if (rating === 2) {
+        else if (rating === 2) {
             return (
                 <div>
                     <img className='star-icon' src={fullStar} />
@@ -65,7 +66,7 @@ function ProfilePage() {
                 </div>
             )
         }
-        if (rating === 3) {
+        else if (rating === 3) {
             return (
                 <div>
                     <img className='star-icon' src={fullStar} />
@@ -76,7 +77,7 @@ function ProfilePage() {
                 </div>
             )
         }
-        if (rating === 4) {
+       else if (rating === 4) {
             return (
                 <div>
                     <img className='star-icon' src={fullStar} />
@@ -87,10 +88,9 @@ function ProfilePage() {
                 </div>
             )
         }
-        if (rating === 5) {
+       else if (rating === 5) {
             return (
                 <div>
-                    <img className='star-icon' src={fullStar} />
                     <img className='star-icon' src={fullStar} />
                     <img className='star-icon' src={fullStar} />
                     <img className='star-icon' src={fullStar} />
@@ -154,6 +154,7 @@ function ProfilePage() {
                                         <figure className='review-picture' style={{ backgroundImage: `url(${review?.image})` }} />
                                         {/* <img className='review-picture' src={review?.image} /> */}
                                         <div className='rating-review-container'>
+                                            {console.log(review?.rating, "WHAT IS THE IS RATING")}
                                             <h4>{starRatings(review?.rating)}</h4>
                                             <span >"{review?.answer}"</span>
                                         </div>
