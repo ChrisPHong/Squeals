@@ -8,10 +8,8 @@
 .editForm {
     /* background-color: white; */
     color: black;
-    margin-top: 100px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border: solid black 2px;
+    margin: 0 20px;
+    border: solid black 1px;
     border-radius: 5px 5px;
     display: flex;
     justify-content: center;
