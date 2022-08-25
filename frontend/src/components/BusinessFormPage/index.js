@@ -166,7 +166,6 @@ function BusinessPageForm() {
             <div className='formDiv'>
 
                 <label className='custom-field'>
-
                 <input type='text'
                     required
                     value={zipCode}

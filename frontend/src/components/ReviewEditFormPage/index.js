@@ -12,19 +12,19 @@ function EditFormPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    
+
     const reviewId = Number(useParams()?.reviewId);
     const state = useSelector((state) => state);
-    const review = useSelector((state) =>state?.review?.one)[reviewId];
+    const review = useSelector((state) => state?.review?.one)[reviewId];
     const businessId = review?.businessId
-    
+
     const user = useSelector((state) => Object.values(state.session.user));
     const userId = user[0]
     const [isLoaded, setIsLoaded] = useState(false);
     const [answer, setAnswer] = useState('');
     const [rating, setRating] = useState('');
     const [errors, setErrors] = useState([]);
-    
+
     useEffect(() => {
         dispatch(oneReview(reviewId))
         setAnswer(review.answer)
@@ -72,23 +72,31 @@ function EditFormPage() {
                     return <li key={error}>{error}</li>
                 }) : null}
                 </ul>
-                <label>Rating</label>
-                <input
-                    className='inputValueReviews'
-                    placeholder='values 1 - 5'
-                    value={rating}
-                    onChange={(e) => {
-                        setRating(e.target.value);
-                    }}
-                ></input>
-                <label>Your Review</label>
-                <input
-                    className='inputValueReviews'
-                    placeholder='Explain Your Experience'
-                    value={answer}
-                    onChange={(e) => {
-                        setAnswer(e.target.value);
-                    }}></input>
+
+                <label className='custom-fieldEditReview'>
+                    <input
+                        className='inputValueReviews'
+                        required
+                        value={rating}
+                        onChange={(e) => {
+                            setRating(e.target.value);
+                        }}
+                    />
+                    <span className='placeholder'>Rating</span>
+                </label>
+
+                <label className='custom-fieldEditReview'>
+                    <input
+                        className='inputValueReviews'
+                        required
+                        value={answer}
+                        onChange={(e) => {
+                            setAnswer(e.target.value);
+                        }}
+                        />
+                        <span className='placeholder'>Review</span>
+                </label>
+
                 <button
                     type='submit'
                     className='reviewSubmitEditButton'

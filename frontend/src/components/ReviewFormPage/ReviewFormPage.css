@@ -14,7 +14,8 @@
     box-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
     transition-duration: 1s;
 }
-.review-form{
+
+.review-form {
     color: black;
     margin-top: 100px;
     margin-left: 20px;
@@ -29,6 +30,7 @@
     box-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
     transition-duration: 1s;
 
+
 }
 
 .formDiv {
@@ -36,12 +38,13 @@
     margin: 4px;
 }
 
-.inputBox{
+.inputBox {
     border-radius: 3px 3px;
     transition-duration: 1s;
     padding: 10px;
 }
-.inputBox:hover{
+
+.inputBox:hover {
 
     box-shadow: 3px 3px rgb(0, 0, 0, .3);
 }
@@ -50,7 +53,7 @@
     box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
 }
 
-.submitButton{
+.submitButton {
     padding: 10px 40px;
     background-color: rgb(216, 29, 29);
     margin: 20px;
@@ -58,16 +61,118 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.submitButton:hover{
+.submitButton:hover {
     box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
 }
 
-.errorLi{
+.errorLi {
     margin: 2px;
 
 }
 
-.review-textarea{
-    /* padding: 100px 200px; */
+.custom-fieldReview {
+    position: relative;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 5px;
 
+}
+
+.custom-fieldReview input {
+    border: #ddd 1px solid;
+    -webkit-appearance: none;
+    -ms-progress-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border-radius: 3px;
+    padding: 12px;
+    width: 250px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color .3s ease;
+    font-family: Helvetica, sans-serif;
+
+}
+
+.custom-fieldReview .placeholder {
+    position: absolute;
+    left: 12px;
+    top: 65%;
+    transform: translateY(-50%);
+    color: #aaa;
+    transition:
+        top 0.3s ease,
+        top 0.3s ease,
+        top 0.3s ease;
+    font-family: Helvetica, sans-serif;
+}
+
+.custom-fieldReview input+.placeholder {
+    padding: 0 5px;
+    left: 8px;
+}
+
+.custom-fieldReview input:valid+.placeholder,
+.custom-fieldReview input:focus+.placeholder {
+    top: 20px;
+    font-size: 10px;
+    color: #222;
+    background: #fff;
+}
+
+.custom-fieldReview input:valid,
+.custom-fieldReview input:focus {
+    border-color: #222;
+    transition-delay: .1s;
+}
+
+.star-widget input {
+    display: none;
+}
+
+input:checked~form {
+    display: block;
+}
+
+.star-widget label {
+    font-size: 30px;
+    color: white;
+    padding: 10px;
+    float: right;
+    transition: all .2s ease;
+    background-color: rgba(126, 126, 126, 0.27);
+    border-radius: 5px;
+    margin-right: 5px;
+
+}
+
+input:not(:checked)~label:hover,
+input:not(:checked)~label:hover~label {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.742);
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: all .2s ease;
+}
+
+input:checked~label {
+    color: white;
+    background-color: rgba(255, 0, 0, 0.742);
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+input#rate-5:checked~label {
+    color: white;
+    text-shadow: 0 0 20px rgb(238, 241, 3);
+}
+
+
+
+.errors-array {
+    padding: 0px;
+    color: red;
 }

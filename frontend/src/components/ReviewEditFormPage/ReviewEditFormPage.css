@@ -41,7 +41,7 @@ cursor: pointer;
 }
 
 .reviewSubmitEditButton {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Helvetica, sans-serif;
     padding: 5px 10px;
     font-size: 14px;
     display: flex;
@@ -49,9 +49,67 @@ cursor: pointer;
     margin-bottom: 5px;
     text-decoration: none;
     margin-top: 10px;
+    background-color: rgba(224, 32, 32, 0.753);
 }
 
 .reviewSubmitEditButton:hover {
     cursor: pointer;
+    background-color: rgb(226, 19, 19);
 
+}
+
+
+.custom-fieldEditReview{
+    position: relative;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+
+}
+.custom-fieldEditReview input {
+    border:#ddd 1px solid;
+    -webkit-appearance: none;
+    -ms-progress-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border-radius: 3px;
+    padding: 12px;
+    width:250px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color .3s ease;
+    font-family: Helvetica, sans-serif;
+
+}
+
+.custom-fieldEditReview .placeholder{
+    position: absolute;
+    left:12px;
+    top: 65%;
+    transform: translateY(-50%);
+    color:#aaa;
+    transition:
+    top 0.3s ease,
+    top 0.3s ease,
+    top 0.3s ease;
+    font-family: Helvetica, sans-serif;
+}
+
+.custom-fieldEditReview input + .placeholder{
+    padding: 0 5px;
+    left: 15px;
+}
+.custom-fieldEditReview input:valid + .placeholder,
+.custom-fieldEditReview input:focus + .placeholder{
+    top:25px;
+    font-size: 10px;
+    color: #222;
+    background: #fff;
+}
+
+.custom-fieldEditReview input:valid,
+.custom-fieldEditReview input:focus{
+    border-color: #222;
+    transition-delay: .1s;
 }
