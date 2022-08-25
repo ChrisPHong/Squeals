@@ -89,7 +89,7 @@ function BusinessPageForm() {
 
     return (
         <form className="businessForm" onSubmit={onSubmit}>
-            <h2>Create Your Business</h2>
+            <h2 className='business-title'>Create Your Business</h2>
             {show && errors.length > 0 ?
                 <>
                     <ul className='errorsArray'>{errors.map(error => {
@@ -106,81 +106,87 @@ function BusinessPageForm() {
                 : null}
             <div className='titleInput'>
                 {/* <label className='labelInput'>Title</label> */}
-                <input type='text'
-                    required
-                    className='inputBox'
-                    placeholder='Business Title'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
+                <label className='custom-field'>
+
+                    <input type='text'
+                        required
+                        // className='inputBox'
+                        // placeholder='Business Title'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <span className='placeholder'>Business Title</span>
+                </label>
+            </div>
+            <div className='formDiv'>
+                <label className='custom-field'>
+                    <input type='text'
+                        required
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <span className='placeholder'>Description</span>
+                </label>
             </div>
             <div className='formDiv'>
 
-                {/* <label className='labelInput'>Description</label> */}
-                <input type='text'
-                    required
-                    className='inputBox'
-                    placeholder='Description'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
+                <label className='custom-field'>
 
+                    <input type='text'
+                        required
+                        className='inputBox'
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                    />
+                    <span className='placeholder'>Address</span>
+                </label>
             </div>
             <div className='formDiv'>
 
-                {/* <label className='labelInput'>Address</label> */}
-                <input type='text'
-                    required
-                    className='inputBox'
-                    placeholder='12345 Squeals St.'
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                />
+                <label className='custom-field'>
+
+                    <input type='text'
+                        required
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                    />
+                    <span className='placeholder'>City</span>
+                </label>
+            </div>
+            <div className='formDiv'>
+                <label className='custom-field'>
+                    <input type='text'
+                        required
+                        value={state}
+                        onChange={(e) => setState(e.target.value)}
+                    />
+                    <span className='placeholder'>State</span>
+                </label>
             </div>
             <div className='formDiv'>
 
-                {/* <label className='labelInput'>City</label> */}
-                <input type='text'
-                    className='inputBox'
-                    required
-                    placeholder='City'
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                />
-            </div>
-            <div className='formDiv'>
+                <label className='custom-field'>
 
-                {/* <label className='labelInput'>State</label> */}
                 <input type='text'
                     required
-                    className='inputBox'
-                    placeholder='State'
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                />
-            </div>
-            <div className='formDiv'>
-
-                {/* <label className='labelInput'>Zip</label> */}
-                <input type='text'
-                    required
-                    className='inputBox'
-                    placeholder='Zip code'
                     value={zipCode}
                     onChange={(e) => setZipCode(e.target.value)}
-                />
+                    />
+                    <span className='placeholder'>Zip Code</span>
 
+                    </label>
             </div>
             <div className='formDiv'>
 
-                {/* <label className='labelInput'>Phone Number</label> */}
+                <label className='custom-field'>
                 <input type='text'
                     required
-                    className='inputBox'
-                    placeholder='Phone Number'
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                />
+                    />
+                    <span className='placeholder'>Phone Number</span>
+
+                    </label>
             </div>
             <div className='formDiv'>
 
