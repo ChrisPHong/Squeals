@@ -9,7 +9,7 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Reviews', [
-    { userId: 1, businessId: 1, rating: 5, answer: 'This place is absolute best. No comparisons at all!', image:'', createdAt: new Date(), updatedAt: new Date()},
+    { userId: 1, businessId: 1, rating: 5, answer: 'This place is absolute best. No comparisons at all!', image:'https://squealsbucket.s3.amazonaws.com/1661534638388.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 2, businessId: 1, rating: 4, answer: "Great place overall!!! I would come back anyday", image:'https://squealsbucket.s3.amazonaws.com/1661531741804.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 2, businessId: 2, rating: 5, answer: 'B-E-A-UTIFUL BUSINESS', image:'https://squealsbucket.s3.amazonaws.com/1661531967983.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 1, businessId: 2, rating: 2, answer: 'I would recommend somewhere else. There were rats', image:'https://squealsbucket.s3.amazonaws.com/1661532065370.jpg', createdAt: new Date(), updatedAt: new Date()},
