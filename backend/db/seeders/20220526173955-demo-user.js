@@ -6,8 +6,8 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
-        username: 'Demo-lition',
-        image: 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png',
+        username: 'Demo Squeals',
+        image: 'https://squealsbucket.s3.amazonaws.com/1661533289455.jpg',
         hashedPassword: bcrypt.hashSync('password'),
         bio: 'Thanks For checking out my site!'
       },
@@ -19,9 +19,10 @@ module.exports = {
       },
       {
         email: 'user2@user.io',
-        username: 'SquealsExpert',
-        image: 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png',
-        hashedPassword: bcrypt.hashSync('password3')
+        username: 'Chris',
+        image: 'https://squealsbucket.s3.us-west-1.amazonaws.com/1661553853754.JPG',
+        hashedPassword: bcrypt.hashSync('password3'),
+        bio: 'I created Squeals! Feel free to roam around!'
       },
       {
         email: 'chrisC@aa.io',

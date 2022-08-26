@@ -102,9 +102,10 @@
 }
 
 .submitButtonBusiness {
-    padding: 10px 40px;
+    padding: 15px 115px;
     background-color: rgb(216, 29, 29, .5);
     margin: 25px;
+    margin-top: 30px;
     transition-duration: 1s;
     box-shadow: none;
 }

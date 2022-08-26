@@ -1,0 +1,24 @@
+.title-button-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cancel-button{
+    display: flex;
+    flex-direction:column;
+    margin: 20px;
+    margin-top: 100px;
+    justify-content: center;
+    font-family: Helvetica, sans-serif;
+    padding: 10px 40px;
+    background-color: rgb(216, 29, 29, .6);
+
+    transition-duration: 1s;
+}
+
+.cancel-button:hover{
+cursor: pointer;
+background-color: rgb(221, 0, 0);
+
+}

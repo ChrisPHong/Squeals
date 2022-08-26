@@ -55,15 +55,22 @@ function ProfilePageEdit() {
         <div>
             <div className='review-container-entire'>
                 <div className='title-business-review'>
+                    <div className='title-button-container'>
 
-                    <h2 className='businessTitle-Review'></h2>
+                    <h2 className='businessTitle-Review'>Edit Your Profile</h2>
+                    <button className='cancel-button'
+                    onClick={()=>{
+                        history.push(`/users/${userId}`)
+                    }}
+                    >Cancel</button>
+                    </div>
                     <form
                         className='review-form'
                         onSubmit={handleSubmit}>
                         {errors.length > 0 ? <h3 className='validationErrorsReviews'>Add Changes</h3> : <h3>Submit Changes</h3>}
                         <ul className='errors-array'>{show && errors.length > 0 ? errors.map(error => {
                             return <span className='errorLi'
-                                key={error}>{error}</span>
+                            key={error}>{error}</span>
                         }) : null}
                         </ul>
 

@@ -66,11 +66,6 @@ const usersReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.one[action.user.id] = action.user
             return newState
-        // case DELETE_REVIEW:
-        //     newState = {...state}
-        //     console.log(action, " THIS IS THE ACTION>>>>>>>>")
-        //     // delete newState.one[action.review]
-        //     return newState;
 
         default:
             return state

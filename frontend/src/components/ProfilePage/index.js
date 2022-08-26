@@ -55,7 +55,11 @@ function ProfilePage() {
 
                     <span className='bio-date-joined'>Bio: {user?.bio}</span>
                     <span className='bio-date-joined'>Joined Squeals: {helperDate(user?.createdAt)}</span>
-                    {user?.id === userId ? <button>Edit Profile</button> : null}
+                    {user?.id === userId ? <button
+                    className='EditProfile'
+                    onClick={()=>{
+                        history.push(`/users/${userId}/edit`)
+                    }}>Edit Profile</button> : null}
                 </div>
             </div>
             <div className='reviews-container-profilePage'>

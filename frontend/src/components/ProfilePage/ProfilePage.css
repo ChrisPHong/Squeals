@@ -13,7 +13,8 @@
     flex-direction: column;
     padding: 20px;
 }
-.profilePicture-container{
+
+.profilePicture-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,10 +52,6 @@
     display: block;
     padding-top: 100%;
     content: ''
-}
-
-.reviews-container-profilePage {
-    margin-top: 100px;
 }
 
 .Each-Review-ProfilePage {
@@ -164,24 +161,40 @@
     margin-left: 10px;
 }
 
-.reviews-container-profilePage{
-    display:flex;
+.reviews-container-profilePage {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.username-header-review{
- font-family: Helvetica, sans-serif;
+.username-header-review {
+    font-family: Helvetica, sans-serif;
 }
 
-.user-bio-when-joined{
+.user-bio-when-joined {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     font-family: Helvetica, sans-serif;
 }
 
-.bio-date-joined{
-padding: 5px 5px;
+.bio-date-joined {
+    padding: 5px 5px;
+}
+
+
+.EditProfile {
+    margin-top: 10px;
+    padding: 20px;
+    background: none;
+    color: rgb(145, 145, 145);
+    border: 1px solid #ddd;
+    transition-duration: .4s;
+}
+
+.EditProfile:hover {
+    background: rgb(204, 218, 221);
+    cursor: pointer;
+    color: white;
 }
