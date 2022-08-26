@@ -55,13 +55,34 @@
     top 0.3s ease;
     font-family: Helvetica, sans-serif;
 }
+.custom-field .placeholder-upload{
+    /* position: absolute; */
+    left:12px;
+    top: 75%;
+    transform: translateY(-50%);
+    color:#aaa;
+    transition:
+    top 0.3s ease,
+    top 0.3s ease,
+    top 0.3s ease;
+    transition: background-color .2s ease-in;
+    font-family: Helvetica, sans-serif;
+    border: solid #ddd 1px;
+    padding: 10px 85px;
+    border-radius: 5px;
+}
+.custom-field .placeholder-upload:hover{
+  cursor: pointer;
+  background-color: rgba(177, 177, 177, 0.404);
+
+}
 
 .custom-field input + .placeholder{
     padding: 0 5px;
     left: 8px;
 }
 .custom-field input:valid + .placeholder,
-.custom-field input:focus + .placeholder{
+.custom-field input:focus + .placeholder {
     top:8px;
     font-size: 10px;
     color: #222;

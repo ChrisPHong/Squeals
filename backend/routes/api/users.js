@@ -65,7 +65,7 @@ router.get(
     }),
 );
 
-router.edit(
+router.patch(
     '/:userId',
     validateSignup,
     asyncHandler(async (req, res) => {

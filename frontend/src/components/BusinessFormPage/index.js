@@ -166,36 +166,39 @@ function BusinessPageForm() {
             <div className='formDiv'>
 
                 <label className='custom-field'>
-                <input type='text'
-                    required
-                    value={zipCode}
-                    onChange={(e) => setZipCode(e.target.value)}
+                    <input type='text'
+                        required
+                        value={zipCode}
+                        onChange={(e) => setZipCode(e.target.value)}
                     />
                     <span className='placeholder'>Zip Code</span>
 
-                    </label>
+                </label>
             </div>
             <div className='formDiv'>
 
                 <label className='custom-field'>
-                <input type='text'
-                    required
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    <input type='text'
+                        required
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                     <span className='placeholder'>Phone Number</span>
 
-                    </label>
+                </label>
             </div>
             <div className='formDiv'>
 
-                {/* <label className='labelInput'>Image</label> */}
-                <input type='file'
-                    required
-                    className='inputBox'
-                    // placeholder='Image url'
-                    onChange={updateFile}
-                />
+
+                <label className='custom-field'>
+                    <input type='file'
+                    className='input-upload'
+                        required
+                        hidden
+                        onChange={updateFile}
+                    />
+                    <span className='placeholder-upload'>Upload Picture</span>
+                </label>
             </div>
             <button
                 className='submitButton'

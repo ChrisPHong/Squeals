@@ -157,11 +157,14 @@ function ReviewForm() {
                             <span className='placeholder'>Review</span>
                         </label>
 
-                        <input type='file'
-                            required
-                            className='inputBox'
-                            onChange={updateFile}
-                        />
+                        <label className='custom-fieldReview'>
+                            <input type='file'
+                                hidden
+                                required
+                                onChange={updateFile}
+                            />
+                            <span className='placeholder-upload'>Upload Picture</span>
+                        </label>
                         <button
                             className='submitButton'
                             type='submit'

@@ -194,3 +194,24 @@ input#rate-5:checked~label {
     justify-content: flex-start;
 
 }
+
+.custom-fieldReview .placeholder-upload{
+    /* position: absolute; */
+    left:12px;
+    top: 75%;
+    transform: translateY(-50%);
+    color:#aaa;
+    transition:
+    top 0.3s ease,
+    top 0.3s ease,
+    top 0.3s ease;
+    font-family: Helvetica, sans-serif;
+    border: solid #ddd 1px;
+    padding: 10px 85px;
+    border-radius: 5px;
+    transition: background-color .2s ease-in;
+}
+.custom-fieldReview .placeholder-upload:hover{
+  cursor: pointer;
+  background-color: rgba(177, 177, 177, 0.404);
+}

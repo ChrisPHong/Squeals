@@ -1,4 +1,5 @@
 export const LOAD_USER = 'user/INFO';
+export const EDIT_USER = 'user/Edit';
 export const ADD_REVIEW = 'review/ADD';
 export const EDIT_REVIEW = 'review/EDIT';
 // export const DELETE_REVIEW = 'user/review/delete';
@@ -8,6 +9,11 @@ const { csrfFetch } = require('../store/csrf')
 //actions
 const load = (user) => ({
     type: LOAD_USER,
+    user
+})
+
+const edit = (user) => ({
+    type: EDIT_REVIEW,
     user
 })
 
@@ -35,43 +41,21 @@ export const loadUserInfo = (userId) => async (dispatch) => {
     }
 }
 
-// export const deleteReview = (reviewId) => async (dispatch) => {
 
-//     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-//         method: "DELETE",
-//     })
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(delReview(reviewId))
-//         return data;
-//     }
-// }
-// export const addReview = (review) => async (dispatch) => {
-//     const {userId, businessId, rating, answer, image} = review
+export const editUser = (user) => async (dispatch) => {
+    const response = await csrfFetch(`/api/users/${user.id}`, {
+        method: 'PATCH',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user)
+    })
 
-//     const formData = new FormData();
-//     formData.append("userId", userId);
-//     formData.append("businessId", businessId);
-//     formData.append("rating", rating);
-//     formData.append("answer", answer);
+    if (response.ok) {
+        const user = await response.json();
+        dispatch(edit(user));
+        return user;
+    }
 
-//     if (image) formData.append("image", image);
-
-//     const response = await csrfFetch('/api/reviews', {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "multipart/form-data",
-//         },
-//         body: formData,
-
-//     })
-//     if (response.ok) {
-//         const review = await response.json();
-//         dispatch(add(review))
-//         return review
-//     }
-// }
-
+}
 
 const initialState = { entries: {}, one: {} }
 
@@ -80,6 +64,11 @@ const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_USER:
             newState = { ...state, one: {} }
+            newState.one[action.user.id] = action.user
+            return newState
+
+        case EDIT_USER:
+            newState = { ...state }
             newState.one[action.user.id] = action.user
             return newState
         // case DELETE_REVIEW:
