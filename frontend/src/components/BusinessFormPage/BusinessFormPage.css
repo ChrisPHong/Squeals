@@ -111,20 +111,14 @@
 
 .file-input-value-form {
     border-radius: 5px 5px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:Helvetica, sans-serif;
     font-size: 15px;
     padding: 5px;
-    /* background-color: black; */
-    /* color: white; */
 
 }
 
 ::-webkit-file-upload-button {
-    /* border: solid black 1px;
-    border-radius: 5px 5px;
-    padding: 10px 15px;
-    transition-duration: 1.3s;
-    background: none; */
+
     color: #aaa;
     font-weight: bold;
     font-family: Helvetica, sans-serif;
@@ -139,12 +133,14 @@
     width:250px;
     outline: none;
     font-size: 14px;
-    transition: border-color .3s ease;
     font-family: Helvetica, sans-serif;
-
+    transition: background-color color .3s ease;
+    transition-duration: .8s;
 }
 
 ::-webkit-file-upload-button:hover {
     cursor: pointer;
+    background-color: rgba(160, 159, 159, 0.486);
+    color: rgb(138, 138, 138);
 
 }
