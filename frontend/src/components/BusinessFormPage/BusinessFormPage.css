@@ -81,14 +81,14 @@
 
 .submitButton {
     padding: 10px 40px;
-    background-color: rgb(216, 29, 29);
+    background-color: rgb(216, 29, 29, .5);
     margin: 20px;
     transition-duration: 1s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: none;
 }
 
 .submitButton:hover {
-    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
+    background-color: rgb(216, 29, 29);
     cursor: pointer;
 }
 
@@ -107,4 +107,44 @@
 
 .business-title {
     font-family: Helvetica, sans-serif;
+}
+
+.file-input-value-form {
+    border-radius: 5px 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    padding: 5px;
+    /* background-color: black; */
+    /* color: white; */
+
+}
+
+::-webkit-file-upload-button {
+    /* border: solid black 1px;
+    border-radius: 5px 5px;
+    padding: 10px 15px;
+    transition-duration: 1.3s;
+    background: none; */
+    color: #aaa;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+    border:#ddd 1px solid;
+    -webkit-appearance: none;
+    -ms-progress-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border-radius: 3px;
+    padding: 12px;
+    width:250px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color .3s ease;
+    font-family: Helvetica, sans-serif;
+
+}
+
+::-webkit-file-upload-button:hover {
+    cursor: pointer;
+
 }

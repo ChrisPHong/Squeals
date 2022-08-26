@@ -31,10 +31,6 @@
     padding: 10px;
 }
 
-.inputBox:hover {
-
-    box-shadow: 3px 3px rgb(0, 0, 0, .3);
-}
 
 .businessForm:hover {
     box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
