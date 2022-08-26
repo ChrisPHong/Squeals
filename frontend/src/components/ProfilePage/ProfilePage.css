@@ -2,9 +2,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-direction: column;
 }
 
 .username-profilePicture-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.profilePicture-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,7 +168,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} 
+}
 
 .username-header-review{
  font-family: Helvetica, sans-serif;
