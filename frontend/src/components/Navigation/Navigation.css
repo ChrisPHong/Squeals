@@ -134,3 +134,10 @@ a{
     margin-right: 40px;
 
 }
+
+.profilePIcture-button-none{
+    border: none;
+    background-color: none;
+    background: none;
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@ import * as sessionActions from '../../store/session';
 import './Navigation.css';
 import { useHistory } from 'react-router-dom'
 import github from './githubLogoW.png'
+import { loadUserInfo } from '../../store/user'
 import linkedIn from './LinkedInLogoW.png'
 import profilePicture from './profileLogoW.png'
 import squealsLogo from './squeals.png'
@@ -37,9 +38,15 @@ function Navigation({ isLoaded }) {
             to="/form">Create Business</button>
           <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
           <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
-          <Link to={`/users/${sessionUser.id}`}>
-          <img className='icon-image' src={profilePicture}/>
-          </Link>
+          <button className='profilePIcture-button-none'
+            onClick={async () => {
+
+              await dispatch(loadUserInfo(sessionUser.id))
+              history.push(`/users/${sessionUser.id}`)
+            }}
+          >
+            <img className='icon-image' src={profilePicture} />
+          </button>
 
 
           <button
@@ -56,14 +63,14 @@ function Navigation({ isLoaded }) {
           <Link className='squealsLink' to='/'><img className='navBarIcon' src={squealsLogo} /></Link>
           <div className='right-side-Nav-Bar'>
 
-          <NavLink className='LogInButton nav-bar-button' to="/login">Log In</NavLink>
-          <NavLink className='SignUpButton nav-bar-button' to="/signup">Sign Up</NavLink>
+            <NavLink className='LogInButton nav-bar-button' to="/login">Log In</NavLink>
+            <NavLink className='SignUpButton nav-bar-button' to="/signup">Sign Up</NavLink>
 
 
-      <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
-      <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
+            <a href='https://github.com/ChrisPHong/Squeals'><img className='icon-image' src={`${github}`} /></a>
+            <a href='https://www.linkedin.com/in/christopherpyohong/'> <img className='icon-image' src={`${linkedIn}`} /></a>
 
-      </div>
+          </div>
         </div>
       </>
     );
