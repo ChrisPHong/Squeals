@@ -1,7 +1,6 @@
 export const LOAD_USER = 'user/INFO';
+export const EDIT_USER = 'user/Edit';
 export const ADD_REVIEW = 'review/ADD';
-export const EDIT_REVIEW = 'review/EDIT';
-// export const DELETE_REVIEW = 'user/review/delete';
 
 
 const { csrfFetch } = require('../store/csrf')
@@ -11,15 +10,10 @@ const load = (user) => ({
     user
 })
 
-// const delReview = (review) => ({
-//     type: DELETE_REVIEW,
-//     review
-// })
-
-// const add = (review) => ({
-//     type: ADD_REVIEW,
-//     review
-// })
+const editUser = (user) => ({
+    type: EDIT_USER,
+    user
+})
 
 
 //Thunks
@@ -35,43 +29,28 @@ export const loadUserInfo = (userId) => async (dispatch) => {
     }
 }
 
-// export const deleteReview = (reviewId) => async (dispatch) => {
 
-//     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-//         method: "DELETE",
-//     })
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(delReview(reviewId))
-//         return data;
-//     }
-// }
-// export const addReview = (review) => async (dispatch) => {
-//     const {userId, businessId, rating, answer, image} = review
+export const editUserProfile = (user) => async (dispatch) => {
+    const { bio, image } = user
+    const formData = new FormData();
 
-//     const formData = new FormData();
-//     formData.append("userId", userId);
-//     formData.append("businessId", businessId);
-//     formData.append("rating", rating);
-//     formData.append("answer", answer);
+    formData.append("bio", bio);
 
-//     if (image) formData.append("image", image);
+    if (image) formData.append("image", image);
 
-//     const response = await csrfFetch('/api/reviews', {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "multipart/form-data",
-//         },
-//         body: formData,
+    const response = await csrfFetch(`/api/users/${user.id}`, {
+        method: 'PATCH',
+        headers: { "Content-Type": "multipart/form-data", },
+        body: formData
+    })
 
-//     })
-//     if (response.ok) {
-//         const review = await response.json();
-//         dispatch(add(review))
-//         return review
-//     }
-// }
+    if (response.ok) {
+        const user = await response.json();
+        dispatch(editUser(user));
+        return user;
+    }
 
+}
 
 const initialState = { entries: {}, one: {} }
 
@@ -82,11 +61,11 @@ const usersReducer = (state = initialState, action) => {
             newState = { ...state, one: {} }
             newState.one[action.user.id] = action.user
             return newState
-        // case DELETE_REVIEW:
-        //     newState = {...state}
-        //     console.log(action, " THIS IS THE ACTION>>>>>>>>")
-        //     // delete newState.one[action.review]
-        //     return newState;
+
+        case EDIT_USER:
+            newState = { ...state }
+            newState.one[action.user.id] = action.user
+            return newState
 
         default:
             return state

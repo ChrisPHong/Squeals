@@ -9,13 +9,13 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Reviews', [
-    { userId: 1, businessId: 1, rating: 5, answer: 'This place is absolute best. No comparisons at all!', image:'', createdAt: new Date(), updatedAt: new Date()},
+    { userId: 1, businessId: 1, rating: 5, answer: 'This place is absolute best. No comparisons at all!', image:'https://squealsbucket.s3.amazonaws.com/1661534638388.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 2, businessId: 1, rating: 4, answer: "Great place overall!!! I would come back anyday", image:'https://squealsbucket.s3.amazonaws.com/1661531741804.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 2, businessId: 2, rating: 5, answer: 'B-E-A-UTIFUL BUSINESS', image:'https://squealsbucket.s3.amazonaws.com/1661531967983.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 1, businessId: 2, rating: 2, answer: 'I would recommend somewhere else. There were rats', image:'https://squealsbucket.s3.amazonaws.com/1661532065370.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 3, businessId: 3, rating: 5, answer: "I had a great time here! It was amazing! ", image:'https://squealsbucket.s3.amazonaws.com/1661532154517.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 2, businessId: 3, rating: 3, answer: "Pretty Average. Not quite happy with my hair but it's not the worst", image:'https://squealsbucket.s3.amazonaws.com/1661532432605.jpg', createdAt: new Date(), updatedAt: new Date()},
-    { userId: 1, businessId: 4, rating: 5, answer: "It was fantastic~~~!!!!", image:'https://squealsbucket.s3.amazonaws.com/1661532590735.jpg', createdAt: new Date(), updatedAt: new Date()},
+    { userId: 1, businessId: 4, rating: 5, answer: "It was fantastic! I would come all the time for sure!", image:'https://squealsbucket.s3.amazonaws.com/1661532590735.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 4, businessId: 4, rating: 1, answer: "This is great! But I had to give it a one because I'm a vegetarian. But other than that, everything was perfect", image:'', createdAt: new Date(), updatedAt: new Date()},
     { userId: 1, businessId: 5, rating: 4, answer: "The curriculum is great but the teachers aren't very good", image:'https://squealsbucket.s3.amazonaws.com/1661532649844.jpg', createdAt: new Date(), updatedAt: new Date()},
     { userId: 3, businessId: 6, rating: 5, answer: "Dance Dance Is great a place to learn how to dance", image:'https://squealsbucket.s3.amazonaws.com/1661532876200.jpg', createdAt: new Date(), updatedAt: new Date()},

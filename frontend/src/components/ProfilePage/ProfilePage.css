@@ -13,7 +13,8 @@
     flex-direction: column;
     padding: 20px;
 }
-.profilePicture-container{
+
+.profilePicture-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,13 +54,8 @@
     content: ''
 }
 
-.reviews-container-profilePage {
-    margin-top: 100px;
-}
-
 .Each-Review-ProfilePage {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: row;
     margin: 10px;
@@ -83,7 +79,8 @@
 
 
 .review-business-image {
-    width: 200px;
+    /* width: 200px; */
+    min-width: 100px;
     background-size: cover;
     background-position: 50%;
     border-radius: 5px;
@@ -105,7 +102,7 @@
 .business-container-profilePage {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     border-bottom: 1px solid rgba(88, 88, 88, 0.355);
     padding-bottom: 15px;
@@ -146,6 +143,7 @@
 
 .review-picture {
     width: 118px;
+    min-width: 118px;
     background-size: cover;
     background-position: 50%;
     border-radius: 5px;
@@ -163,24 +161,40 @@
     margin-left: 10px;
 }
 
-.reviews-container-profilePage{
-    display:flex;
+.reviews-container-profilePage {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.username-header-review{
- font-family: Helvetica, sans-serif;
+.username-header-review {
+    font-family: Helvetica, sans-serif;
 }
 
-.user-bio-when-joined{
+.user-bio-when-joined {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     font-family: Helvetica, sans-serif;
 }
 
-.bio-date-joined{
-padding: 5px 5px;
+.bio-date-joined {
+    padding: 5px 5px;
+}
+
+
+.EditProfile {
+    margin-top: 10px;
+    padding: 20px;
+    background: none;
+    color: rgb(145, 145, 145);
+    border: 1px solid #ddd;
+    transition-duration: .4s;
+}
+
+.EditProfile:hover {
+    background: rgb(204, 218, 221);
+    cursor: pointer;
+    color: white;
 }

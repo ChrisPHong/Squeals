@@ -31,6 +31,7 @@ function BusinessPageForm() {
 
     const updateFile = (e) => {
         const file = e.target.files[0];
+        console.log(file)
         if (file) setImage(file);
     };
 
@@ -48,6 +49,7 @@ function BusinessPageForm() {
         if (city?.length > 36) error.push('City has a max 36 characters')
         if (zipCode?.length < 5 || zipCode?.length > 5) error.push('You must put a valid zipcode of 5 numbers max total')
         if (phoneNumber?.length !== 10) error.push('You must put 10 numbers for a valid phone number')
+        if (image == null) error.push('Provide a picture')
 
         setErrors(error);
     }, [title, description, address, state, city, zipCode, phoneNumber, image])
@@ -71,15 +73,6 @@ function BusinessPageForm() {
                 image
             }
             await dispatch(createBusiness(payload))
-
-            // await setTitle('')
-            // await setDescription('')
-            // await setAddress('')
-            // await setCity('')
-            // await setState('')
-            // await setZipCode('')
-            // await setPhoneNumber('')
-            // await setImage(null)
 
             await history.push('/businesses');
         }
@@ -105,13 +98,12 @@ function BusinessPageForm() {
                 </>
                 : null}
             <div className='titleInput'>
-                {/* <label className='labelInput'>Title</label> */}
+
                 <label className='custom-field'>
 
                     <input type='text'
                         required
-                        // className='inputBox'
-                        // placeholder='Business Title'
+
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
@@ -166,39 +158,42 @@ function BusinessPageForm() {
             <div className='formDiv'>
 
                 <label className='custom-field'>
-                <input type='text'
-                    required
-                    value={zipCode}
-                    onChange={(e) => setZipCode(e.target.value)}
+                    <input type='text'
+                        required
+                        value={zipCode}
+                        onChange={(e) => setZipCode(e.target.value)}
                     />
                     <span className='placeholder'>Zip Code</span>
 
-                    </label>
+                </label>
             </div>
             <div className='formDiv'>
 
                 <label className='custom-field'>
-                <input type='text'
-                    required
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    <input type='text'
+                        required
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                     <span className='placeholder'>Phone Number</span>
 
-                    </label>
+                </label>
             </div>
             <div className='formDiv'>
 
-                {/* <label className='labelInput'>Image</label> */}
-                <input type='file'
-                    required
-                    className='inputBox'
-                    // placeholder='Image url'
-                    onChange={updateFile}
-                />
+
+                <label className='custom-field'>
+                    <input type='file'
+                    className='input-upload'
+                        required
+                        hidden
+                        onChange={updateFile}
+                    />
+                    <span className='placeholder-upload'>Upload Picture</span>
+                </label>
             </div>
             <button
-                className='submitButton'
+                className='submitButtonBusiness'
                 type='submit'
             >Submit</button>
         </form>

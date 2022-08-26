@@ -55,13 +55,35 @@
     top 0.3s ease;
     font-family: Helvetica, sans-serif;
 }
+.custom-field .placeholder-upload{
+    position: relative;
+    left: 0px;
+    top: 12px;
+    transform: translateY(-50%);
+    color:#aaa;
+    transition:
+    top 0.3s ease,
+    top 0.3s ease,
+    top 0.3s ease;
+    transition: background-color .2s ease-in;
+    font-family: Helvetica, sans-serif;
+    border: solid #ddd 1px;
+    padding: 12px 85px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.custom-field .placeholder-upload:hover{
+  cursor: pointer;
+  background-color: rgba(177, 177, 177, 0.404);
+
+}
 
 .custom-field input + .placeholder{
     padding: 0 5px;
     left: 8px;
 }
 .custom-field input:valid + .placeholder,
-.custom-field input:focus + .placeholder{
+.custom-field input:focus + .placeholder {
     top:8px;
     font-size: 10px;
     color: #222;
@@ -79,15 +101,16 @@
     box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
 }
 
-.submitButton {
-    padding: 10px 40px;
+.submitButtonBusiness {
+    padding: 15px 115px;
     background-color: rgb(216, 29, 29, .5);
-    margin: 20px;
+    margin: 25px;
+    margin-top: 30px;
     transition-duration: 1s;
     box-shadow: none;
 }
 
-.submitButton:hover {
+.submitButtonBusiness:hover {
     background-color: rgb(216, 29, 29);
     cursor: pointer;
 }

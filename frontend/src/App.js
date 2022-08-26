@@ -16,6 +16,7 @@ import PageNotFound from "./components/PageNotFound";
 import Footer from "./components/Footer";
 import OneBusiness from './components/OneBusiness'
 import ProfilePage from "./components/ProfilePage";
+import ProfilePageEdit from "./components/ProfilePageEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route exact path="/users/:userId">
             <ProfilePage />
+          </Route>
+          <Route exact path="/users/:userId/edit">
+            <ProfilePageEdit />
           </Route>
           <Route>
             <PageNotFound />

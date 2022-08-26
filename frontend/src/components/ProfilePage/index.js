@@ -8,17 +8,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { oneReview } from '../../store/review'
 import emptyStar from './EmptyStar.png'
 import fullStar from './FullStar.png'
-import halfStar from './HalfStar.png'
 
-/*
-Things to do
-- Design the profile page and what information you'd like to display on there
-- Maybe display the types of businesss you wrote about?
-- Show how many reviews you've written?
-- on average your rating scale?
-- latest review
-- Highest review (because you want to go back to the place you gave the highest review for)
-*/
 function ProfilePage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -27,7 +17,6 @@ function ProfilePage() {
     const user = useSelector((state) => state?.user?.one)[profileId];
     const userId = useSelector((state) => state?.session?.user?.id);
 
-    console.log(profileId, "USER PARAMS()")
     const [isLoaded, setIsLoaded] = useState(false);
 
 
@@ -43,63 +32,19 @@ function ProfilePage() {
     }
 
     const starRatings = (rating) => {
-        console.log(rating)
-        if (rating === 1) {
-            return (
-                <div>
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={emptyStar} />
-                    <img className='star-icon' src={emptyStar} />
-                    <img className='star-icon' src={emptyStar} />
-                    <img className='star-icon' src={emptyStar} />
-                </div>
-            )
+        let results = []
+        for (let i = 0; i < 5; i++) {
+            if (rating >= 1) {
+                results.push(<img className='star-icon' src={fullStar} />)
+                rating -= 1
+            } else {
+                results.push(<img className='star-icon' src={emptyStar} />)
+
+            }
         }
-        else if (rating === 2) {
-            return (
-                <div>
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={emptyStar} />
-                    <img className='star-icon' src={emptyStar} />
-                    <img className='star-icon' src={emptyStar} />
-                </div>
-            )
-        }
-        else if (rating === 3) {
-            return (
-                <div>
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={emptyStar} />
-                    <img className='star-icon' src={emptyStar} />
-                </div>
-            )
-        }
-       else if (rating === 4) {
-            return (
-                <div>
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={emptyStar} />
-                </div>
-            )
-        }
-       else if (rating === 5) {
-            return (
-                <div>
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                    <img className='star-icon' src={fullStar} />
-                </div>
-            )
-        }
+        return results
     }
+
 
     return (
         <div className='profile-container'>
@@ -108,16 +53,21 @@ function ProfilePage() {
                 <figure className='profile-picture' style={{ backgroundImage: `url(${user?.image})` }} />
                 <div className='user-bio-when-joined'>
 
-                <span className='bio-date-joined'>Bio: {user?.bio}</span>
-                <span className='bio-date-joined'>Joined Squeals: {helperDate(user?.createdAt)}</span>
+                    <span className='bio-date-joined'>Bio: {user?.bio}</span>
+                    <span className='bio-date-joined'>Joined Squeals: {helperDate(user?.createdAt)}</span>
+                    {user?.id === userId ? <button
+                    className='EditProfile'
+                    onClick={()=>{
+                        history.push(`/users/${userId}/edit`)
+                    }}>Edit Profile</button> : null}
                 </div>
             </div>
             <div className='reviews-container-profilePage'>
                 {user?.Reviews?.length != 1 ?
-                <h1 className='username-header-review'>{user?.username}'s Reviews</h1>
-            :
-                <h1 className='username-header-review'>{user?.username}'s Review</h1>
-            }
+                    <h1 className='username-header-review'>{user?.username}'s Reviews</h1>
+                    :
+                    <h1 className='username-header-review'>{user?.username}'s Review</h1>
+                }
                 {user?.Reviews.map((review, idx) => {
 
                     return (
@@ -136,6 +86,7 @@ function ProfilePage() {
                                     <div className='profilePicture-container'>
                                         <p className='username-title'>{user?.username}</p>
                                         <figure className='profile-picture-review' style={{ backgroundImage: `url(${user?.image})` }} />
+
                                     </div>
 
                                 </div>
@@ -152,9 +103,7 @@ function ProfilePage() {
                                     </div>
                                     <div className='Review-container-profilePage'>
                                         <figure className='review-picture' style={{ backgroundImage: `url(${review?.image})` }} />
-                                        {/* <img className='review-picture' src={review?.image} /> */}
                                         <div className='rating-review-container'>
-                                            {console.log(review?.rating, "WHAT IS THE IS RATING")}
                                             <h4>{starRatings(review?.rating)}</h4>
                                             <span >"{review?.answer}"</span>
                                         </div>
