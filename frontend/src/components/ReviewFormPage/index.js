@@ -5,9 +5,7 @@ import * as sessionActions from '../../store/session'
 import { addReview } from '../../store/review'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import emptyStar from './EmptyStar.png'
-import fullStar from './FullStar.png'
-import halfStar from './HalfStar.png'
+
 
 
 function ReviewForm() {
@@ -19,8 +17,6 @@ function ReviewForm() {
     const businessName = useSelector((state) => state?.business?.one[businessId]?.title);
     const user = useSelector((state) => Object.values(state.session.user));
     const userId = user[0]
-
-    console.log(businessName, " BUSINESS NAME??????")
 
 
     const [isLoaded, setIsLoaded] = useState(false);

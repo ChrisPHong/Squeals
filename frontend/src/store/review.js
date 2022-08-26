@@ -155,7 +155,6 @@ const reviewsReducer = (state = initialState, action) => {
 
         case EDIT_REVIEW:
             newState = {...state}
-
             newState[action.review.id] = action.review
             return newState
         case DELETE_REVIEW:

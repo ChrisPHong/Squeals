@@ -5,6 +5,8 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Review, Business } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
+
 
 const router = express.Router();
 
@@ -66,13 +68,16 @@ router.get(
 );
 
 router.patch(
-    '/:userId',
-    validateSignup,
+    '/:userId', singleMulterUpload("image"),
     asyncHandler(async (req, res) => {
-        const user = await User.findByPk(parseInt(req.params.reviewId, 10));
-        const { bio, image } = req.body;
+        const user = await User.findByPk(parseInt(req.params.userId, 10));
+        console.log(req.file, "<<<<<<<<<<<<<<< THIS IS THE USER before")
+        const profileImageUrl = await singlePublicFileUpload(req.file);
+        const { bio } = req.body;
+        console.log(bio, "<<<<<<<<<<<<<<< bio step 1")
         user.bio = bio
-        user.image = image
+        user.image = profileImageUrl
+        console.log(user, "<<<<<<<<<<<<<<< THIS IS THE USER after")
         await user.save();
 
         return res.json(user);

@@ -1,8 +1,6 @@
 export const LOAD_USER = 'user/INFO';
 export const EDIT_USER = 'user/Edit';
 export const ADD_REVIEW = 'review/ADD';
-export const EDIT_REVIEW = 'review/EDIT';
-// export const DELETE_REVIEW = 'user/review/delete';
 
 
 const { csrfFetch } = require('../store/csrf')
@@ -12,20 +10,10 @@ const load = (user) => ({
     user
 })
 
-const edit = (user) => ({
-    type: EDIT_REVIEW,
+const editUser = (user) => ({
+    type: EDIT_USER,
     user
 })
-
-// const delReview = (review) => ({
-//     type: DELETE_REVIEW,
-//     review
-// })
-
-// const add = (review) => ({
-//     type: ADD_REVIEW,
-//     review
-// })
 
 
 //Thunks
@@ -42,16 +30,23 @@ export const loadUserInfo = (userId) => async (dispatch) => {
 }
 
 
-export const editUser = (user) => async (dispatch) => {
+export const editUserProfile = (user) => async (dispatch) => {
+    const { bio, image } = user
+    const formData = new FormData();
+
+    formData.append("bio", bio);
+
+    if (image) formData.append("image", image);
+
     const response = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user)
+        headers: { "Content-Type": "multipart/form-data", },
+        body: formData
     })
 
     if (response.ok) {
         const user = await response.json();
-        dispatch(edit(user));
+        dispatch(editUser(user));
         return user;
     }
 
