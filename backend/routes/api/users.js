@@ -65,4 +65,17 @@ router.get(
     }),
 );
 
+router.edit(
+    '/:userId',
+    validateSignup,
+    asyncHandler(async (req, res) => {
+        const user = await User.findByPk(parseInt(req.params.reviewId, 10));
+        const { bio, image } = req.body;
+        user.bio = bio
+        user.image = image
+        await user.save();
+
+        return res.json(user);
+    }),
+);
 module.exports = router;
