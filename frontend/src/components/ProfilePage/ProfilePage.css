@@ -59,7 +59,6 @@
 
 .Each-Review-ProfilePage {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: row;
     margin: 10px;
@@ -83,7 +82,8 @@
 
 
 .review-business-image {
-    width: 200px;
+    /* width: 200px; */
+    min-width: 100px;
     background-size: cover;
     background-position: 50%;
     border-radius: 5px;
@@ -105,7 +105,7 @@
 .business-container-profilePage {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     border-bottom: 1px solid rgba(88, 88, 88, 0.355);
     padding-bottom: 15px;
@@ -146,6 +146,7 @@
 
 .review-picture {
     width: 118px;
+    min-width: 118px;
     background-size: cover;
     background-position: 50%;
     border-radius: 5px;
