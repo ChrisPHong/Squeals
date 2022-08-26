@@ -201,7 +201,7 @@ function BusinessPageForm() {
                 </label>
             </div>
             <button
-                className='submitButton'
+                className='submitButtonBusiness'
                 type='submit'
             >Submit</button>
         </form>

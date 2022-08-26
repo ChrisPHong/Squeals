@@ -56,9 +56,9 @@
     font-family: Helvetica, sans-serif;
 }
 .custom-field .placeholder-upload{
-    /* position: absolute; */
-    left:12px;
-    top: 75%;
+    position: relative;
+    left: 0px;
+    top: 12px;
     transform: translateY(-50%);
     color:#aaa;
     transition:
@@ -68,8 +68,9 @@
     transition: background-color .2s ease-in;
     font-family: Helvetica, sans-serif;
     border: solid #ddd 1px;
-    padding: 10px 85px;
+    padding: 12px 85px;
     border-radius: 5px;
+    margin-top: 10px;
 }
 .custom-field .placeholder-upload:hover{
   cursor: pointer;
@@ -100,15 +101,15 @@
     box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
 }
 
-.submitButton {
+.submitButtonBusiness {
     padding: 10px 40px;
     background-color: rgb(216, 29, 29, .5);
-    margin: 20px;
+    margin: 25px;
     transition-duration: 1s;
     box-shadow: none;
 }
 
-.submitButton:hover {
+.submitButtonBusiness:hover {
     background-color: rgb(216, 29, 29);
     cursor: pointer;
 }
