@@ -133,7 +133,7 @@ function ProfilePage() {
                                 }
                                 }>
                                 <div className='userInfo-container'>
-                                    <div className='username-profilePicture-container'>
+                                    <div className='profilePicture-container'>
                                         <p className='username-title'>{user?.username}</p>
                                         <figure className='profile-picture-review' style={{ backgroundImage: `url(${user?.image})` }} />
                                     </div>
