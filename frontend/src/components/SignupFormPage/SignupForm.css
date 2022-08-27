@@ -39,35 +39,16 @@
 }
 
 
-.inputValuesSignUp {
-    border-radius: 5px 5px;
-    padding: 8px;
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition-duration: 1.3s;
-
-}
-.inputValuesSignUp:focus{
-/* border: 1px solid rebeccapurple; */
-box-shadow: 3px 3px rgba(0, 0, 0, 0.267);
-
-}
-
 .submitSignUpButton {
-    padding: 10px 40px;
+    padding: 15px 113px;
     background-color: rgb(216, 29, 29);
     margin: 20px;
     transition-duration: 1s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 .submitSignUpButton:hover {
-    box-shadow: -2px -2px 4px rgb(216, 29, 29, .3);
     background-color: red;
     cursor: pointer;
 
@@ -90,4 +71,59 @@ box-shadow: 3px 3px rgba(0, 0, 0, 0.267);
     position: fixed;
     top:140px;
     color: black
+}
+
+.custom-field{
+    position: absolute;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+
+}
+.custom-field input {
+    border:#ddd 1px solid;
+    -webkit-appearance: none;
+    -ms-progress-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border-radius: 3px;
+    padding: 12px;
+    width:250px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color .3s ease;
+    font-family: Helvetica, sans-serif;
+
+}
+
+.custom-field .placeholderSignUp{
+    position: absolute;
+    left:12px;
+    top: 65%;
+    transform: translateY(-50%);
+    color:#aaa;
+    transition:
+    top 0.3s ease,
+    top 0.3s ease,
+    top 0.3s ease;
+    font-family: Helvetica, sans-serif;
+}
+
+.custom-field input + .placeholderSignUp{
+    padding: 0 5px;
+    left: 8px;
+}
+.custom-field input:valid + .placeholderSignUp,
+.custom-field input:focus + .placeholderSignUp {
+    top:20px;
+    font-size: 10px;
+    color: #222;
+    background: #fff;
+}
+
+.custom-field input:valid,
+.custom-field input:focus{
+    border-color: #222;
+    transition-delay: .1s;
 }

@@ -23,8 +23,8 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      if(!image) image = 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png'
-      return dispatch(sessionActions.signup({ email, username, password, image}))
+      if (!image) image = 'https://quickspic.s3.us-west-1.amazonaws.com/defaultPicture.png'
+      return dispatch(sessionActions.signup({ email, username, password, image }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -35,72 +35,76 @@ function SignupFormPage() {
 
   return (
     <div className="centerpageDivSignUp">
-            <h2 className="titleforSignUpPage">Sign Up for Squeals
-            </h2>
-            <h4 className="titleDescriptionSignUpPage">Connect with Great Businesses</h4>
-    <div className="pageDiv">
-      <div className="signUpFormDiv">
-        <form onSubmit={handleSubmit}>
-          <div className="withinFormDiv">
+      <h2 className="titleforSignUpPage">Sign Up for Squeals
+      </h2>
+      <h4 className="titleDescriptionSignUpPage">Connect with Great Businesses</h4>
+      <div className="pageDiv">
+        <div className="signUpFormDiv">
+          <form onSubmit={handleSubmit}>
+            <div className="withinFormDiv">
 
-            <ul>
-              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <h2>{errors.length > 0 ? 'Fix Your Errors to Create an Account' : 'Create an Account'}</h2>
-            <input
-              placeholder="Email..."
-              className="inputValuesSignUp"
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+              <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
+              <h2>{errors.length > 0 ? 'Fix Your Errors to Create an Account' : 'Create an Account'}</h2>
 
-            <input
-              type="text"
-              className="inputValuesSignUp"
-              placeholder="Username..."
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
+              <label className='custom-field'>
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <span className='placeholderSignUp'>Email</span>
+              </label>
 
-            <input
-              type="password"
-              className="inputValuesSignUp"
-              placeholder="Password..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+              <label className='custom-field'>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+                <span className='placeholderSignUp'>Username</span>
+              </label>
 
+              <label className='custom-field'>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <span className='placeholderSignUp'>Password</span>
+              </label>
 
-            <input
-              type="password"
-              className="inputValuesSignUp"
-              placeholder="Confirmed Password..."
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
+              <label className='custom-field'>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+                <span className='placeholderSignUp'>Confirmed Password</span>
+              </label>
 
-            <button
-              className="submitSignUpButton"
-              type="submit">Sign Up</button>
-          </div>
-        </form>
+              <button
+                className="submitSignUpButton"
+                type="submit">Sign Up</button>
+            </div>
+          </form>
+        </div>
+        <div className='imageSignUpDiv'>
+          <img src='images/signup_illustration.png' />
+        </div>
+
       </div>
-      <div className='imageSignUpDiv'>
-      <img src='images/signup_illustration.png' />
-      </div>
-
-    </div>
       <button
-                className='demoButtonSignupPage'
-                onClick={async () => {
-                    await dispatch(login(user))
-                    await history.push('/businesses')
-                }}>Demo User</button>
+        className='demoButtonSignupPage'
+        onClick={async () => {
+          await dispatch(login(user))
+          await history.push('/businesses')
+        }}>Demo User</button>
     </div>
   );
 }

@@ -28,11 +28,10 @@ button {
 
 
 .loginButtonForm {
-    padding: 10px 40px;
+    padding: 15px 120px;
     background-color: rgb(216, 29, 29);
     margin: 20px;
     transition-duration: 1s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 15px;
     font-family: sans-serif;
 
@@ -50,6 +49,8 @@ button {
     max-height: fit-content;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     transition-duration: 1.3s;
 }

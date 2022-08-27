@@ -134,3 +134,8 @@ a{
     margin-right: 40px;
 
 }
+
+
+.LogInButton, .SignUpButton {
+    padding: 10px 20px;
+}
