@@ -135,9 +135,16 @@ a{
 
 }
 
+
+
+.LogInButton, .SignUpButton {
+    padding: 10px 20px;
+}
+
 .profilePIcture-button-none{
     border: none;
     background-color: none;
     background: none;
     cursor: pointer;
+
 }

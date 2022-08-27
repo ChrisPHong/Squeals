@@ -18,11 +18,7 @@ function OneBusiness() {
 
     const [isLoaded, setIsLoaded] = useState(false);
     const history = useHistory();
-
-
-    let userId = useSelector((state) => state.session)
-
-
+    
     useEffect(() => {
         dispatch(getOneBusiness(id))
     }, [])

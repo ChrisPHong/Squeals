@@ -33,10 +33,10 @@ function LoginFormPage() {
   return (
     <div className='OuterDiv'>
 
-        <h2 className='titleforLoginPage'>Log In to Squeals</h2>
-        <h4 className="titleDescriptionLoginPage">{'New to Squeals? '}
+      <h2 className='titleforLoginPage'>Log In to Squeals</h2>
+      <h4 className="titleDescriptionLoginPage">{'New to Squeals? '}
         <Link to='/signup' className="linkforSignUpPage">Sign Up</Link>
-        </h4>
+      </h4>
 
       <div className='loginFormDiv'>
         <form
@@ -45,39 +45,40 @@ function LoginFormPage() {
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
-          <label className='userNameLabel'>
-            Enter Your Login
-          </label>
-          <input
-            className='inputLoginBox'
-            type="text"
-            placeholder='Username/Email...'
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
 
-          <input
-            placeholder='Password...'
-            className='inputLoginBox'
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <label className='custom-field'>
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+            <span className='placeholderSignUp'>Username/Email</span>
+          </label>
+
+          <label className='custom-field'>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span className='placeholderSignUp'>Password</span>
+
+          </label>
+
           <button className='loginButtonForm'
-            type="submit">Log In</button>
+            type="submit">Login</button>
         </form>
         <div clasName='picture'>
-        <img src='images/signup_illustration.png' />
+          <img src='images/signup_illustration.png' />
         </div>
       </div>
       <button
-                className='demoButtonLoginPage'
-                onClick={async () => {
-                    await dispatch(login(user))
-                    await history.push('/businesses')
-                }}>Demo User</button>
+        className='demoButtonLoginPage'
+        onClick={async () => {
+          await dispatch(login(user))
+          await history.push('/businesses')
+        }}>Demo User</button>
     </div>
   );
 }
