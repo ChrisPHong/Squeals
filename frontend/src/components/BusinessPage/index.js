@@ -30,15 +30,15 @@ function BusinessPage({ business }) {
 
     const starRatings = (rating) => {
         let results = []
-        for(let i = 0; i < 5; i++){
-            if(rating >= 1){
+        for (let i = 0; i < 5; i++) {
+            if (rating >= 1) {
                 results.push(<img className='star-icon' src={fullStar} />)
                 rating -= 1
-            } else if( rating > 0 && rating < 1){
+            } else if (rating > 0 && rating < 1) {
                 results.push(<img className='star-icon' src={halfStar} />)
                 rating -= 1
 
-            } else{
+            } else {
                 results.push(<img className='star-icon' src={emptyStar} />)
 
             }
@@ -54,7 +54,8 @@ function BusinessPage({ business }) {
 
     return (
         <>
-            <div className='contentDiv'>
+            <div className='contentDiv'
+            >
                 <Link to={`/businesses/${business.id}`}>
                     <div className='fillPhoto'>
                         <figure className='imageDivPicture' onClick={() => {
@@ -90,17 +91,29 @@ function BusinessPage({ business }) {
                             </div>
                         </div>
                         : null}
-                    <div className='businessName'>
+                    <div className='businessName'
+                        onClick={() => {
+                            history.push(`/businesses/${business.id}`)
+                        }}>
                         <h2 className='businessTitle' key={`title${business.id}`}>{business.title}</h2>
                     </div>
-                    <div className='starRating-container'>
+                    <div className='starRating-container'
+                        onClick={() => {
+                            history.push(`/businesses/${business.id}`)
+                        }}>
 
                         {starRatings(avgRating(business.Reviews))}
                     </div>
-                    <div className='pDiv'>
+                    <div className='pDiv'
+                        onClick={() => {
+                            history.push(`/businesses/${business.id}`)
+                        }}>
                         <p className='description' key={`description${business.id}`}>{business.description}</p>
                     </div>
-                    <div className='addressBusiness'>
+                    <div className='addressBusiness'
+                        onClick={() => {
+                            history.push(`/businesses/${business.id}`)
+                        }}>
                         <p className='address' key={`address${business.address}`}>{`${business.address} ${business.city}, ${business.state} ${business.zipCode}`}</p>
                         <p className='phone-number'>{`(${business.phoneNumber.slice(0, 3)})-${business.phoneNumber.slice(3, 6)}-${business.phoneNumber.slice(6.10)}`}</p>
                         <div>

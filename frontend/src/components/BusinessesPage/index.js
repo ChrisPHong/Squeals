@@ -36,9 +36,6 @@ function BusinessesPage() {
                         return (
                             <div key={`div${business.id}`}
                                 className={`divbusinessCard`}
-                                // onClick={() => {
-                                //     history.push(`/businesses/${business.id}`)
-                                // }}
                                 >
                             <BusinessPage business={business} />
 
