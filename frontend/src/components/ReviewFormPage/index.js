@@ -24,6 +24,7 @@ function ReviewForm() {
   const [errors, setErrors] = useState([]);
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
+  const [reveal, setReveal] = useState(false);
   const images = [
     "https://images.unsplash.com/photo-1582545075804-1ed041a959cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
     "https://images.unsplash.com/photo-1585336671611-84c832187eab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
@@ -168,23 +169,32 @@ function ReviewForm() {
             </label>
 
             <label className="custom-fieldReview">
-              <span className="placeholder-upload">Select Picture</span>
-              <div className="chosenImages-review-container">
-                {images.map((item) => {
-                  return (
-                    <img
-                      className={`${
-                        image === item ? "selected-Image" : "none"
-                      } chosenImages`}
-                      src={item}
-                      alt="review_picture"
-                      onClick={() => {
-                        setImage(item);
-                      }}
-                    />
-                  );
-                })}
-              </div>
+              <span
+                className="placeholder-upload"
+                onClick={() => {
+                  setReveal(!reveal);
+                }}
+              >
+                Select Picture
+              </span>
+              {reveal ? (
+                <div className="chosenImages-review-container">
+                  {images.map((item) => {
+                    return (
+                      <img
+                        className={`${
+                          image === item ? "selected-Image" : "none"
+                        } chosenImages`}
+                        src={item}
+                        alt="review_picture"
+                        onClick={() => {
+                          setImage(item);
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              ) : null}
             </label>
 
             <button className="submitButton" type="submit">
