@@ -51,10 +51,10 @@ router.post(
      requireAuth,
      validateSignup,
     asyncHandler(async (req, res) => {
-        const { userId, businessId, rating, answer } = req.body;
-        const profileImageUrl = await singlePublicFileUpload(req.file);
+        const { userId, businessId, rating, answer, image } = req.body;
+        // const profileImageUrl = await singlePublicFileUpload(req.file);
 
-        const review = await Review.create({ userId, businessId, rating, answer, image:profileImageUrl});
+        const review = await Review.create({ userId, businessId, rating, answer, image});
         return res.json(review);
     }),
 );

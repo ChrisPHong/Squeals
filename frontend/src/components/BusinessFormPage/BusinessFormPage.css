@@ -1,169 +1,183 @@
 .businessForm {
-    /* background-color: white; */
-    color: black;
-    margin-top: 100px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border: solid black 2px;
-    border-radius: 5px 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-weight: bold;
-    box-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
-    transition-duration: 1s;
+  /* background-color: white; */
+  color: black;
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: solid black 2px;
+  border-radius: 5px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.2);
+  transition-duration: 1s;
 }
 
 .formDiv {
-    padding: 4px;
-    margin: 4px;
+  padding: 4px;
+  margin: 4px;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.custom-field{
-    position: relative;
-    font-size: 14px;
-    padding-top: 20px;
-    margin-bottom: 5px;
-
+.custom-field {
+  position: relative;
+  font-size: 14px;
+  padding-top: 20px;
+  margin-bottom: 5px;
 }
 .custom-field input {
-    border:#ddd 1px solid;
-    -webkit-appearance: none;
-    -ms-progress-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: none;
-    border-radius: 3px;
-    padding: 12px;
-    width:250px;
-    outline: none;
-    font-size: 14px;
-    transition: border-color .3s ease;
-    font-family: Helvetica, sans-serif;
-
+  border: #ddd 1px solid;
+  -webkit-appearance: none;
+  -ms-progress-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border-radius: 3px;
+  padding: 12px;
+  width: 250px;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  font-family: Helvetica, sans-serif;
 }
 
-.custom-field .placeholder{
-    position: absolute;
-    left:12px;
-    top: 75%;
-    transform: translateY(-50%);
-    color:#aaa;
-    transition:
-    top 0.3s ease,
-    top 0.3s ease,
-    top 0.3s ease;
-    font-family: Helvetica, sans-serif;
+.custom-field .placeholder {
+  position: absolute;
+  left: 12px;
+  top: 75%;
+  transform: translateY(-50%);
+  color: #aaa;
+  transition: top 0.3s ease, top 0.3s ease, top 0.3s ease;
+  font-family: Helvetica, sans-serif;
 }
-.custom-field .placeholder-upload{
-    position: relative;
-    left: 0px;
-    top: 12px;
-    transform: translateY(-50%);
-    color:#aaa;
-    transition:
-    top 0.3s ease,
-    top 0.3s ease,
-    top 0.3s ease;
-    transition: background-color .2s ease-in;
-    font-family: Helvetica, sans-serif;
-    border: solid #ddd 1px;
-    padding: 12px 85px;
-    border-radius: 5px;
-    margin-top: 10px;
+.custom-field .placeholder-upload {
+  position: relative;
+  left: 0px;
+  top: 12px;
+  transform: translateY(-50%);
+  color: #aaa;
+  transition: top 0.3s ease, top 0.3s ease, top 0.3s ease;
+  transition: background-color 0.2s ease-in;
+  font-family: Helvetica, sans-serif;
+  border: solid #ddd 1px;
+  padding: 12px 85px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
-.custom-field .placeholder-upload:hover{
+.custom-field .placeholder-upload:hover {
   cursor: pointer;
   background-color: rgba(177, 177, 177, 0.404);
-
 }
 
-.custom-field input + .placeholder{
-    padding: 0 5px;
-    left: 8px;
+.custom-field input + .placeholder {
+  padding: 0 5px;
+  left: 8px;
 }
 .custom-field input:valid + .placeholder,
 .custom-field input:focus + .placeholder {
-    top:8px;
-    font-size: 10px;
-    color: #222;
-    background: #fff;
+  top: 8px;
+  font-size: 10px;
+  color: #222;
+  background: #fff;
 }
 
 .custom-field input:valid,
-.custom-field input:focus{
-    border-color: #222;
-    transition-delay: .1s;
+.custom-field input:focus {
+  border-color: #222;
+  transition-delay: 0.1s;
 }
 
-
 .businessForm:hover {
-    box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
+  box-shadow: 2px 2px 2px rgba(187, 28, 28, 0.4);
 }
 
 .submitButtonBusiness {
-    padding: 15px 115px;
-    background-color: rgb(216, 29, 29, .5);
-    margin: 25px;
-    margin-top: 30px;
-    transition-duration: 1s;
-    box-shadow: none;
+  padding: 15px 115px;
+  background-color: rgb(216, 29, 29, 0.5);
+  margin: 25px;
+  margin-top: 30px;
+  transition-duration: 1s;
+  box-shadow: none;
 }
 
 .submitButtonBusiness:hover {
-    background-color: rgb(216, 29, 29);
-    cursor: pointer;
+  background-color: rgb(216, 29, 29);
+  cursor: pointer;
 }
 
 .errorsArray {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .errorItem {
-    margin: 4px;
-
+  margin: 4px;
 }
 
 .business-title {
-    font-family: Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 .file-input-value-form {
-    border-radius: 5px 5px;
-    font-family:Helvetica, sans-serif;
-    font-size: 15px;
-    padding: 5px;
-
+  border-radius: 5px 5px;
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  padding: 5px;
 }
 
 ::-webkit-file-upload-button {
-
-    color: #aaa;
-    font-weight: bold;
-    font-family: Helvetica, sans-serif;
-    border:#ddd 1px solid;
-    -webkit-appearance: none;
-    -ms-progress-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: none;
-    border-radius: 3px;
-    padding: 12px;
-    width:250px;
-    outline: none;
-    font-size: 14px;
-    font-family: Helvetica, sans-serif;
-    transition: background-color color .3s ease;
-    transition-duration: .8s;
+  color: #aaa;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  border: #ddd 1px solid;
+  -webkit-appearance: none;
+  -ms-progress-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border-radius: 3px;
+  padding: 12px;
+  width: 250px;
+  outline: none;
+  font-size: 14px;
+  font-family: Helvetica, sans-serif;
+  transition: background-color color 0.3s ease;
+  transition-duration: 0.8s;
 }
 
 ::-webkit-file-upload-button:hover {
-    cursor: pointer;
-    background-color: rgba(160, 159, 159, 0.486);
-    color: rgb(138, 138, 138);
+  cursor: pointer;
+  background-color: rgba(160, 159, 159, 0.486);
+  color: rgb(138, 138, 138);
+}
 
+.chosenImages {
+  width: 200px;
+  margin: 10px;
+}
+
+.chosenImages-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  max-height: 200px;
+}
+.chosenImages-container:hover {
+  cursor: pointer;
+}
+.chosenImages-container:active {
+  cursor: grab;
+}
+
+.selected-Image {
+  border: solid 2px rgb(255, 0, 0);
 }
